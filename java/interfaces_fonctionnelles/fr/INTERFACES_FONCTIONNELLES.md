@@ -13,7 +13,7 @@ Ce cours discutera de leur définition, de leur syntaxe et de leur utilité, le 
 ## Définition
 Une interface fonctionnelle est une `interface` qui ne contient qu'une seule et unique méthode **abstraite**. Le nombre de méthodes possédant une implémentation par défaut (annotées du mot clé `default`) n'importe pas.
 
-Voici quelques exemples d'interfaces:
+Voici quelques exemples d'interfaces :
 
 ```java
 interface Test1 {
