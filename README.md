@@ -14,8 +14,8 @@
 
 ## Programmation orientée objet
 
-- `📑` [Abstraction (définition, utilité et exemples)](poo/abstraction)
+- `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
 
 ## Java
 
-- `📑` [Interfaces fonctionnelles - Syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
+- `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
