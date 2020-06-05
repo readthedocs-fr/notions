@@ -70,6 +70,7 @@ BinaryOperation sum = new BinaryOperation() {
 		return a + b;
 	}
 };
+
 System.out.println(sum.compute(4.0, 7.0)); // Output: 11.0
 ```
 
@@ -147,7 +148,7 @@ test.executeActionForEach(printAction);
 ```
 Et voilà, on a réussi à exécuter une action pour chaque élément de la liste, sans donner accès à cette dernière.
 
-## Revenons à nos moutons
+## Et Java 8 dans l'histoire ?
 
 Bon, maintenant qu'on connaît l'utilité des interfaces fonctionnelles, il nous reste toujours à comprendre pourquoi Java 8 favorise leur utilisation. En fait, la nouveauté se trouve au niveau de l'instanciation de nos interfaces. Si je reprends le code précédent, il nous a fallu faire ceci pour `stocker` notre action :
 
@@ -159,7 +160,7 @@ Action printAction = new Action() {
 	}
 };
 ```
-Comme on est garanti qu'il n'y a qu'une seule méthode à implémenter, Java 8 nous propose le raccourci suivant :
+Et comme on est garanti qu'il n'y a qu'une seule méthode à implémenter, Java 8 nous propose le raccourci suivant :
 
 ```java
 Action printAction = (str) -> System.out.println(str);
