@@ -24,6 +24,16 @@ Les cours peuvent porter sur **n'importe quelle notion technique**, et être éc
 
 ### Formatage
 
+#### Cours
+
+Les auteurs d'un cours doivent être mentionnés dans la seconde ligne du fichier `README` du cours, après le titre, sous le format suivant :
+
+```md
+> Écrit par [<auteur>](https://github.com/<auteur>)
+```
+
+> _Remplacez **\<auteur>** par le nom de l'auteur_.
+
 #### Commits
 
 Vos commits peuvent être dans n'importe quel format, mais préferrez les [commits conventionnels](http://conventionalcommits.org/).
