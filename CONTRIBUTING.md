@@ -14,6 +14,7 @@ Avant de contribuer à ce dépôt, il est recommandé de discuter des changement
 - Le nom d'un répertoire de langue doit être le code de ladite langue, par exemple `fr` ou `en`.
 - Chaque nom de fichier doit être écrit en `UPPER_SNAKE_CASE` et dans la langue correspondante (ex. `CHAPITRE_1.md` ou `CHAPTER_1.md`).
 - Si le cours est disponible pour plusieurs langues, il doit y avoir une table des matières pour chaque langue dans le fichier `README`.
+- Chaque entrée des tables des matières doit être un lien vers le fichier en question (et l'ancre s'il y en a une).
 
 Des [exemples](#exemples) sont disponibles pour illustrer ces règles.
 
