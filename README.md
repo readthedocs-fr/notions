@@ -19,3 +19,4 @@
 ## Java
 
 - `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
+- `📑` [Tests unitaires - Utilisation en java](java/tests_unitaires)
