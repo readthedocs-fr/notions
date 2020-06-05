@@ -17,6 +17,7 @@ Voici quelques exemples d'interfaces:
 
 ```java
 interface Test1 {
+
 	void doSomething();
 
 	default void doNothing() {
@@ -27,13 +28,16 @@ interface Test1 {
 interface Test2 {
 	
 	default void foo() {}
+	
 	default String getGreeting() { return "Hello!"; }
 }
 
 interface Test3 {
 	
 	void foo(String someStr);
+	
 	void bar(int someInt);
+	
 	default void fooThenBar(String someStr, int someInt) {
 		foo(someStr);
 		bar(someInt);
@@ -50,6 +54,7 @@ Commençons par un exemple. Prenons une interface fonctionnelle `BinaryOperation
 
 ```java
 interface BinaryOperation {
+
 	double compute(double a, double b);		
 }
 ```
@@ -59,6 +64,7 @@ En Java 7, le moyen le plus rapide de faire cela est le suivant :
 
 ```java
 BinaryOperation sum = new BinaryOperation() {
+
 	@Override
 	public double compute(double a, double b) {
 		return a + b;
