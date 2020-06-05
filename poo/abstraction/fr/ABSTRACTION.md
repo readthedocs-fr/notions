@@ -29,7 +29,7 @@ class Human {
 }
 ```
 
-Imaginons maintenant que nous avons une classe `Hiking` qui nous permet d'organiser une marche entre humains. Un truc du style:
+Imaginons maintenant que nous avons une classe `Hiking` qui nous permet d'organiser une marche entre humains. Un truc du style :
 
 ```java
 
@@ -57,7 +57,7 @@ Jusque là tout va bien, on a ce qu'on veut. Ce code fonctionne parfaitement, sa
 
 Comment fait-on alors pour contourner ces deux problèmes ?
 
-Les **interfaces** viennent à notre secours (les interfaces, c'est chouette). Faisons une interface `Walking`, qui permet de décrire quelque chose qui se déplace et se fatigue:
+Les **interfaces** viennent à notre secours (les interfaces, c'est chouette). Faisons une interface `Walking`, qui permet de décrire quelque chose qui se déplace et se fatigue :
 
 ```java
 interface Walking {
@@ -97,7 +97,7 @@ class Human implements Walking {
 ``` 
 ***
 
-Mais du coup, qu'est ce qui a changé ? Ben maintenant au lieu de faire une liste d'humains dans notre Randonnée, on va faire **une liste de Walking** (c'est quand même plus politiquement correct). Et y a presque rien à changer, c'est plutôt bon signe:
+Mais du coup, qu'est ce qui a changé ? Ben maintenant au lieu de faire une liste d'humains dans notre Randonnée, on va faire **une liste de Walking** (c'est quand même plus politiquement correct). Et y a presque rien à changer, c'est plutôt bon signe :
 
 ```java
 
@@ -126,6 +126,6 @@ Enfin à condition qu'ils implémentent `Walking` eux aussi... et qui sait comme
 Faire une abstraction de notre classe **Human** nous a en fait permis de faire deux choses opposées très importantes:
 
 - **Une restriction d'accès**, puisque `Hiking` n'a plus accès à certaines fonctions de la classe `Human`
-- **Une facilisation d'accès**, puisque `Hiking` accepte désormais tous les types d'objet implémentant `Walking`, au lieu de se restreindre aux humains.
+- **Une facilité d'accès**, puisque `Hiking` accepte désormais tous les types d'objet implémentant `Walking`, au lieu de se restreindre aux humains.
 
 Pour plus d'information sur le principe [SOLID](https://fr.wikipedia.org/wiki/SOLID_(informatique)) nommé **Dependency Inversion** (qui se base principalement sur l'abstraction), je vous invite à lire l'article [Wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle) anglais sur le sujet. 
