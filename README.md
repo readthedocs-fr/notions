@@ -1,3 +1,5 @@
+![Social preview](https://repository-images.githubusercontent.com/269603741/706f5c00-a72b-11ea-8df7-c69b0548578e)
+
 <p align="center">
 	<h1 align="center">Notions</h1>
 	<p align="center">
@@ -6,11 +8,11 @@
 	</p>
 </p>
 
-> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques.
-> Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
->
-> **Légende** :
-> `📑` Fiche pratique · `📖` Cours
+Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques.
+Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
+
+**Légende** :
+`📑` Fiche pratique · `📖` Cours
 
 ## Programmation orientée objet
 
