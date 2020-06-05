@@ -1,5 +1,3 @@
-# Abstraction
-
 L'idée de l'**abstraction**, c'est de découper une classe en morceaux, pour pouvoir partager (via un passage de paramètre dans une méthode par exemple) **un seul** de ces morceaux plutôt que l'objet "en entier". Pour comprendre l'utilité de ce principe et comment l'appliquer, prenons comme exemple une classe Human, puisque c'est un truc qu'on connaît plutôt pas trop mal.
 
 ```java
@@ -53,7 +51,7 @@ class Randonnee {
 Jusque là tout va bien, on a ce qu'on veut. Ce code fonctionne parfaitement, sauf qu'en réalité, il contient deux problèmes majeurs.
 
 1) **On restreint la randonnée aux objets de type Human**, alors que n'importe quoi qui peut **marcher** et **s'épuiser** pourrait faire une randonnée. C'est vraiment pas gentil d'interdire aux éléphants et aux tracteurs de participer :(
-2) On demande un humain ENTIER (?!?!?) alors que tout ce dont on a besoin, c'est ses jambes (hum). Cette classe randonnée a pourtant actuellement accès au système respiratoire de l'humain (via `respirer()`) et à son estomac (via `manger()`) ! **On donne donc bien trop de pouvoir à cette classe Randonnée, puisqu'elle est capable de faire des choses qui ne devraient pas lui être accessibles**. <br>
+2) On demande un humain ENTIER alors que tout ce dont on a besoin, c'est ses jambes (hum). Cette classe randonnée a pourtant actuellement accès au système respiratoire de l'humain (via `respirer()`) et à son estomac (via `manger()`) ! **On donne donc bien trop de pouvoir à cette classe Randonnée, puisqu'elle est capable de faire des choses qui ne devraient pas lui être accessibles**. <br>
 
 Comment fait-on alors pour contourner ces deux problèmes ?
 
