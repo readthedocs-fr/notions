@@ -1,11 +1,13 @@
 # Interfaces fonctionnelles
 
-En Java, les interfaces fonctionnelles sont un ajout majeur disponibles depuis la version `1.8`. Ce cours discutera de leur définition, de leur syntaxe et de leur utilité, le tout illustré à l'aide d'exemples, puis couvrira les principales interfaces fonctionnelles fournies par la librairie standard.
+En Java, les interfaces fonctionnelles sont un ajout majeur disponibles depuis la version `1.8`. <br>
+Ce cours discutera de leur définition, de leur syntaxe et de leur utilité, le tout illustré à l'aide d'exemples, puis couvrira les principales interfaces fonctionnelles fournies par la librairie standard.
 ***
-## Définition
-Une interface fonctionnelle est une `interface` qui ne contient qu'une et une seule méthode **abstraite**. Le nombre de méthode possédant une implémentation par défaut (annotées du mot clé `default`) n'importe donc pas.
 
-Voici quelques exemples:
+## Définition
+Une interface fonctionnelle est une `interface` qui ne contient qu'une et une seule méthode **abstraite**. Le nombre de méthodes possédant une implémentation par défaut (annotées du mot clé `default`) n'importe pas.
+
+Voici quelques exemples d'interfaces:
 
 ```java
 interface Test1 {
@@ -36,7 +38,9 @@ Dans ces trois exemples, seule l'interface `Test1` est une interface fonctionnel
 
 ## Utilisation
 
-La question qu'on peut se poser, c'est pourquoi dit-on qu'il s'agit d'une nouveauté de Java 8 ? Les interfaces existent depuis bien plus longtemps, et les interfaces fonctionnelles ne sont qu'un cas particulier des interfaces traditionnelles. Difficile à croire que le seul ajout est l'annotation `@FunctionalInterface`.  En réalité, Java 8 ajoute une syntaxe plutôt révolutionnaire concernant **l'instanciation de ces interfaces**. Alors évidemment, c'est un peu un abus de langage. Une interface, au même titre qu'une classe abstraire, ça ne s'instancie pas, c'est le principe. Pour pouvoir utiliser une interface, il faut l'implémenter, à l'aide d'une autre classe, anonyme ou non. Prenons une interface fonctionnelle `BinaryOperation`, qui ressembe à ceci :
+La question qu'on peut se poser, c'est pourquoi dit-on qu'il s'agit d'une nouveauté de Java 8 ? Les interfaces existent depuis bien plus longtemps (depuis les tous débuts du langage en fait), et les interfaces fonctionnelles ne sont qu'un cas particulier des interfaces traditionnelles. Difficile à croire que le seul ajout soit l'annotation `@FunctionalInterface`, qui n'est qu'une vérification optionnelle, au même titre que l'annotation `@Override`.  En réalité, Java 8 ajoute une syntaxe plutôt révolutionnaire concernant **l'instanciation de ces interfaces**. Alors évidemment, parler d'instanciation d'une interface, c'est un peu un abus de langage. Une interface, au même titre qu'une classe abstraire, ça ne s'instancie pas, c'est le principe. Pour pouvoir utiliser une interface, il faut l'implémenter, à l'aide d'une autre classe, anonyme ou non. Pour ce cours, `instancier une interface` sera un abus de langage pour parler de l'implémentation d'une interface à l'aide d'une classe anonyme. 
+
+Commençons par un exemple. Prenons une interface fonctionnelle `BinaryOperation`, qui ressemble à ceci :
 
 ```java
 interface BinaryOperation {
@@ -57,12 +61,13 @@ BinaryOperation sum = new BinaryOperation() {
 System.out.println(sum.compute(4.0, 7.0)); // Output: 11.0
 ```
 
-Ainsi, on a réussi à "stocker" une méthode qui prend deux doubles en paramètre et renvoie un autre double sous forme de variable, ce qui est plutôt chouette. Si vous n'avez jamais fait ce genre de choses, vous allez peut-être vous dire "super mais à quoi ça sert ?". Voyons un exemple. Imaginez que vous possédez une `List<String>` et que vous souhaitez donner la possibilité à l'utilisateur d'effectuer une action pour chaque `String` présent dans la liste. Vous penserez problablement à faire quelque chose comme cela:
+Ainsi, on a réussi à "stocker" une méthode qui prend deux doubles en paramètre et renvoie un autre double sous forme de variable, ce qui est plutôt chouette. Si vous n'avez jamais fait ce genre de choses, vous allez peut-être vous dire "super, mais à quoi ça sert ?". Voyons un exemple. Imaginez que vous possédez une `List<String>` et que vous souhaitez donner la possibilité à l'utilisateur d'effectuer une action pour chaque `String` présent dans la liste. Vous penserez problablement à faire quelque chose comme cela:
 
 ```java
 class MyClass {
 
 	private List<String> myList;
+	
 	public MyClass() {
 		myList = new ArrayList<>();
 		myList.add("Hello");
@@ -83,14 +88,14 @@ for(String str : test.getList()) {
 }
 ```
 
-Cependant, ce code pose un énorme problème. Vous souhaitez donner accès à la liste, mais uniquement pour que l'utilisateur effectue une action sur chacun des éléments. Et qui vous garantit que c'est tout ce que l'utilisateur va faire ? Il pourrait très bien faire :
+Cependant, ce code pose un énorme problème. Vous souhaitez donner accès à la liste, mais uniquement pour que l'utilisateur effectue une action sur chacun des éléments. Et qui vous garantit que c'est tout ce que l'utilisateur compte faire ? Il pourrait très bien faire :
 ```java
 MyClass test = new MyClass();
 test.getList().add("haha you're stupid and ugly");
 ```
-Et dans ce cas, votre liste de salutations aura été modifiée depuis l'extérieur, ce qui est très problématique. 
+Et dans ce cas, votre liste de salutations aura été modifiée depuis l'extérieur, ce qui est très problématique. Alors évidemment, dans cet exemple on fait passer l'utilisateur pour quelqu'un de mal intentionné qui chercherait à casser le programme (ce qui n'aurait pas beaucoup de sens), mais en réalité cela s'applique pour tous les utilisateurs : une bonne `API` ne devrait jamais laisser la possibilité à un utilisateur de faire quelque chose qu'il ne devrait jamais faire. Car même un utilisateur bien intentionné risque de trouver de mauvaises solutions à ses problèmes, si l'API lui donne accès à tout.
 
-Pourtant, tout problème a une solution, voilà que les interfaces fonctionnelles viennent à notre secours. Enlevons cette atroce méthode `getList()` et remplaçons la par quelque chose qui donne moins de pouvoir à notre cher utilisateur.
+Heureusement, tout problème a une solution, voilà que les interfaces fonctionnelles viennent à notre secours. Enlevons cette atroce méthode `getList()` et remplaçons-la par quelque chose qui donne moins de pouvoir à notre cher utilisateur.
 
 ```java
 class MyClass {
