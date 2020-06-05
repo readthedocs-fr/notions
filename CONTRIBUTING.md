@@ -1,4 +1,4 @@
-# ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/readthedocs-fr/notions/master?label=derni%C3%A8re%20mise%20%C3%A0%20jour&style=flat-square)
+# Contribuer
 
 Avant de contribuer à ce dépôt, il est recommandé de discuter des changements que vous voulez apporter via les issues ou le Discord.
 
