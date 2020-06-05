@@ -1,3 +1,4 @@
 # Fiches pratiques
 
-À venir.
+- Programmation orientée objet
+  - [Abstraction - Définition, utilité et exemples](poo/abstraction)
