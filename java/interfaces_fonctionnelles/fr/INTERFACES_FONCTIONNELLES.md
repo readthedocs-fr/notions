@@ -188,10 +188,19 @@ Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle
 ```java
 Action printAction = (str) -> System.out.println(str);
 ```
-En effet, on demande une méthode qui prend en paramètre un `String` et qui ne renvoie rien (`void`). C'est la définition même de notre méthode `applyActionTo`. Et par chance, la fonction `println` a la même signature ! Elle demande un `String`, et ne renvoie rien. On peut donc indiquer que notre action correspond à effectuer `println`, comme ceci :
+En effet, on demande une méthode qui prend en paramètre un `String` et qui ne renvoie rien (`void`). C'est la définition même de notre méthode `applyActionTo`. Et par chance, la fonction `println` a la même signature ! Elle demande un `String`, et ne renvoie rien. On peut donc indiquer que notre action correspond à effectuer `println`. Juste pour l'exemple, nous allons créer une méthode `static` qui s'occupe d'afficher notre `String`, afin de couvrir tous les cas possibles (d'autres exemples hors d'un contexte statique suivront) :
 
 ```java
-Action printAction = System.out::println;
+class MyUtilClass {
+	static void printString(String str) {
+		System.out.println(str);
+	}
+}
+```
+
+Nous pouvons désormais assigner cette méthode comme valeur pour notre interface fonctionnelle, comme 
+```java
+Action printAction = MyUtilClass::printString;
 ```
 
 Lorsqu'il ne s'agit pas d'une méthode `static` comme println, il y a deux options.
