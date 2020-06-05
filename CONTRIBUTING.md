@@ -1,4 +1,4 @@
-# Contribuer
+# ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/readthedocs-fr/notions/master?label=derni%C3%A8re%20mise%20%C3%A0%20jour&style=flat-square)
 
 Avant de contribuer à ce dépôt, il est recommandé de discuter des changements que vous voulez apporter via les issues ou le Discord.
 
@@ -12,6 +12,7 @@ Avant de contribuer à ce dépôt, il est recommandé de discuter des changement
 - Le fichier `README` doit toujours être présent et contenir une table des matières.
 - Chaque cours doit avoir un répertoire par langue, même si le cours n'est écrit que dans une langue.
 - Le nom d'un répertoire de langue doit être le code de ladite langue, par exemple `fr` ou `en`.
+- Chaque nom de fichier doit être écrit en `UPPER_SNAKE_CASE` et dans la langue correspondante (ex. `CHAPITRE_1.md` ou `CHAPTER_1.md`).
 - Si le cours est disponible pour plusieurs langues, il doit y avoir une table des matières pour chaque langue dans le fichier `README`.
 
 Des [exemples](#exemples) sont disponibles pour illustrer ces règles.
@@ -96,8 +97,8 @@ Voici un exemple de hiérachie des cours :
 	+ abstractions
 		- README.md
 		+ fr
-			- CHAPTER_1.md
-			- CHAPTER_2.md
+			- CHAPITRE_1.md
+			- CHAPITRE_2.md
 		+ en
 			- CHAPTER_1.md
 			- CHAPTER_2.md
