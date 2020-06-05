@@ -1,10 +1,10 @@
 # Les tests unitaires en Java
 
-Grâce aux librairies, nous allons pouvoir rendre nos tests simples à comprendre et à écrire.
+Grâce aux différentes librairies, nous allons pouvoir rendre nos tests simples à comprendre et à écrire.
 
 ## Mise en Contexte
 
-Voici la classe Calculator que nous allons tester :
+Voici la classe ``Calculator`` que nous allons tester :
 
 ```java
 public class Calculator {
@@ -43,22 +43,21 @@ public interface NumberProvider {
 }
 ```
 
-C'est une classe qui contient des méthodes très simple à tester, le but est simplement de découvrir les tests en java.
+C'est une classe qui contient des méthodes très simples à tester, le but étant seulement de découvrir les tests en java.
 
-NumberProvider est une interface qui fourni simplement un nombre, on pourrait imaginer une implémentation fournissant un nombre aléatoire.
-
+NumberProvider est une interface qui fourni simplement un nombre, on pourrait imaginer une implémentation par exemple fournissant un nombre aléatoire.
 L'utilité fondamentale de cette interface n'est pas forcément incroyable mais elle nous permettra d'utiliser des mocks.
 
 Les points à retenir de cette classe Calculator pour les tests sont :
 
- - Le field numberProvider qui nous permettra de d'expérimenter les mocks.
- - Le test de la méthode divide qui lance une exception.
+ - Le field ``numberProvider`` qui nous permettra de d'expérimenter les mocks.
+ - Le test de la méthode divide qui lance une exception si le dénominateur est nul.
 
 ## Ecriture des tests
 
 ### Préparation de la classe de test
 
-Avant tout, on commence par créer un field calculator qui sera utilisé pour les tests. Il sera recréé à chaque test grâce à l'annotation ``@Before`` de la méthode setUp :
+Avant tout, on commence par créer un field ``calculator`` qui sera utilisé pour les tests. Il sera recréé à chaque test grâce à l'annotation ``@Before`` de la méthode ``setUp`` :
 
 ```java
 import org.junit.Before;
@@ -78,7 +77,7 @@ public class CalculatorTest {
 }
 ```
 
-La méthode ``Mockito.mock(T)`` retourne une instance de T. On pourra manipuler les retours des méthodes de ce mock pour maîtriser nos tests.
+La méthode ``Mockito.mock(T)`` retourne une instance de ``T`` que l'on pourra manipuler pour maîtriser les retours des méthodes de ce mock et donc nos tests.
 
 ### Tests classiques
 
@@ -105,6 +104,7 @@ public void divide_whenGive2_shouldReturn5() {
     assertThat(quotient).isEqualTo(5);
 }
 ```
+
 Les imports sont les suivants :
 
 ```java
@@ -112,13 +112,13 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 ```
 
-On importe de manière static la méthode asserThat qui nous permet d'avoir une ligne très clair et parlante :
+On importe de manière static la méthode ``asserThat`` qui nous permet d'avoir une ligne très clair et parlante :
 
 ``affirmer que X vaut Y``
 
 ### Tests d'exception lancée
 
-Grâce à Assertj, on peut vérifier que la méthode divide lance bien une ``IllegalArgumentException`` lorsque l'on donne un dénominateur qui vaut 0.
+Grâce à Assertj, on peut vérifier que la méthode ``divide`` lance bien une ``IllegalArgumentException`` lorsque l'on donne un dénominateur qui vaut 0.
 
 ```java
 @Test
@@ -141,7 +141,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 ### Test utilisant un mock
 
-Maintenant, le dernier test, utilisant notre mock de NumberProvider.
+Maintenant, le dernier test, utilisant notre mock de ``NumberProvider``.
 
 ```java
 @Test
@@ -155,7 +155,7 @@ public void addToNumber_whenProvide1_shouldReturn11() {
 }
 ```
 
-On importe (encore) une méthode de manière static, when, pour clarifier.
+On importe (encore) une méthode de manière static, ``when``, pour clarifier.
 
 ```java
 import static org.mockito.Mockito.when;

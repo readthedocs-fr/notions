@@ -6,7 +6,7 @@ Nous prendrons l'exemple d'une classe très simple, une calculatrice, pour crée
 
 Nous verrons les tests classiques ainsi que les mocks.
 
-Cette fiche pratique n'est pas destinée à apprendre ce que sont les tests unitaires, quelle est leur utiliser et comment les faire.
+Cette fiche pratique n'est pas destinée à apprendre ce que sont les tests unitaires, quelle est leur utilité et comment les faire.
 
 ## Table des matières
 
