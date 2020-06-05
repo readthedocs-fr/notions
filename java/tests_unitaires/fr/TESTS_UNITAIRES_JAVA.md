@@ -1,8 +1,8 @@
-#Les tests unitaires en Java
+# Les tests unitaires en Java
 
 Grâce aux librairies, nous allons pouvoir rendre nos tests simples à comprendre et à écrire.
 
-##Mise en Contexte
+## Mise en Contexte
 
 Voici la classe Calculator que nous allons tester :
 
@@ -54,9 +54,9 @@ Les points à retenir de cette classe Calculator pour les tests sont :
  - Le field numberProvider qui nous permettra de d'expérimenter les mocks.
  - Le test de la méthode divide qui lance une exception.
 
-##Ecriture des tests
+## Ecriture des tests
 
-###Préparation de la classe de test
+### Préparation de la classe de test
 
 Avant tout, on commence par créer un field calculator qui sera utilisé pour les tests. Il sera recréé à chaque test grâce à l'annotation ``@Before`` de la méthode setUp :
 
@@ -80,7 +80,7 @@ public class CalculatorTest {
 
 La méthode ``Mockito.mock(T)`` retourne une instance de T. On pourra manipuler les retours des méthodes de ce mock pour maîtriser nos tests.
 
-###Tests classiques
+### Tests classiques
 
 Commençons par écrire des tests simples testant les retours des méthodes ``add`` et ``divide``. 
 
@@ -116,7 +116,7 @@ On importe de manière static la méthode asserThat qui nous permet d'avoir une 
 
 ``affirmer que X vaut Y``
 
-###Tests d'exception lancée
+### Tests d'exception lancée
 
 Grâce à Assertj, on peut vérifier que la méthode divide lance bien une ``IllegalArgumentException`` lorsque l'on donne un dénominateur qui vaut 0.
 
@@ -139,7 +139,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 ``affirmer qu'une IllegalStateException est lancée par la méthode Calculator#divide``  (dans le contexte où b vaut 0)
 
-###Test utilisant un mock
+### Test utilisant un mock
 
 Maintenant, le dernier test, utilisant notre mock de NumberProvider.
 
@@ -163,7 +163,7 @@ import static org.mockito.Mockito.when;
 
 L'enchainement des méthodes ``when(...).thenReturn(...)`` permet de définir quel sera le retour de la méthode lorsqu'elle sera appeler. Cela nous permet de maîtriser le retour qui sera fait lors de l'appel à la méthode dans ``divide``.
 
-##Conclusion
+## Conclusion
 
 C'est la fin de cette fiche pratique. Nous avons vu comment créer des tests unitaires en java avec les librairies Junit, Assertj et Mockito. Cela nous a permis de mettre en place une bonne couverture de test pour notre classe Calculator et ainsi la prévenir des erreurs et des régressions.
 
