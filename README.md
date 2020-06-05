@@ -8,7 +8,7 @@
 
 > Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques.
 > Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
-
+>
 > **Légende** :
 > `📑` Fiche pratique · `📖` Cours
 
