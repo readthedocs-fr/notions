@@ -166,3 +166,6 @@ L'enchainement des méthodes ``when(...).thenReturn(...)`` permet de définir qu
 ##Conclusion
 
 C'est la fin de cette fiche pratique. Nous avons vu comment créer des tests unitaires en java avec les librairies Junit, Assertj et Mockito. Cela nous a permis de mettre en place une bonne couverture de test pour notre classe Calculator et ainsi la prévenir des erreurs et des régressions.
+
+La totalité du code se trouve dans [le dossier code](code)
+
