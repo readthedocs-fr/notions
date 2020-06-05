@@ -10,4 +10,4 @@ Cette fiche pratique n'est pas destinée à apprendre ce que sont les tests unit
 
 ##Table des matières
 
-- [Tests unitaires - Utilisation en java](fr/TESTS_UNITAIRES.md)
+- [Tests unitaires - Utilisation en java](fr/TESTS_UNITAIRES_JAVA.md)
