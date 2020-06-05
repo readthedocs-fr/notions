@@ -43,7 +43,6 @@ public class CalculatorTest {
         int b = 0;
 
         ThrowableAssert.ThrowingCallable method = () -> this.calculator.divide(b);
-
         assertThatIllegalArgumentException().isThrownBy(method);
     }
 
