@@ -182,7 +182,7 @@ Assez magique non ? Cette syntaxe s'appelle une **expression lambda**. Voyons ce
 
 En revanche, il est plutôt conseillé dans ce cas-ci d'encapsuler les différentes instructions dans une méthode à part, puis de faire un appel à cette méthode pour n'avoir qu'une seule instruction. Les lambdas à plusieurs expressions s'appellent des **méthodes anonymes**, et on essaie conventionnellement de les éviter.
 
-## Toujours plus court
+## Toujours plus court, toujours plus loin
 
 Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle ne l'est déjà. Il s'agit du cas où l'on souhaite appeler une méthode comme unique instruction de notre lambda, et que la signature de cette méthode est la même que la signature de la méthode à implémenter. Comme le cas au-dessus par exemple :
 ```java
