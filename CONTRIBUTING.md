@@ -11,7 +11,7 @@ Avant de contribuer à ce dépôt, il est recommandé de discuter des changement
 - Chaque répertoire, s'il contient un cours, doit contenir un fichier `README`.
 - Le fichier `README` doit toujours être présent et contenir une table des matières.
 - Chaque cours doit avoir un répertoire par langue, même si le cours n'est écrit que dans une langue.
-- Le nom d'un répertoire de langue doit être le code ladite langue, par exemple `fr` ou `en`.
+- Le nom d'un répertoire de langue doit être le code de ladite langue, par exemple `fr` ou `en`.
 - Si le cours est disponible pour plusieurs langues, il doit y avoir une table des matières pour chaque langue dans le fichier `README`.
 
 Des [exemples](#exemples) sont disponibles pour illustrer ces règles.
