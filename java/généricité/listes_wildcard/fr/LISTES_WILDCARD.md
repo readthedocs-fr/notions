@@ -12,7 +12,7 @@
 
 A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, pour beaucoup il s'agit d'un truc inconnu qu'on utilise jamais parce qu'on ne sait pas vraiment à quoi ça sert. 
 
-#### `List<? extends A>` vs `List<A>`
+### `List<? extends A>` vs `List<A>`
 
 Quand je demande la différence à un débutant entre `List<A>` et `List<? extends A>`, j'obtiens presque tout le temps une réponse du style :
 > `List<A>` est une liste d'objets de type `A`, alors que `List<? extends A>` est une liste d'objets de type `A` **et** de ses sous classes.
@@ -55,7 +55,7 @@ A partir de cet objet `foo`, vous ne pourrez rien faire, ni appeler `test1`, ni 
 
 Voyons voir une autre question. Si on récupère un élément d'une `List<? extends A>`, quel sera le type **déclaré** de cet élément ? En d'autres termes, quel est le type le plus **précis** qu'on peut être garanti d'obtenir ? Et bien, si le type de notre liste était **complètement** inconnu, la réponse aurait été `Object`, puisqu'il s'agit du type le plus général possible : en Java, toute classe est une sous classe de la classe `Object`. Sauf qu'ici, on a quand même une information à propos du type de notre liste. On sait qu'il s'agit d'une liste de type `A`, ou d'une de ses sous-classes. En d'autres termes, le type le plus général possible de notre liste est `A`. Donc très logiquement, le type le plus précis qu'on peut obtenir de manière garantie en récupérant un élément de notre liste est `A`.
 
-#### `List<? super A>` vs `List<A>`
+### `List<? super A>` vs `List<A>`
 
 Passons maintenant à `List<? super A>`. Puisque c'est exactement le même principe, j'irai droit à la définition. Il s'agit d'une liste dont le type est `A`, ou une classe **parente** de A. Par exemple, une `List<? super Loup>` pourrait être une `List<Loup>`, une `List<Animal>` voire même une `List<Object>`. Posons nous directement les questions suivantes :
 - Que peut-on ajouter dans une telle liste ?
