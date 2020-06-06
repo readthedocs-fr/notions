@@ -4,13 +4,13 @@
 
 ### Prérequis
 
-- Une connaissance suffisante en généricité, au `class level` et au `method level`
+- Une connaissance suffisante en généricité (`class level` et `method level`)
 - Etre à l'aise, au moins conceptuellement, avec l'interface `java.util.List`
 - Une relativement bonne connaissance en programmation orientée objet, et être confortable avec la notion d'héritage
 
 ## Différences
 
-A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, c'est un truc inconnu qu'on utilise jamais parce qu'on sait pas vraiment à quoi ça sert. 
+A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, pour beaucoup il s'agit d'un truc inconnu qu'on utilise jamais parce qu'on ne sait pas vraiment à quoi ça sert. 
 
 Quand je demande la différence à un débutant entre `List<A>` et `List<? extends A>`, j'obtiens presque tout le temps une réponse du style :
 > `List<A>` est une liste d'objets de type `A`, alors que `List<? extends A>` est une liste d'objets de type A et de ses sous classes.
