@@ -53,7 +53,7 @@ Les points à retenir de cette classe Calculator pour les tests sont :
  - Le field `numberProvider` qui nous permettra d'expérimenter les mocks.
  - Le test de la méthode `divide` qui lance une exception si le dénominateur est nul.
 
-# Ajout des librairies avec Gradle
+## Ajout des librairies avec Gradle
 
 Nous utilisons gradle pour importer les librairies :
 
