@@ -136,6 +136,7 @@ Si la solution à ce problème vous paraît un peu répétitive, c'est bon signe
 Cette petite utilisation de `List<? extends A>` au lieu de `List<A>` nous a permis de faire de l'abstraction très efficace :
 - On a une facilité d'accès, puisque `feedAll` accepte désormais toute liste dont le type hérite de `Eater` (ou est `Eater`)
 - On a une restriction d'accès, puisque `feedAll` n'a plus le pouvoir d'ajouter des éléments dans la liste qui lui est fournie.
+
 D'une manière un peu différente, `List<? super A>` au lieu de `List<A>` nous a aussi permis de faire de l'abstraction :
 - On a une facilité d'accès, puisque `addThreeRandomHumans` accepte désormais toute liste dont le type est `Human` ou une de ses classes parentes
 - On a une restriction d'accès, puisque `addThreeRandomHumans` n'a plus le pouvoir de récupérer des éléments de type `Human` depuis la liste qui lui est fournie.
