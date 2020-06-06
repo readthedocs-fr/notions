@@ -10,7 +10,7 @@
 
 ## Différences
 
-A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, pour beaucoup il s'agit d'un truc inconnu qu'on utilise jamais parce qu'on ne sait pas vraiment à quoi ça sert. 
+A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, est, pour beaucoup, un truc inconnu qu'on utilise jamais parce qu'on ne sait pas vraiment à quoi ça sert. 
 ***
 
 #### `List<? extends A>` vs `List<A>`
