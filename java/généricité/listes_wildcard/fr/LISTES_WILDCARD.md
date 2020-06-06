@@ -6,15 +6,14 @@
 - Etre à l'aise, au moins conceptuellement, avec l'interface `java.util.List`
 - Une relativement bonne connaissance en programmation orientée objet, et être confortable avec la notion d'héritage
 
-### Différences
+## Différences
 
 A première vue, il est souvent difficile de voir la différence entre `List<A>` et `List<? extends A>`. Et `List<? super A>`, c'est un truc inconnu qu'on utilise jamais parce qu'on sait pas vraiment à quoi ça sert. 
 
 Quand je demande la différence à un débutant entre `List<A>` et `List<? extends A>`, j'obtiens presque tout le temps une réponse du style :
 > `List<A>` est une liste d'objets de type `A`, alors que `List<? extends A>` est une liste d'objets de type A et de ses sous classes.
 
-A cela, je réponds toujours :
-> *Cela veut dire que si `B extends A`, je ne peux pas mettre de B dans une `List<A>` ? Pourtant, un objet de type `B` est aussi un objet de type `A` non ?*
+A cela, je réponds toujours : cela veut dire que si `B extends A`, je ne peux pas mettre de B dans une `List<A>` ? Pourtant, un objet de type `B` est aussi un objet de type `A` non ?
 
 Et après, c'est la confusion. N'y a-t-il alors aucune différence entre les deux ? En fait, le piège est que quand on cherche à comprendre ce que veut dire `List<? extends A>`, on le lit simplement de gauche à droite: "Une liste de choses qui héritent de A". Et l'erreur est là. Il faut en fait se poser la question directement : quel est le **type** de cette liste ? Comme on le sait, le type de la liste est indiqué entre les chevrons (`<>`). Donc, le type de la liste est... quelque chose qui hérite de `A`. Mais a-t-on plus de détails ? Pas vraiment. Arrivé à ce stade, j'aime poser la question suivante :
 > Si je te donne une `List<? extends Carnivore>`, que peux-tu ajouter dedans ?
@@ -46,7 +45,7 @@ Prenons maintenant un exemple de code comme celui-ci :
 Useless foo = new MyClass();
 ```
 
-A partir de cet objet `foo`, vous ne pourrez rien faire, ni appeler `test1`, ni `test2`. Est ce que cela veut dire que l'objet de possède pas ces méthodes ? Absolument pas. Notre objet est simplement **déclaré** comme un objet de type `Useless`, mais son réel type est différent. Pour nos listes, c'est le même principe. Une `List<? extends A>` ne peut pas être modifiée, mais cela ne veut pas dire qu'elle n'a jamais été modifiée. Imaginons qu'il s'agisse d'une `List<B>` (toujours avec `B extends A`). A sa création, elle a été déclarée comme une `List<B>`, elle a donc pu être modifiée ! Elle pourrait contenir 2 objets de type `B` et un objet de type `C` (avec `C extends B`) par exemple. Et imaginons maintenant une méthode qui demanderait en paramètre une `List<? extends A>`. Notre `List<B>` est une liste tout à fait éligible pour ce paramètre, il s'agit bien d'une liste dont le type hérite de `A`.
+A partir de cet objet `foo`, vous ne pourrez rien faire, ni appeler `test1`, ni `test2`. Est ce que cela veut dire que l'objet de possède pas ces méthodes ? Absolument pas. Notre objet est simplement **déclaré** comme un objet de type `Useless`, mais son réel type est différent. Pour nos listes, c'est le même principe. Une `List<? extends A>` ne peut pas être modifiée, mais cela ne veut pas dire qu'elle n'a jamais été modifiée. Imaginons une `List<B>` (toujours avec `B extends A`). A sa création, elle a été déclarée comme une `List<B>`, elle a donc pu être modifiée. Elle pourrait par exemple contenir 2 objets de type `B` et un objet de type `C` (avec `C extends B`). Et imaginons maintenant une méthode qui demanderait en paramètre une `List<? extends A>`. Notre `List<B>` est une liste tout à fait éligible pour ce paramètre, puisqu'il s'agit bien d'une liste dont le type hérite de `A` ! Pourtant, elle est loin d'être vide. Il ne faut pas confondre le type **déclaré** d'un objet et son **réel** type (son type le plus précis).
 
 Voyons voir une autre question. Si on récupère un élément d'une `List<? extends A>`, quel sera le type **déclaré** de cet élément ? En d'autres termes, quel est le type le plus **précis** qu'on peut être garanti d'obtenir ? Et bien, si le type de notre liste était **complètement** inconnu, la réponse aurait été `Object`, puisqu'il s'agit du type le plus général possible : en Java, toute classe est une sous classe de la classe `Object`. Sauf qu'ici, on a quand même une information à propos du type de notre liste. On sait qu'il s'agit d'une liste de type `A`, ou d'une de ses sous-classes. En d'autres termes, le type le plus général possible de notre liste est `A`. Donc très logiquement, le type le plus précis qu'on peut obtenir de manière garantie en récupérant un élément de notre liste est `A`.
 
@@ -58,7 +57,7 @@ Pour répondre à la première question, une approche est de se demander: "quel 
 
 Pour répondre à la deuxième question, on cherche à savoir quel est le type le plus précis possible que l'on peut avoir la garantie d'obtenir. Il faut donc se demander : "quel est le **pire** scénario possible, celui dans lequel notre liste serait du type le plus **général** possible ?" La réponse est simple, il s'agit du cas où notre liste serait une `List<Object>`. On ne récupère donc que des objets de type `Object` si l'on possède une `List<? super A>`
 
-## Pour récapituler 
+### Pour récapituler 
 - `List<A>`
   - On peut y ajouter des objets de type `A`, ou d'un type héritant de `A`
   - On récupère des éléments de type `A`
@@ -68,3 +67,47 @@ Pour répondre à la deuxième question, on cherche à savoir quel est le type l
 - `List<? super A>
   - On peut y ajouter des objets de type `A`, ou d'un type héritant de `A`
   - On récupère des éléments de type `Object`
+
+## Utilisation
+
+Maintenant qu'on a la théorie, il est intéressant de s'intéresser aux différentes utilités de ces différentes déclarations de liste. L'une d'entre elles est l'abstraction. Si ce terme vous est inconnu, je vous invite à mettre en pause la lecture de ce paragraphe et d'aller jeter un coup d'oeil à [cette fiche](../../../../poo/abstraction).
+
+Imaginons une méthode comme ceci :
+
+```java
+void feedAll(List<Eater> eaters) {
+    for(Eater eater : eaters) {
+        eater.feed();
+    }
+}
+```
+
+Avec `Eater` une interface qui ressemblerait à :
+
+```java
+interface Eater {
+    void feed();
+}
+```
+
+Si vous avez suivi le cours sur l'abstraction, vous comprenez qu'on a créé une interface `Eater` afin de ne donner qu'accès à `feed` à notre méthode `feedAll`, et aussi afin que cette méthode puisse servir pour n'importe quoi qui peut manger, pas uniquement un humain par exemple. Enfin... est-ce vraiment le cas ?
+> Absolument. Une `List<Eater>` peut contenir des humains, des animaux, n'importe quoi qui mange. Donc il n'y a aucun souci.
+
+C'est vrai. Mais qu'en est-il d'une `List<Human>` ? Cela devrait aussi marcher, puisque tout humain possède la méthode `feed`. Pourtant... il ne s'agit pas d'une valeur valide pour le paramètre de cette méthode.
+> Pourquoi diable ne peut-on pas donner une `List<Human>` si on demande une `List<Eater>`, sachant que `Human extends Eater` ?
+
+Et bien... il suffit de se rappeler de pourquoi on ne peut rien ajouter dans une `List<? extends A>` ! Imaginez ce code :
+```java
+void addEater(List<Eater> myList) {
+    myList.add(new Plant()); // parce que oui, les plantes ça mange
+}
+```
+Essayez maintenant d'imaginer ce qui se passerait si `List<Human>` était une valeur valide pour le paramètre `List<Eater>`... On se retrouverait avec une liste d'humains qui contient une plante ! Etrangement familier au problème du début du cours avec `List<? extends A>` non ?
+
+Je suis sûr que vous l'avez compris, la solution est donc de demander une `List<? extends Eater>` au lieu d'une `List<Eater>`. Dans ce cas-là, une `List<Human>` sera parfaitement valide, et une `List<Eater>` aussi d'ailleurs. Et évidemment, la méthode `feedAll` n'aura plus le pouvoir d'ajouter des éléments dans la liste, ce qui est une excellente chose : elle n'était pas censée pouvoir le faire.
+
+## Conclusion
+
+Cette petite utilisation de `List<? extends A>` au lieu de `List<A>` nous a permis de faire de l'abstraction très efficace:
+- Une facilité d'accès, puisque `feedAll` accepte désormais toute liste dont le type hérite de `A` (ou est `A`)
+- Une restriction d'accès, puisque `feedAll` n'a plus le pouvoir d'ajouter des éléments dans la liste qui lui est fournie.
