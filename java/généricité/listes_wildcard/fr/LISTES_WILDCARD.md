@@ -1,8 +1,10 @@
 # Listes à types indéfinis
 
+**Note importante:** dans ce cours, nous prendrons exclusivement comme exemple `java.util.List`, même si les concepts expliqués s'appliquent en réalité à toutes les différentes implémentations de `java.util.Collection`.
+
 ### Prérequis
 
-- Une connaissance suffisante en généricité, au moins en `class level`
+- Une connaissance suffisante en généricité, au `class level` et au `method level`
 - Etre à l'aise, au moins conceptuellement, avec l'interface `java.util.List`
 - Une relativement bonne connaissance en programmation orientée objet, et être confortable avec la notion d'héritage
 
@@ -61,16 +63,18 @@ Pour répondre à la deuxième question, on cherche à savoir quel est le type l
 - `List<A>`
   - On peut y ajouter des objets de type `A`, ou d'un type héritant de `A`
   - On récupère des éléments de type `A`
-- `List<? extends A>
+- `List<? extends A>`
   - On ne peut rien y ajouter
   - On récupère des éléments de type `A`
-- `List<? super A>
+- `List<? super A>`
   - On peut y ajouter des objets de type `A`, ou d'un type héritant de `A`
   - On récupère des éléments de type `Object`
 
 ## Utilisation
 
 Maintenant qu'on a la théorie, il est intéressant de s'intéresser aux différentes utilités de ces différentes déclarations de liste. L'une d'entre elles est l'abstraction. Si ce terme vous est inconnu, je vous invite à mettre en pause la lecture de ce paragraphe et d'aller jeter un coup d'oeil à [cette fiche](../../../../poo/abstraction).
+
+#### `List<? extends A>`
 
 Imaginons une méthode comme ceci :
 
@@ -106,8 +110,32 @@ Essayez maintenant d'imaginer ce qui se passerait si `List<Human>` était une va
 
 Je suis sûr que vous l'avez compris, la solution est donc de demander une `List<? extends Eater>` au lieu d'une `List<Eater>`. Dans ce cas-là, une `List<Human>` sera parfaitement valide, et une `List<Eater>` aussi d'ailleurs. Et évidemment, la méthode `feedAll` n'aura plus le pouvoir d'ajouter des éléments dans la liste, ce qui est une excellente chose : elle n'était pas censée pouvoir le faire.
 
+#### `List<? super A>`
+
+Imaginons une méthode qui demande en paramètre une liste d'humains, et qui ajoute 3 humains présents sur la planète dans cette liste. Quelque chose comme ceci :
+
+```java
+void addThreeRandomHumans(List<Humain> humans) {
+    Humain[] randomHumans = TheEarth.getSomeHumans(3); // Inutile de montrer l'implémentation de getSomeHumans
+    for(Humain randomHuman : randomHumans) {
+        humans.add(randomHuman);
+    }
+}
+```
+
+Parfait, notre méthode fait exactement ce qu'on veut. Mais comme d'habitude, quelque chose ne va pas. Deux choses en fait.
+- Cette méthode a le pouvoir d'espionner notre liste, c'est à dire qu'elle pourrait se permettre de regarder chaque élément et de l'analyser. Inutile de préciser qu'elle n'est pas censée pouvoir le faire
+- De manière similaire, notre méthode exige une `List<Humain>`. Logiquement, on ne devrait pas pouvoir donner de `List<Adult>` comme paramètre (en partant du principe que `Adult extends Human`), puisqu'on ajoute des humains dans la liste et que `Humain` est plus général que `Adult`. Par contre, pourquoi ne pourrait-on pas fournir une `List<Living>` à notre méthode ? Il serait tout à fait valide de mixer les humains et les animaux (hum) dans une liste, pourtant cette méthode ne nous le permet pas.
+
+Si la solution à ce problème vous paraît un peu répétitive, c'est bon signe : vous avez compris le cours. Pour ceux qui auraient encore un peu de mal, il suffit de demander une `List<? super Humain>` en paramètre pour régler le problème :
+- On peut désormais fournir une `List<Living>`, puisqu'il s'agit bien d'une `List<? super Human>`
+- Notre méthode n'a plus le pouvoir d'espionner notre liste : elle ne peut récupérer rien d'autre que des objets de type `Object` de cette liste
+
 ## Conclusion
 
-Cette petite utilisation de `List<? extends A>` au lieu de `List<A>` nous a permis de faire de l'abstraction très efficace:
-- Une facilité d'accès, puisque `feedAll` accepte désormais toute liste dont le type hérite de `A` (ou est `A`)
-- Une restriction d'accès, puisque `feedAll` n'a plus le pouvoir d'ajouter des éléments dans la liste qui lui est fournie.
+Cette petite utilisation de `List<? extends A>` au lieu de `List<A>` nous a permis de faire de l'abstraction très efficace :
+- On a une facilité d'accès, puisque `feedAll` accepte désormais toute liste dont le type hérite de `Eater` (ou est `Eater`)
+- On a une restriction d'accès, puisque `feedAll` n'a plus le pouvoir d'ajouter des éléments dans la liste qui lui est fournie.
+D'une manière un peu différente, `List<? super A>` au lieu de `List<A>` nous a aussi permis de faire de l'abstraction :
+- On a une facilité d'accès, puisque `addThreeRandomHumans` accepte désormais toute liste dont le type est `Human` ou une de ses classes parentes
+- On a une restriction d'accès, puisque `addThreeRandomHumans` n'a plus le pouvoir de récupérer des éléments de type `Human` depuis la liste qui lui est fournie.
