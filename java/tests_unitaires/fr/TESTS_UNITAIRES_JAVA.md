@@ -4,7 +4,7 @@ Grâce aux différentes librairies, nous allons pouvoir rendre nos tests simples
 
 ## Mise en Contexte
 
-Voici la classe ``Calculator`` que nous allons tester :
+Voici la classe `Calculator` que nous allons tester :
 
 ```java
 public class Calculator {
@@ -45,19 +45,35 @@ public interface NumberProvider {
 
 C'est une classe qui contient des méthodes très simples à tester, le but étant seulement de découvrir les tests en java.
 
-NumberProvider est une interface qui fourni simplement un nombre, on pourrait imaginer une implémentation par exemple fournissant un nombre aléatoire.
+NumberProvider est une interface qui fournit simplement un nombre, on pourrait imaginer une implémentation par exemple fournissant un nombre aléatoire.
 L'utilité fondamentale de cette interface n'est pas forcément incroyable mais elle nous permettra d'utiliser des mocks.
 
 Les points à retenir de cette classe Calculator pour les tests sont :
 
- - Le field ``numberProvider`` qui nous permettra de d'expérimenter les mocks.
- - Le test de la méthode divide qui lance une exception si le dénominateur est nul.
+ - Le field `numberProvider` qui nous permettra d'expérimenter les mocks.
+ - Le test de la méthode `divide` qui lance une exception si le dénominateur est nul.
+
+# Ajout des librairies avec Gradle
+
+Nous utilisons gradle pour importer les librairies :
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
+}
+```
 
 ## Ecriture des tests
 
 ### Préparation de la classe de test
 
-Avant tout, on commence par créer un field ``calculator`` qui sera utilisé pour les tests. Il sera recréé à chaque test grâce à l'annotation ``@Before`` de la méthode ``setUp`` :
+Avant tout, on commence par créer un field `calculator` qui sera utilisé pour les tests. Il sera recréé à chaque test grâce à l'annotation `@Before` de la méthode `setUp` :
 
 ```java
 import org.junit.Before;
@@ -77,11 +93,11 @@ public class CalculatorTest {
 }
 ```
 
-La méthode ``Mockito.mock(T)`` retourne une instance de ``T`` que l'on pourra manipuler pour maîtriser les retours des méthodes de ce mock et donc nos tests.
+La méthode `Mockito.mock(Class<T>)` retourne une instance de `T` que l'on pourra manipuler pour maîtriser les retours des méthodes de ce mock et donc nos tests.
 
 ### Tests classiques
 
-Commençons par écrire des tests simples testant les retours des méthodes ``add`` et ``divide``. 
+Commençons par écrire des tests simples testant les retours des méthodes `add` et `divide`. 
 
 ```java
 @Test
@@ -112,13 +128,13 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 ```
 
-On importe de manière static la méthode ``asserThat`` qui nous permet d'avoir une ligne très clair et parlante :
+On importe de manière statique la méthode `asserThat` qui nous permet d'avoir une ligne très clair et parlante :
 
-``affirmer que X vaut Y``
+`affirmer que X vaut Y`
 
 ### Tests d'exception lancée
 
-Grâce à Assertj, on peut vérifier que la méthode ``divide`` lance bien une ``IllegalArgumentException`` lorsque l'on donne un dénominateur qui vaut 0.
+Grâce à Assertj, on peut vérifier que la méthode `divide` lance bien une `IllegalArgumentException` lorsque l'on donne un dénominateur qui vaut 0.
 
 ```java
 @Test
@@ -131,17 +147,17 @@ public void divide_whenGive0_shouldThrowIllegalArgumentException() {
 }
 ```
 
-Encore une fois on importe de manière static la méthode ``assertThatIllegalArgument`` pour avoir une ligne claire.
+Encore une fois on importe de manière statique la méthode `assertThatIllegalArgument` pour avoir une ligne claire.
 
 ```java
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 ```
 
-``affirmer qu'une IllegalStateException est lancée par la méthode Calculator#divide``  (dans le contexte où b vaut 0)
+`affirmer qu'une IllegalStateException est lancée par la méthode Calculator#divide`  (dans le contexte où b vaut 0)
 
 ### Test utilisant un mock
 
-Maintenant, le dernier test, utilisant notre mock de ``NumberProvider``.
+Maintenant, le dernier test, utilisant notre mock de `NumberProvider`.
 
 ```java
 @Test
@@ -155,17 +171,17 @@ public void addToNumber_whenProvide1_shouldReturn11() {
 }
 ```
 
-On importe (encore) une méthode de manière static, ``when``, pour clarifier.
+On importe (encore) une méthode de manière statique, `when`, pour clarifier.
 
 ```java
 import static org.mockito.Mockito.when;
 ```
 
-L'enchainement des méthodes ``when(...).thenReturn(...)`` permet de définir quel sera le retour de la méthode lorsqu'elle sera appeler. Cela nous permet de maîtriser le retour qui sera fait lors de l'appel à la méthode dans ``divide``.
+L'enchainement des méthodes `when(...).thenReturn(...)` permet de définir quel sera le retour de la méthode lorsqu'elle sera appelée. Cela nous permet de maîtriser le retour qui sera fait lors de l'appel à la méthode dans `divide`.
 
 ## Conclusion
 
 C'est la fin de cette fiche pratique. Nous avons vu comment créer des tests unitaires en java avec les librairies Junit, Assertj et Mockito. Cela nous a permis de mettre en place une bonne couverture de test pour notre classe Calculator et ainsi la prévenir des erreurs et des régressions.
 
-La totalité du code se trouve dans [le dossier code](../code)
+La totalité du code se trouve dans [le dossier code](../code).
 
