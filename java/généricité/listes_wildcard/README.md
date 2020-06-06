@@ -12,4 +12,4 @@ afin d'expliquer l'utilité de chacune de ses formes, ainsi que pourquoi en util
 
 ## Table des matières
 
-- [Listes à types indéfinis - de l'abstraction au niveau générique](fr/ABSTRACTION.md)
+- [Listes à types indéfinis - de l'abstraction au niveau générique](fr/LISTES_WILDCARD.md)
