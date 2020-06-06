@@ -20,7 +20,10 @@ Quand je demande la différence à un débutant entre `List<A>` et `List<? exten
 
 A cela, je réponds toujours : donc cela veut dire que si `B extends A`, je ne peux pas mettre de B dans une `List<A>` ? Pourtant, un objet de type `B` est aussi un objet de type `A` non ?
 
-Et après, c'est la confusion. N'y a-t-il alors aucune différence entre les deux ? En fait, le piège est que quand on cherche à comprendre ce que veut dire `List<? extends A>`, on le lit simplement de gauche à droite: "Une liste de choses qui héritent de A". Et l'erreur est là. Il faut en fait se poser la question : quel est le **type** de cette liste ? Comme on le sait, le type de la liste est indiqué entre les chevrons (`<>`). Donc, le type de la liste est... quelque chose qui hérite de `A` (ou `A` lui-même). Mais a-t-on plus de détails ? Pas vraiment. On a un indice, mais on ne connaît pas le réel type de la liste. 
+Et après, c'est la confusion.
+> N'y a-t-il alors aucune différence entre les deux ?
+
+Oh que si. En fait, le piège est que quand on cherche à comprendre ce que veut dire `List<? extends A>`, on le lit simplement de gauche à droite: "Une liste de choses qui héritent de A". Et l'erreur est là. Il faut en fait se poser la question : quel est le **type** de cette liste ? Comme on le sait, le type de la liste est indiqué entre les chevrons (`<>`). Donc, le type de la liste est... quelque chose qui hérite de `A` (ou `A` lui-même). Mais a-t-on plus de détails ? Pas vraiment. On a un indice, mais on ne connaît pas le réel type de la liste. 
 
 Arrivé à ce stade, j'aime poser la question suivante :
 > Si je te donne une `List<? extends Carnivore>` par exemple, que peux-tu ajouter dedans ?
