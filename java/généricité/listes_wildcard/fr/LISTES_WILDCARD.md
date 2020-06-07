@@ -15,7 +15,7 @@ Au premier abord, il est souvent difficile de voir la différence entre `List<A>
 
 #### `List<? extends A>` vs `List<A>`
 
-Quand je demande la différence à un débutant entre `List<A>` et `List<? extends A>`, j'obtiens presque tout le temps une réponse du style :
+Quand je demande la différence entre `List<A>` et `List<? extends A>` à un débutant, j'obtiens presque tout le temps une réponse du style :
 > `List<A>` est une liste d'objets de type `A`, alors que `List<? extends A>` est une liste d'objets de type `A` **et** de ses sous classes.
 
 A cela, je réponds toujours : donc cela veut dire que si `B extends A`, je ne peux pas mettre de B dans une `List<A>` ? Pourtant, un objet de type `B` est aussi un objet de type `A` non ?
