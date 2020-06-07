@@ -1,6 +1,6 @@
 # Listes à types indéfinis
 
-**Note importante:** dans ce cours, nous prendrons exclusivement comme exemple `java.util.List`, même si les concepts expliqués s'appliquent en réalité à toutes les différentes implémentations de `java.util.Collection`.
+**Note importante :** dans ce cours, nous prendrons exclusivement comme exemple `java.util.List`, même si les concepts expliqués s'appliquent en réalité à toutes les différentes implémentations de `java.util.Collection`.
 
 ### Prérequis
 
