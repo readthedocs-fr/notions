@@ -236,8 +236,10 @@ Il serait impossible de couvrir l'entièreté des nouveaux systèmes qui utilise
 
 - `Supplier<T>`
   Permet de fournir une instance de type `T` via une méthode `get()`, ne demandant aucun paramètre
+- `Runnable`
+  Permet d'effectuer une action (une série d'instructions ne renvoyant rien), via une méthode `run()`
 - `Consumer<T>`
-  Permet d'effectuer une action (une série d'instructions ne renvoyant rien) via une méthode `apply(T)`. Typiquement dans notre exemple, l'interface `Action` pourrait être remplacée par un `Consumer<String>`
+  Permet d'effectuer une action (une série d'instructions ne renvoyant rien) en fonction d'un paramètre, via une méthode `apply(T)`. Typiquement dans notre exemple, l'interface `Action` pourrait être remplacée par un `Consumer<String>`
 - `Function<T, R>`
   Agit comme une fonction qui prend un paramètre de type `T` et qui renvoie un objet de type `R`
 - `Predicate<T>`
