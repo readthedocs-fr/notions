@@ -66,9 +66,9 @@ Passons maintenant à `List<? super A>`. Puisque c'est exactement le même princ
 - Que peut-on ajouter dans une telle liste ?
 - Quel type d'élément s'attend-on à recevoir lorsqu'on récupère un élément de cette liste ?
 
-Pour répondre à la première question, une approche est de se demander: "quel type d'objet rentre **toutes** les possibilités de types pour notre liste sans exception ?". Si on reprend notre exemple du dessus, on peut ajouter un loup dans une `List<Loup>`, mais aussi dans une `List<Animal>`, et également dans une `List<Object>`. Donc on peut ajouter un objet de type `Loup` (ce qui est logique, puisque le type le plus "précis" possible pour notre liste est une `Loup`, on peut donc évidemment ajouter un loup dans une liste de loups). Voyons voir les classes parentes de `Loup`. Pourrait-on ajouter un `Animal` dans une telle liste ? La réponse est non, puisque cette liste pourrait potentiellement être une `List<Loup>`, ce qui n'irait pas. Et les sous-classes de `Loup` ? La réponse est instantannée: selon les lois de l'héritage, si un objet est de type `X`, et que `X extends Loup`, alors l'objet est également de type `Loup`. On peut donc ajouter dans une `List<? super A>` n'importe quel objet de type `A`, ou d'un type héritant de `A`.
+Pour répondre à la première question, une approche possible est de se demander: "quel type d'objet rentre dans **toutes** les possibilités de types pour notre liste sans exception ?". Si on reprend notre exemple du dessus, on peut ajouter un loup dans une `List<Loup>`, mais aussi dans une `List<Animal>`, et également dans une `List<Object>`. Donc on peut ajouter un objet de type `Loup` dans une `List<? super Loup>` (ce qui est logique, puisque le type le plus "précis" et donc restreignant possible pour notre liste est une `Loup`, on peut donc évidemment ajouter un loup dans une liste de loups). Voyons voir les classes parentes de `Loup`. Pourrait-on ajouter un `Animal` dans une telle liste ? La réponse est non, puisque cette liste pourrait potentiellement être une `List<Loup>`, ce qui n'irait pas. Et les sous-classes de `Loup` ? La réponse est instantanée: selon les lois de l'héritage, si un objet est de type `X`, et que `X extends Loup`, alors l'objet est également de type `Loup`. On peut donc ajouter dans une `List<? super A>` n'importe quel objet de type `A`, ou d'un type héritant de `A`.
 
-Pour répondre à la deuxième question, on cherche à savoir quel est le type le plus précis possible que l'on peut avoir la garantie d'obtenir. Il faut donc se demander : "quel est le **pire** scénario possible, celui dans lequel notre liste serait du type le plus **général** possible ?" La réponse est simple, il s'agit du cas où notre liste serait une `List<Object>`. On ne récupère donc que des objets de type `Object` si l'on possède une `List<? super A>`
+Pour répondre à la deuxième question, on cherche à savoir quel est le type le plus précis possible que l'on peut avoir la garantie d'obtenir. Il faut donc se demander : "quel est le **pire** scénario possible, celui dans lequel notre liste serait du type le plus **général**, donc le plus restreignant possible ?" La réponse est simple, il s'agit du cas où notre liste serait une `List<Object>`. On ne récupère donc que des objets de type `Object` si l'on possède une `List<? super A>`.
 
 ### Pour récapituler 
 - `List<A>`
@@ -111,15 +111,15 @@ Si vous avez suivi le cours sur l'abstraction, vous comprenez qu'on a créé une
 C'est vrai. Mais qu'en est-il d'une `List<Human>` ? Cela devrait aussi marcher, puisque tout humain possède la méthode `feed`. Pourtant... il ne s'agit pas d'une valeur valide pour le paramètre de cette méthode.
 > Pourquoi diable ne peut-on pas donner une `List<Human>` si on demande une `List<Eater>`, sachant que `Human extends Eater` ?
 
-Et bien... il suffit de se rappeler de pourquoi on ne peut rien ajouter dans une `List<? extends A>` ! Imaginez ce code :
+Et bien... il suffit de se rappeler pourquoi on ne peut rien ajouter dans une `List<? extends A>` ! Imaginez ce code :
 ```java
 void addEater(List<Eater> myList) {
     myList.add(new Plant()); // parce que oui, les plantes ça mange
 }
 ```
-Essayez maintenant d'imaginer ce qui se passerait si `List<Human>` était une valeur valide pour le paramètre `List<Eater>`... On se retrouverait avec une liste d'humains qui contient une plante ! Etrangement familier au problème du début du cours avec `List<? extends A>` non ?
+Essayez maintenant d'imaginer ce qui se passerait si `List<Human>` était une valeur valide pour le paramètre `List<Eater>`... On se retrouverait avec une liste d'humains qui contient une plante, ce qui n'est évidemment pas possible. Voilà qui est étrangement familier au problème du début du cours avec `List<? extends A>` non ?
 
-Je suis sûr que vous l'avez compris, la solution est donc de demander une `List<? extends Eater>` au lieu d'une `List<Eater>`. Dans ce cas-là, une `List<Human>` sera parfaitement valide, et une `List<Eater>` aussi d'ailleurs. Et évidemment, la méthode `feedAll` n'aura plus le pouvoir d'ajouter des éléments dans la liste, ce qui est une excellente chose : elle n'était pas censée pouvoir le faire.
+Je suis sûr que vous l'avez compris, la solution est donc de demander une `List<? extends Eater>` au lieu d'une `List<Eater>`. Dans ce cas-là, une `List<Human>` sera parfaitement valide, et une `List<Eater>` aussi d'ailleurs. Et en conséquence, la méthode `feedAll` n'aura plus le pouvoir d'ajouter des éléments dans la liste, ce qui est une excellente chose : elle n'était pas censée pouvoir le faire.
 
 #### `List<? super A>`
 
