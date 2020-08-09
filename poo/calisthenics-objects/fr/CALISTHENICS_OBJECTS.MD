@@ -6,7 +6,7 @@ Avant tout, il est important de rappeler que les règles des objects calisthéni
 
 Pour qu'un objet soit déclaré comme étant calisthénic il doit respecter un ensemble de **9 règles** au total. Nous allons les étudier ensemble avec des exemples et en détaillant leur utilités.
 
-## Règle 1 : Un seul niveau d'indentation par méthode.
+## Règle 1 : Un seul niveau d'indentation par méthode
 
 Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginez facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginez ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
 ```Java
@@ -56,7 +56,7 @@ class Board {
 ```
 Revenons sur les changements, il y a l'apparition de deux nouvelles méthodes : `collectRows` et `collectRow`. Elles sont ici pour apporter de la **précision** sur ce que l'on fait, on sait que dans `collectRow` on explore et "collecte" les caractères présents sur une colonne et que logiquement dans `collectRows` on explore et collecte plusieurs colonnes. Rien que le fait d'avoir rajouté ces deux méthodes rend le processus de la méthode `board` plus **compréhensible**.  
 
-## Règle 2 : N'utilisez pas le mot clé else.
+## Règle 2 : N'utilisez pas le mot clé else
 
 Le mot clé *else* est bien connu car il est intégré dans la construction *if/else* qui est présente dans presque tous les langages de programmation.
 Nous sommes d'accord que lire des instructions conditionnelles imbriquées n'est pas agréable.
@@ -113,21 +113,21 @@ public void login(String username, String password) {
 En outre, il convient de mentionner que la programmation orientée objet nous offre des fonctionnalités **puissantes**, telles que le **polymorphisme**. 
 Enfin, les patterns **Null Object**, **State** et **Strategy** peuvent également vous aider !
 
-## Règle 3 : Encapsulez tous les primitifs et les Strings.
+## Règle 3 : Encapsulez tous les primitifs et chaîne de caractères
 
 Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primitifs dans les objets, afin d'éviter l'anti-pattern Primitive Obsession.
 
 Si la variable primitive a un comportement, vous DEVEZ l'encapsuler.
 Pour cela, vous pouvez utiliser des **Value Objects** comme `Money` ou `Hour` par exemple. (Une fiche sur les value objets arrive bientôt)
 
-## Règle 4 : Une collection par classe.
+## Règle 4 : Une collection par classe
 
 Toute classe qui contient une collection ne doit contenir **aucun autre field**.
 Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les manipuler, __créez une classe dédiée à cet ensemble__.
 
 Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tous les comportements liés à cette collection doivent être implémentés dans la classe contenant la collection (par exemple les méthodes de filtrage).
 
-## Règle 5 : Un point par ligne. (One dot per line)
+## Règle 5 : Un point par ligne (One dot per line)
 
 Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
 
@@ -220,7 +220,7 @@ class Board {
 
 Et voilà qui respecte cette règle et qui est en plus, plus lisible !
 
-## Règle 6 : N'abbrégez pas !
+## Règle 6 : N'abrégez pas !
 
 La bonne question étant : **pourquoi diable voulez-vous abréger ?**
 
@@ -237,7 +237,7 @@ De plus si vous abrégez, la compréhension de votre code peut devenir ambiguë,
 
 N'abbrégez, point final. 
 
-## Règle 7 : Ne pas avoir d'entitées trop grosses.
+## Règle 7 : Ne pas avoir d'entités trop grosses
 
 Tout d'abord, par entité j'entends les packages, les classes, les méthodes, bref, tout ce qui peut être extensible.
 
@@ -247,7 +247,7 @@ Cela dépend de vous, mais je pense que vous pouvez changer le nombre de lignes 
 L'idée derrière cette règle est que les fichiers longs sont plus difficiles à lire, plus difficiles à comprendre et plus difficiles à gérer.
 Donc plus vous avez des entités petites, plus elles sont faciles à comprendre et donc à maintenir, et donc plus vous gagnez de temps !
 
-## Règle 8 : Pas de classes avec plus de deux instances de classes
+## Règle 8 : Pas de classes avec plus de deux instances de classe
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
