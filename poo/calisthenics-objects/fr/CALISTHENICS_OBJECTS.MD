@@ -247,7 +247,7 @@ Cela dépend de vous, mais je pense que vous pouvez changer le nombre de lignes 
 L'idée derrière cette règle est que les fichiers longs sont plus difficiles à lire, plus difficiles à comprendre et plus difficiles à gérer.
 Donc plus vous avez des entités petites, plus elles sont faciles à comprendre et donc à maintenir, et donc plus vous gagnez de temps !
 
-##-Règle 8 : Pas de classes avec plus de deux instances de classes
+## -Règle 8 : Pas de classes avec plus de deux instances de classes
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
