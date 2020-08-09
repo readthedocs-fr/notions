@@ -15,6 +15,7 @@
 ## Programmation orientée objet
 
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
+- `📑` [Value objects - définition, explications et exemples](poo/value_objects)
 
 ## Java
 
