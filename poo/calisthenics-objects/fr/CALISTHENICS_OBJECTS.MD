@@ -1,5 +1,9 @@
 # Objets Calisthenics
 
+##Rapide présentation 
+
+Avant tout, il est important de rappeler que les règles des objects calisthénics ne sont qu'un **guide pour avoir un code plus propre**, il n'est en aucun cas *obligatoire* de respecter ces règles, bien que *conseillé*.
+
 Pour qu'un objet soit déclaré comme étant calisthénic il doit respecter un ensemble de **9 règles** au total. Nous allons les étudier ensemble avec des exemples et en détaillant leur utilités.
 
 ##-Règle 1 : Un seul niveau d'indentation par méthode.
@@ -54,3 +58,179 @@ Revenons sur les changements, il y a l'apparition de deux nouvelles méthodes : 
 
 ##-Règle 2 : N'utilisez pas le mot clé else.
 
+Le mot clé *else* est bien connu car il est intégré dans la construction *if/else* qui est présente dans presque tous les langages de programmation.
+Nous sommes d'accord que lire des instructions conditionnelles imbriquées n'est pas agréable.
+C'est exactement pourquoi il faut l'éviter. 
+Il est beaucoup plus facile d'ajouter une nouvelle branche au code existant que de le réfactoriser vers une meilleure solution.
+Et à force de faire cela, vous vous retrouvez souvent avec un très mauvais code qui est __illisible et incompréhensible__.
+
+```java
+public void login(String username, String password) {
+    if (userRepository.isValid(username, password)) {
+        redirect("homepage");
+    } else {
+        addFlash("error", "Bad credentials");
+
+        redirect("login");
+    }
+}
+```
+
+Cependant, il existe heureusement des solutions pour éviter ça, comme par exemple utliser le **retour anticipé** de la méthode.
+
+```java
+public void login(String username, String password) {
+    if (userRepository.isValid(username, password)) {
+        return redirect("homepage");
+    }
+
+    addFlash("error", "Bad credentials");
+
+    return redirect("login");
+}
+```
+
+Votre condition peut être **optimiste**, ce qui signifie que vous avez des conditions pour vos cas d'erreur et que le reste de votre méthode suit le scénario par défaut,
+ou vous pouvez adopter une approche **défensive**, ce qui signifie que vous mettez le scénario par défaut dans une condition, et s'il n'est pas satisfait,
+vous renvoyez un état d'erreur.
+C'est mieux car cela évite les problèmes potentiels auxquels vous n'avez pas pensé.
+
+Comme autre alternative, vous pouvez également introduire une variable afin de rendre votre instruction return paramétrable. Bien que pratique, ce n'est cependant pas toujours possible.
+
+```java
+public void login(String username, String password) {
+    String redirectRoute = "homepage";
+
+    if (!userRepository.isValid(username, password)) {
+        addFlash("error", "Bad credentials");
+        redirectRoute = "login";
+    }
+
+    redirect(redirectRoute);
+}
+```
+
+En outre, il convient de mentionner que la programmation orientée objet nous offre des fonctionnalités **puissantes**, telles que le **polymorphisme**. 
+Enfin, les patterns **Null Object**, **State** et **Strategy** peuvent également vous aider !
+
+##-Règle 3 : Encapsulez tous les primitifs et les Strings.
+
+Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primitifs dans les objets, afin d'éviter l'anti-pattern Primitive Obsession.
+
+Si la variable primitive a un comportement, vous DEVEZ l'encapsuler.
+Pour cela, vous pouvez utiliser des **Value Objects** comme `Money` ou `Hour` par exemple. (Une fiche sur les value objets arrive bientôt)
+
+##-Règle 4 : Une collection par classe
+
+Toute classe qui contient une collection ne doit contenir **aucun autre field**.
+Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les manipuler, __créez une classe dédiée à cet ensemble__.
+
+Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tous les comportements liés à cette collection doivent être implémentés dans la classe contenant la collection (par exemple les méthodes de filtrage).
+
+##-Règle 5 : Un point par ligne (one dot per line)
+
+Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
+
+Fondamentalement, la règle dit que vous ne devez pas enchaîner les appels de méthode. 
+Cependant, cela ne s'applique pas aux [interfaces Fluent](http://flippinawesome.org/2013/05/20/fluent-apis-and-method-chaining/) et plus généralement à tout ce qui implémente le [modèle de chaînage de méthodes](https://martinfowler.com/dslCatalog/methodChaining.html) (par exemple, un générateur de requêtes ou un builder).
+
+Pour les autres classes, vous devez respecter cette règle. C'est l'utilisation directe de [la loi de Déméter](http://wiki.c2.com/?LawOfDemeter), qui dit de ne parler **qu'à vos amis** et de ne pas parler à des étrangers.
+
+Regardez ces classes :
+```java
+class Location {
+    public Piece current;
+}
+```
+```java
+class Piece {
+    public String representation;
+}
+```
+```java
+class Board {
+    public String boardRepresentation() {
+        StringBuilder buf = new StringBuilder();
+
+        for (Location loc : squares()) {
+            buf.append(loc.current.representation.substring(0, 1));
+        }
+
+        return buf.toString();
+    }
+}
+```
+Il est normal d'avoir des attributs publics dans `Piece` et `Location`.
+En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose (voir règle 9). //todo add link to rule 9
+
+Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
+
+`buf.append(loc.current.representation.substring(0, 1));`
+
+Il accède à une `Location`, puis à son field `piece`, puis au field `representation` de la référence de `Piece` sur laquelle il effectue une action.
+C'est loin d'être un point par ligne.
+
+Mais, [la loi de Déméter](http://wiki.c2.com/?LawOfDemeter) vous dit de parler uniquement à vos amis, alors faisons-le :
+```java
+class Location {
+    private Piece current;
+
+    public void addTo(StringBuilder buf) {
+        current.addTo(buf);
+    }
+}
+```
+Rendre privée le field `piece` garantit que vous n'essaierez pas de faire quelque chose de mal avec.
+Cependant, comme vous devez effectuer une action sur cee field, vous avez besoin d'une nouvelle méthode `addTo()`. 
+Ce n'est pas à l'objet `Location` de déterminer comment le `Piece` sera ajouté, alors changeons ça :
+
+```java
+class Piece {
+    private String representation;
+
+    public String character() {
+        return representation.substring(0, 1);
+    }
+
+    public void addTo(StringBuilder buf) {
+        buf.append(character());
+    }
+}
+```
+
+Là encore, vous devez modifier la visibilité de votre attribut. 
+Pour rappel, [le principe *ouvert/fermé*](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) dit que les entités logicielles (classes, modules, fonctions, etc.) doivent être ouvertes pour l'extension, mais fermées pour la modification.
+
+De plus, extraire le code pour obtenir le premier caractère du representation dans une nouvelle méthode semble être une bonne idée car il peut être réutilisé à un moment donné. 
+Enfin, voici la classe `Board` refactorisée :
+
+```java
+class Board {
+    public String boardRepresentation() {
+        StringBuilder buf = new StringBuilder();
+
+        for (Location location : squares()) {
+            location.addTo(buf);
+        }
+
+        return buf.toString();
+    }
+}
+```
+
+Et voilà qui respecte cette règle et qui est en plus, plus lisible !
+
+##-Règle 6 : N'abbrégez pas !
+
+La bonne question étant : **pourquoi diable voulez-vous abréger ?**
+
+Vous pouvez répondre que c'est parce que vous écrivez le même nom encore et encore ?
+Et je répondrais que cette méthode est réutilisée plusieurs fois, et qu'elle ressemble à une **duplication de code**.
+
+Vous direz donc ensuite que le nom de la méthode est de toute façon trop long. 
+Et je vous dirais que votre classe a peut-être de **multiples responsabilités**, ce qui est mauvais car cela viole le principe de [responsabilité unique](https://en.wikipedia.org/wiki/Single-responsibility_principle.
+
+Je dis souvent que si vous ne trouvez pas un nom décent pour une classe ou une méthode, il y a probablement un problème. 
+C'est une règle que j'utilise pour concevoir un logiciel en nommant des méthodes ou des attributs.
+
+N'abbrégez, point final. 
