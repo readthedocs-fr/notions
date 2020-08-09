@@ -2,15 +2,15 @@
 
 ## Rapide présentation 
 
-Avant tout, il est important de rappeler que les règles des objects calisthéniques ne sont qu'un **guide pour avoir un code plus propre**, il n'est en aucun cas *obligatoire* de respecter ces règles, bien que *conseillé*.
+Avant tout, il est important de rappeler que les règles des objets calisthéniques ne sont qu'un **guide pour avoir un code plus propre**, il n'est en aucun cas *obligatoire* de respecter ces règles, bien que *conseillé*.
 
-D'autrepart, ces règles sont là pour changer votre façon de programmer. Essayez d'en suivre un maximum au départ, puis abandonnez celles que vous désirez. Cependant, les règles **6** et **9** sont particulièrement importantes : vous ne devriez pas les abandonner. La règle **9** reste néanmoins la plus importante.
+D'autre part, ces règles sont là pour changer votre façon de programmer. Essayez d'en suivre un maximum au départ, puis abandonnez celles que vous désirez. Cependant, les règles **6** et **9** sont particulièrement importantes : vous ne devriez pas les abandonner. La règle **9** reste néanmoins la plus importante.
 
 Pour qu'un objet soit déclaré comme étant calisthénique il doit respecter un ensemble de **9 règles** au total. Nous allons les étudier ensemble avec des exemples et en détaillant leur utilité.
 
 ## Règle 1 : Un seul niveau d'indentation par méthode
 
-Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginez facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginez ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
+Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginez facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginer ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
 ```Java
 class Board {
     public String board() {
@@ -30,20 +30,20 @@ class Board {
     }
 }
 ```
-Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le *Extract Method Pattern*. Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : crée le plus de méthode utile possible. Ici par exemple, cela donnerait :
+Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le *Extract Method Pattern*. Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : créer le plus de méthodes utiles possible. Ici par exemple, cela donnerait :
 ```Java
 class Board {
     public String board() {
         StringBuilder builder = new StringBuilder();
 
-        collectRows(buf);
+        collectRows(builder);
 
         return builder.toString();
     }
 
     private void collectRows(StringBuilder builder) {
         for (int i = 0; i < 10; i++) {
-            collectRow(buf, i);
+            collectRow(builder, i);
         }
     }
 
