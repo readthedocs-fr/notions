@@ -14,19 +14,19 @@ Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous res
 ```Java
 class Board {
     public String board() {
-        StringBuilder buffer = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
         // 0
         for (int i = 0; i < 10; i++) {
             // 1
             for (int j = 0; j < 10; j++) {
                 // 2
-                buffer.append(data[i][j]);
+                builder.append(data[i][j]);
             }
-            buffer.append("\n");
+            builder.append("\n");
         }
 
-        return buffer.toString();
+        return builder.toString();
     }
 }
 ```
@@ -34,25 +34,25 @@ Une manière simple de rendre cette méthode beaucoup plus **lisible** et **comp
 ```Java
 class Board {
     public String board() {
-        StringBuilder buffer = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
         collectRows(buf);
 
-        return buffer.toString();
+        return builder.toString();
     }
 
-    private void collectRows(StringBuilder buffer) {
+    private void collectRows(StringBuilder builder) {
         for (int i = 0; i < 10; i++) {
             collectRow(buf, i);
         }
     }
 
-    private void collectRow(StringBuilder buffer, int row) {
+    private void collectRow(StringBuilder builder, int row) {
         for (int i = 0; i < 10; i++) {
-            buffer.append(data[row][i]);
+            builder.append(data[row][i]);
         }
 
-        buffer.append("\n");
+        builder.append("\n");
     }
 }
 ```
@@ -152,13 +152,13 @@ class Piece {
 ```Java
 class Board {
     public String boardRepresentation() {
-        StringBuilder buffer = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
         for (Location loc : squares()) {
-            buffer.append(loc.current.representation.substring(0, 1));
+            builder.append(loc.current.representation.substring(0, 1));
         }
 
-        return buffer.toString();
+        return builder.toString();
     }
 }
 ```
@@ -167,7 +167,7 @@ En fait, avoir une propriété `publique` ou une propriété `private` avec gett
 
 Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
 
-`buffer.append(loc.current.representation.substring(0, 1));`
+`builder.append(loc.current.representation.substring(0, 1));`
 
 Il accède à une `Location`, puis à son field `piece`, puis au field `representation` de la référence de `Piece` sur laquelle il effectue une action.
 C'est loin d'être un point par ligne.
@@ -177,8 +177,8 @@ Mais, [la loi de Déméter](http://wiki.c2.com/?LawOfDemeter) vous dit de parler
 class Location {
     private Piece current;
 
-    public void addTo(StringBuilder buffer) {
-        current.addTo(buffer);
+    public void addTo(StringBuilder builder) {
+        current.addTo(builder);
     }
 }
 ```
@@ -194,8 +194,8 @@ class Piece {
         return representation.substring(0, 1);
     }
 
-    public void addTo(StringBuilder buffer) {
-        buffer.append(character());
+    public void addTo(StringBuilder builder) {
+        builder.append(character());
     }
 }
 ```
@@ -209,13 +209,13 @@ Enfin, voici la classe `Board` refactorisée :
 ```Java
 class Board {
     public String boardRepresentation() {
-        StringBuilder buffer = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
         for (Location location : squares()) {
-            location.addTo(buffer);
+            location.addTo(builder);
         }
 
-        return buffer.toString();
+        return builder.toString();
     }
 }
 ```
