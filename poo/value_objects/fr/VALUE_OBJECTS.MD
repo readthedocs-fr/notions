@@ -28,7 +28,7 @@ Si ces objets ne dépendent pas d'un "objet mère" ils n'auraient aucune utilit�
 
 ## -Exemple d'implémentation
  
- Voici une petite [implémention](https://github.com/Emalios/notions/tree/value-objects-fr/poo/value_objects/code) autour d'un système de livraison, qui lie les deux exemples `Money` et `Address`, ce n'est qu'une base, mais ça permet d'entrevoir ce qu'on peut faire avec les value objects.
+ Voici une petite [implémention](../code) autour d'un système de livraison, qui lie les deux exemples `Money` et `Address`, ce n'est qu'une base, mais ça permet d'entrevoir ce qu'on peut faire avec les value objects.
 
 ## -Conclusion
 
