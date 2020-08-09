@@ -5,10 +5,10 @@ public class Order {
 
     //Not a value objet because have an id
     private final UUID orderId;
-    private List<Product> products;
+    private Products products;
     private Address addressToDeliver;
 
-    public Order(List<Product> products, Address addressToDeliver) {
+    public Order(Products products, Address addressToDeliver) {
         this.orderId = UUID.randomUUID();
         this.products = products;
         this.addressToDeliver = addressToDeliver;
