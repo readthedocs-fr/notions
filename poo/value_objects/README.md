@@ -1,4 +1,4 @@
-# Value objets
+# Value objects
 
 > Écrit par [Emalios](https://github.com/Emalios)
 

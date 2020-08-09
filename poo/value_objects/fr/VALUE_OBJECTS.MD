@@ -14,9 +14,9 @@ Eh bien ces deux value objects **sont identiques** car ils ont la **même valeur
 ## -Ils sont immuables.
 
 Pour faciliter leur utilisation les value objects **doivent être immutable**.
-Si vous souhaiter changer les valeurs dans le value object, il suffit d'en **créer un nouveau**. Bien souvent des méthodes pour faire cela sont présentes dans un value object.
+Si vous souhaitez changer les valeurs dans le value object, il suffit d'en **créer un nouveau**. Bien souvent des méthodes pour faire cela sont présentes dans un value object.
 Et le fait que ces objets soient immuables permet qu'ils deviennent totalement **interchangeables** et **réutilisables**.
-Par exemple imaginons un value objet `Address` qui représente l'adresse d'une personne, et bien si deux personnes habitent au même endroit, on peut **réutiliser** le même object, ce qui optimise notre application.
+Par exemple imaginons un value objet `Address` qui représente l'adresse d'une personne, et bien si deux personnes habitent au même endroit, on peut **réutiliser** le même objet, ce qui optimise notre application.
 
 ## -Ils dépendent d'autres objets.
 

@@ -7,13 +7,8 @@ public class Money {
     private final Currency currency;
 
     public Money(long value, Currency currency) {
-        if(value<0) {
-            this.value = 0;
-            this.currency =  currency;
-            return;
-        }
+        this.value = Math.max(0, value);
         this.currency = currency;
-        this.value = value;
     }
 
     public Money(long value) {
