@@ -15,7 +15,7 @@
 ## Programmation orientée objet
 
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
-- `📑` [Objets calisthéniques - définition et explications](poo/calisthenics-objects)
+- `📑` [Objets calisthéniques - définition et explications](poo/objets_calistheniques)
 
 ## Java
 

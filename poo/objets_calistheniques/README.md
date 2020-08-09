@@ -8,4 +8,4 @@ Bien que ce principe soit applicable à de nombreux langages de programmation, l
 
 ## Table des matières
 
-- [Objets Calisthenics - définition et explications](fr/CALISTHENICS_OBJECTS.MD)
+- [Objets Calisthenics - définition et explications](fr/OBJETS_CALISTHENIQUES.MD)
