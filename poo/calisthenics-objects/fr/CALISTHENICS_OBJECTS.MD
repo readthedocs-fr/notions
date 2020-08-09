@@ -120,14 +120,14 @@ Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primi
 Si la variable primitive a un comportement, vous DEVEZ l'encapsuler.
 Pour cela, vous pouvez utiliser des **Value Objects** comme `Money` ou `Hour` par exemple. (Une fiche sur les value objets arrive bientôt)
 
-##-Règle 4 : Une collection par classe
+##-Règle 4 : Une collection par classe.
 
 Toute classe qui contient une collection ne doit contenir **aucun autre field**.
 Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les manipuler, __créez une classe dédiée à cet ensemble__.
 
 Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tous les comportements liés à cette collection doivent être implémentés dans la classe contenant la collection (par exemple les méthodes de filtrage).
 
-##-Règle 5 : Un point par ligne (one dot per line)
+##-Règle 5 : Un point par ligne. (one dot per line)
 
 Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
 
@@ -233,4 +233,75 @@ Et je vous dirais que votre classe a peut-être de **multiples responsabilités*
 Je dis souvent que si vous ne trouvez pas un nom décent pour une classe ou une méthode, il y a probablement un problème. 
 C'est une règle que j'utilise pour concevoir un logiciel en nommant des méthodes ou des attributs.
 
+De plus si vous abrégez, la compréhension de votre code peut devenir ambiguë, ce qui n'est pas une bonne chose, même pour vous quand vous allez vous relire plusieurs semaines après avoir écrit ce code. 
+
 N'abbrégez, point final. 
+
+##-Règle 7 : Ne pas avoir d'entitées trop grosses.
+
+Tout d'abord, par entité j'entends les packages, les classes, les méthodes, bref, tout ce qui peut être extensible.
+
+Pas de classe sur 50 lignes et pas de package sur 10 fichiers.
+Cela dépend de vous, mais je pense que vous pouvez changer le nombre de lignes de 50 à 150.
+
+L'idée derrière cette règle est que les fichiers longs sont plus difficiles à lire, plus difficiles à comprendre et plus difficiles à gérer.
+Donc plus vous avez des entités petites, plus elles sont faciles à comprendre et donc à maintenir, et donc plus vous gagnez de temps !
+
+##-Règle 8 : Pas de classes avec plus de deux instances de classes
+
+Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
+
+Il faut noter que cette règle est lié à la règle 3.
+
+L'idée derrière cette règle est de distinguer deux types de classes :
+
+-Les classes qui **conservent** l'état d'une **seule variable** (value objects).
+-Les classes qui **coordonnent** **deux variables distinctes**.
+
+Deux instances comme limite est un choix arbitraire qui vous oblige à beaucoup découpler vos classes.
+
+##-Règle 9 : N'utilisez pas de getter et de setter !
+
+Ma règle préférée.
+
+Il est normal d'utiliser des getters pour obtenir l'état d'un objet, tant que vous n'utilisez pas le résultat pour prendre des décisions en dehors de l'objet. 
+**Toute décision basée entièrement sur l'état d'un objet doit être prise à l'intérieur de l'objet lui-même**.
+
+C'est pourquoi les getters/setters [sont souvent considérés comme mauvais](https://stackoverflow.com/questions/565095/are-getters-and-setters-poor-design-contradictory-advice-seen). Là encore, ils violent le [principe ouvert/fermé](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+
+Prenons un exemple : 
+```java
+// Game
+private int score;
+
+public void setScore(int score) {
+    this.score = score;
+}
+
+public int getScore() {
+    return score;
+}
+
+// Usage
+game.setScore(game.getScore() + ENEMY_DESTROYED_SCORE);
+```
+
+Dans le code ci-dessus, le `getScore()` est utilisé pour prendre une décision, vous choisissez comment augmenter votre score, au lieu de laisser cette responsabilité à l'instance de `Game`.
+
+Une meilleure solution serait de **supprimer les getters/setters**, et de fournir des méthodes qui **ont du sens**. 
+N'oubliez pas que vous devez **dire à** la classe de faire quelque chose, et vous ne devez **pas le demander**. 
+Dans l'exemple qui suit, vous dites à l'instance de `Game` de mettre à jour votre score en fonction de `ENEMY_DESTROYED_SCORE`.
+
+```java
+// Game
+public void addScore(int delta) {
+    score += delta;
+}
+
+// Usage
+game.addScore(ENEMY_DESTROYED_SCORE);
+```
+
+C'est bien la responsabilité de `Game` de déterminer comment mettre à jour le score.
+
+Dans ce cas, vous pouvez garder le `getScore()` comme vous voudrez peut-être l'afficher quelque part sur l'interface utilisateur, mais gardez à l'esprit que les setters **ne devraient pas être autorisés**.
