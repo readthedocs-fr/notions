@@ -13,6 +13,9 @@ Pour qu'un objet soit déclaré comme étant calisthénique il doit respecter un
 Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginez facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginer ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
 ```Java
 class Board {
+
+    private int[][] data;
+
     public String board() {
         StringBuilder builder = new StringBuilder();
 
@@ -30,7 +33,7 @@ class Board {
     }
 }
 ```
-Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le *Extract Method Pattern*. Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : créer le plus de méthodes utiles possible. Ici par exemple, cela donnerait :
+Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le [*Extract Method Pattern*](http://refactoring.com/catalog/extractMethod.html). Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : créer le plus de méthodes utiles possible. Ici par exemple, cela donnerait :
 ```Java
 class Board {
     public String board() {
@@ -113,7 +116,7 @@ public void login(String username, String password) {
 ```
 
 En outre, il convient de mentionner que la programmation orientée objet nous offre des fonctionnalités **puissantes**, telles que le **polymorphisme**. 
-Enfin, les patterns **Null Object**, **State** et **Strategy** peuvent également vous aider !
+Enfin, les patterns [**Null Object**](https://en.wikipedia.org/wiki/Null_object_pattern), [**State**](https://en.wikipedia.org/wiki/State_pattern#:~:text=The%20state%20pattern%20is%20a,concept%20of%20finite%2Dstate%20machines.) et [**Strategy**](https://en.wikipedia.org/wiki/Strategy_pattern#:~:text=In%20computer%20programming%2C%20the%20strategy,family%20of%20algorithms%20to%20use.) peuvent également vous aider !
 
 ## Règle 3 : Encapsulez tous les primitifs et chaîne de caractères
 
