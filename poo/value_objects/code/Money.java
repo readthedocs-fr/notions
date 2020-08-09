@@ -2,25 +2,30 @@ import java.util.Objects;
 
 public class Money {
 
-    //value object
-    private final long value;
+    private final double value;
     private final Currency currency;
 
-    public Money(long value, Currency currency) {
+    public Money(double value, Currency currency) {
         this.value = Math.max(0, value);
         this.currency = currency;
     }
 
-    public Money(long value) {
+    public Money(double value) {
         this(value, Currency.USD);
     }
 
     public Money addMoney(Money moneyToAdd) {
-        return new Money(this.value+moneyToAdd.value, this.currency);
+        double convertedAmount = this.convertAmount(moneyToAdd.currency, this.currency, moneyToAdd.value);
+        return new Money(this.value+convertedAmount, this.currency);
     }
 
     public Money removeMoney(Money moneyToRemove) {
-        return new Money(this.value-moneyToRemove.value, this.currency);
+        double convertedAmount = this.convertAmount(moneyToRemove.currency, this.currency, moneyToRemove.value);
+        return new Money(this.value-convertedAmount, this.currency);
+    }
+
+    private double convertAmount(Currency from, Currency to, double amount) {
+        return Currency.convertMoney(from, to, amount);
     }
 
     @Override

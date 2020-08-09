@@ -1,16 +1,26 @@
 public enum Currency {
 
-    EUR("€"),
-    USD("$");
+    EUR(new Name("€"), new USDRate(0.5)),
+    USD(new Name("$"), new USDRate(1)),
+    TEST(new Name("T"), new USDRate(2));
 
-    private final String formattedString;
+    private final Name formattedName;
+    private final USDRate usdRate;
 
-    Currency(String formattedString) {
-        this.formattedString = formattedString;
+    Currency(Name formattedName, USDRate usdRate) {
+        this.usdRate = usdRate;
+        this.formattedName = formattedName;
+    }
+
+    public static double convertMoney(Currency from, Currency to, double amount) {
+        if(from.equals(to)) {
+            return amount;
+        }
+        return from.usdRate.convert(to.usdRate, amount);
     }
 
     @Override
     public String toString() {
-        return this.formattedString;
+        return this.formattedName.toString();
     }
 }
