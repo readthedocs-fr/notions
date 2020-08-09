@@ -5,6 +5,8 @@
 Avant tout, il est important de rappeler que les règles des objects calisthénics ne sont qu'un **guide pour avoir un code plus propre**, il n'est en aucun cas *obligatoire* de respecter ces règles, bien que *conseillé*.
 
 Pour qu'un objet soit déclaré comme étant calisthénic il doit respecter un ensemble de **9 règles** au total. Nous allons les étudier ensemble avec des exemples et en détaillant leur utilités.
+D'autrepart, ces règles sont là pour changer votre façon de programmer. Essayez d'en suivre un maximum au départ, puis abandonnez celles que vous désirez. Cependant, les règles **6** et **9** sont particulièrement importantes : vous ne devriez pas les abandonner. La règle **9** reste néanmoins la plus importante.
+
 
 ## Règle 1 : Un seul niveau d'indentation par méthode
 
