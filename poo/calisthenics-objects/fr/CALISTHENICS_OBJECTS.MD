@@ -59,7 +59,7 @@ Revenons sur les changements, il y a l'apparition de deux nouvelles méthodes : 
 ## -Règle 2 : N'utilisez pas le mot clé else.
 
 Le mot clé *else* est bien connu car il est intégré dans la construction *if/else* qui est présente dans presque tous les langages de programmation.
-Nous sommes d'accord que lire des instructions conditionnelles imbriquées __n'est pas agréable__.
+Nous sommes d'accord que lire des instructions conditionnelles imbriquées n'est pas agréable.
 C'est exactement pourquoi il faut l'éviter. 
 Il est beaucoup plus facile d'ajouter une nouvelle branche au code existant que de le réfactoriser vers une meilleure solution.
 Et à force de faire cela, vous vous retrouvez souvent avec un très mauvais code qui est __illisible et incompréhensible__.
@@ -76,7 +76,7 @@ public void login(String username, String password) {
 }
 ```
 
-Cependant, il existe heureusement des solutions pour éviter ça, comme utiliser le **retour anticipé** de la méthode.
+Cependant, il existe heureusement des solutions pour éviter ça, comme par exemple utliser le **retour anticipé** de la méthode.
 
 ```java
 public void login(String username, String password) {
@@ -161,7 +161,7 @@ class Board {
 }
 ```
 Il est normal d'avoir des attributs publics dans `Piece` et `Location`.
-En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose ([voir règle 9](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/calisthenics-objects/fr/CALISTHENICS_OBJECTS.MD#-r%C3%A8gle-9--nutilisez-pas-de-getter-et-de-setter-)).
+En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose (voir règle 9). //todo add link to rule 9
 
 Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
 
@@ -251,7 +251,7 @@ Donc plus vous avez des entités petites, plus elles sont faciles à comprendre 
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
-Il faut noter que cette règle est lié à la [règle 3](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/calisthenics-objects/fr/CALISTHENICS_OBJECTS.MD#-r%C3%A8gle-3--encapsulez-tous-les-primitifs-et-les-strings).
+Il faut noter que cette règle est lié à la règle 3.
 
 L'idée derrière cette règle est de distinguer deux types de classes :
 
