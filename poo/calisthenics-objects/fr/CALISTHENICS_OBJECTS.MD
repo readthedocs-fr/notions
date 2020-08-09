@@ -161,7 +161,7 @@ class Board {
 }
 ```
 Il est normal d'avoir des attributs publics dans `Piece` et `Location`.
-En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose (voir règle 9). //todo add link to rule 9
+En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose (voir règle 9).
 
 Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
 
