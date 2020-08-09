@@ -133,7 +133,7 @@ Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tou
 
 Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
 
-Fondamentalement, la règle dit que vous ne devez pas enchaîner les appels de méthode. 
+Fondamentalement, la règle dit que vous ne devez pas enchaîner les appels de méthodes. 
 Cependant, cela ne s'applique pas aux [interfaces Fluent](http://flippinawesome.org/2013/05/20/fluent-apis-and-method-chaining/) et plus généralement à tout ce qui implémente le [modèle de chaînage de méthodes](https://martinfowler.com/dslCatalog/methodChaining.html) (par exemple, un générateur de requêtes ou un builder).
 
 Pour les autres classes, vous devez respecter cette règle. C'est l'utilisation directe de [la loi de Déméter](http://wiki.c2.com/?LawOfDemeter), qui dit de ne parler **qu'à vos amis** et de ne pas parler à des étrangers.
@@ -183,7 +183,7 @@ class Location {
 }
 ```
 Rendre privée le field `piece` garantit que vous n'essaierez pas de faire quelque chose de mal avec.
-Cependant, comme vous devez effectuer une action sur cee field, vous avez besoin d'une nouvelle méthode `addTo()`. 
+Cependant, comme vous devez effectuer une action sur ce field, vous avez besoin d'une nouvelle méthode `addTo()`. 
 Ce n'est pas à l'objet `Location` de déterminer comment le `Piece` sera ajouté, alors changeons ça :
 
 ```Java
@@ -227,17 +227,17 @@ Et voilà qui respecte cette règle et qui est en plus, plus lisible !
 La bonne question étant : **pourquoi diable voulez-vous abréger ?**
 
 Vous pouvez répondre que c'est parce que vous écrivez le même nom encore et encore ?
-Et je répondrais que cette méthode est réutilisée plusieurs fois, et qu'elle ressemble à une **duplication de code**.
+Et je répondrai que cette méthode est réutilisée plusieurs fois, et qu'elle ressemble à une **duplication de code**.
 
 Vous direz donc ensuite que le nom de la méthode est de toute façon trop long. 
-Et je vous dirais que votre classe a peut-être de **multiples responsabilités**, ce qui est mauvais car cela viole le principe de [responsabilité unique](https://en.wikipedia.org/wiki/Single-responsibility_principle.
+Et je vous dirai que votre classe a peut-être de **multiples responsabilités**, ce qui est mauvais car cela viole le principe de [responsabilité unique](https://en.wikipedia.org/wiki/Single-responsibility_principle.
 
 Je dis souvent que si vous ne trouvez pas un nom décent pour une classe ou une méthode, il y a probablement un problème. 
 C'est une règle que j'utilise pour concevoir un logiciel en nommant des méthodes ou des attributs.
 
 De plus si vous abrégez, la compréhension de votre code peut devenir ambiguë, ce qui n'est pas une bonne chose, même pour vous quand vous allez vous relire plusieurs semaines après avoir écrit ce code. 
 
-N'abbrégez, point final. 
+N'abbrégez pas, point final. 
 
 ## Règle 7 : Ne pas avoir d'entités trop grosses
 
@@ -249,11 +249,11 @@ Cela dépend de vous, mais je pense que vous pouvez changer le nombre de lignes 
 L'idée derrière cette règle est que les fichiers longs sont plus difficiles à lire, plus difficiles à comprendre et plus difficiles à gérer.
 Donc plus vous avez des entités petites, plus elles sont faciles à comprendre et donc à maintenir, et donc plus vous gagnez de temps !
 
-## Règle 8 : Pas de classes avec plus de deux instances de classe
+## Règle 8 : Pas de classe avec plus de deux attributs d'instance
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
-Il faut noter que cette règle est lié à la règle 3.
+Il faut noter que cette règle est liée à la règle 3.
 
 L'idée derrière cette règle est de distinguer deux types de classes :
 
