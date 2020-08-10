@@ -26,8 +26,10 @@ Le tout avec une classe principale:
 ```java
 import java.util.*;
 
-class Main {   
+class Main {
+
     public static void main(String... args) {
+    
         List<Animal> animals = Arrays.asList(
             new Lion(), new Lion()
             new Whale(),
@@ -49,8 +51,10 @@ interface Animal {
 
 
 class Lion implements Animal {
+
     @Override
     public void feed() {
+    
         // Voilà à quoi ressemble du pseudo code, on comprend ce qu'il fait sans savoir ce que `me` ou `openBag()` représente réellement
         Food food = me.openBag().takeFoodForLions();
         me.feedCarefully(this, food);
@@ -58,18 +62,23 @@ class Lion implements Animal {
 }
 
 class Whale implements Animal {
+
     @Override
     public void feed() {
+    
         int quantityToFeed = Zoo.maximalHungerOf(whale) - Zoo.foodAmountSoldForWhaleToday();
+        
         if(quantityToFeed < 0) {
             ZooManager.report("The clients have fed the whale too much today :angryface:");
             return;
         }
+        
         me.feed(this, new WhaleFood(quantityToFeed));
     }
 }
 
 class Duck implements Animal {
+
     @Override
     public void feed() {
         System.out.println("Employees don't need to feed the ducks. Clients do so more than enough already!");
@@ -83,6 +92,7 @@ par le zoo lui même**. Sinon on pourrait se retrouver avec un drôle d'animal c
 
 ```java
 class Ant implements Animal {
+
     @Override
     public void feed() {
         me.feed(this, new Steak("700kg"));
@@ -124,16 +134,20 @@ l'alimentation des animaux par un employé. Cette classe va s'appeler `ZooEmploy
 class ZooEmployeeVisitor {
         
     public void feedLion(Lion lion) {
+    
         Food food = me.openBag().takeFoodForLions();
         me.feedCarefully(lion, food);
     }
         
     public void feedWhale(Whale whale) {
+    
         int quantityToFeed = Zoo.maximalHungerOf(whale) - Zoo.foodAmountSoldForWhaleToday();
+        
         if(quantityToFeed < 0) {
             ZooManager.report("The clients have fed the whale too much today :angryface:");
             return;
         }
+        
         me.feed(whale, new WhaleFood(quantityToFeed));
     } 
         
@@ -154,11 +168,13 @@ class ZooClientVisitor {
     }
         
     public void feedWhale(Whale whale) {
+    
         Food food = Market.buyFoodForWhales();
         Zoo.throwFoodInCage(whale, food);
     }
     
     public void feedDuck(Duck duck) {
+    
         if(!me.hasBreadInPockets()) {
             System.out.println("You have no bread to feed the ducks :(");
             return;
@@ -216,7 +232,9 @@ class DuckMom extends Duck {
     
     @Override
     public void accept(AnimalFeedingVisitor visitor) {
+    
         visitor.feedDuck(this);
+        
         for(Duck child : children) {
             visitor.feedDuck(child);
         }
@@ -238,6 +256,7 @@ class Main {
     public static void main(String... args) {
     
         AnimalFeedingVisitor feeder = getAnyFeeder();
+        
         List<Animal> animals = Arrays.asList(
             new Lion(), new Lion()
             new Whale(),
