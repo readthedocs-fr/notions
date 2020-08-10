@@ -183,12 +183,12 @@ Nous voyons bien que la classe ne comporte qu'un field qui est une collection de
 Nous pouvons donc observer que la logique pour gérer plusieurs `Product` est bien présente dans cette classe. 
 On pourrait aussi facilement implémenter des méthodes de filtrage qui retourneraient tout les `Product` avec un prix minimum de 10€ par exemple.
 
-Maintenant, regardons comment se serait organisé le code s'il n'y avait pas de classe pour gérer cette collection, on aurait surement eu quelque chose de ce style : 
+Maintenant, regardons comment se serait organisé le code s'il n'y avait pas de classe pour gérer cette collection, on aurait sûrement eu quelque chose de ce style : 
 
 ```java
 public class Order {
 
-    //Not a value objet because have an id
+    //Not a value object because it has an id
     private final UUID orderId;
     private List<Product> products;
     private Address addressToDeliver;
@@ -211,7 +211,7 @@ public class Order {
 ```
 
 Nous voyons bien que ça aurait été à l'objet `Order` de gérer cette logique, alors qu'il aurait pus déléguer cela à une classe qui gère une collection de `Product`. 
-Pour l'instant ce n'est pas choquant, mais si on rajoute différentes méthodes de filtrages, la classe va vite commencer à s'allonger, ce qui ne respecterait pas la [règle 7](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/objets_calistheniques/fr/OBJETS_CALISTHENIQUES.MD#r%C3%A8gle-7--ne-pas-avoir-dentit%C3%A9s-trop-grosses) et serait très difficile à lire et maintenir.
+Pour l'instant ce n'est pas choquant, mais si on rajoute différentes méthodes de filtrage, la classe va vite commencer à s'allonger, ce qui ne respecterait pas la [règle 7](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/objets_calistheniques/fr/OBJETS_CALISTHENIQUES.MD#r%C3%A8gle-7--ne-pas-avoir-dentit%C3%A9s-trop-grosses) et serait très difficile à lire et maintenir.
 
 ## Règle 5 : Un point par ligne (One dot per line)
 
@@ -266,7 +266,7 @@ class Location {
     }
 }
 ```
-Rendre privée le field `piece` garantit que vous n'essaierez pas de faire quelque chose de mal avec.
+Rendre privé le field `piece` garantit que vous n'essaierez pas de faire quelque chose de mal avec.
 Cependant, comme vous devez effectuer une action sur ce field, vous avez besoin d'une nouvelle méthode `addTo()`. 
 Ce n'est pas à l'objet `Location` de déterminer comment le `Piece` sera ajouté, alors changeons ça :
 
@@ -285,9 +285,9 @@ class Piece {
 ```
 
 Là encore, vous devez modifier la visibilité de votre attribut. 
-Pour rappel, [le principe *ouvert/fermé*](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) dit que les entités logicielles (classes, modules, fonctions, etc.) doivent être ouvertes pour l'extension, mais fermées pour la modification.
+Pour rappel, [le principe *ouvert/fermé*](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) dit que les entités logicielles (classes, modules, fonctions, etc.) doivent être ouvertes à l'extension, mais fermées à la modification.
 
-De plus, extraire le code pour obtenir le premier caractère du representation dans une nouvelle méthode semble être une bonne idée car il peut être réutilisé à un moment donné. 
+De plus, extraire le code pour obtenir le premier caractère de `representation` dans une nouvelle méthode semble être une bonne idée car il peut être réutilisé à un moment donné. 
 Enfin, voici la classe `Board` refactorisée :
 
 ```Java
