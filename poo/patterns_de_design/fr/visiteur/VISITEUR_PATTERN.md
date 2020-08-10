@@ -284,3 +284,8 @@ En résumé, la recette de ce pattern est la suivante:
 - Créez une interface `Visitor`, qui contient autant de méthode `visit` qu'il n'y a d'implémentations de `Element`. Chacune de ces méthodes prend en paramètre un objet d'un type qui est une sous-classe de `Element`.
 - Créez une méthode `accept` dans `Element`, qui demande un `Visitor` en paramètre. Les implémentations de cette méthode sont presque tout le temps `visitor.visit(this)`, mais pour les "groupes d'éléments", une boucle peut être effectuée
 - Chaque implémentation de `Visitor` définit un comportement précis pour chaque sous-classe de `Element`
+
+## Sources
+
+[Article Wikipedia](https://en.wikipedia.org/wiki/Visitor_pattern)
+[Visitor Design Pattern in Java - Baeldung](https://www.baeldung.com/java-visitor-pattern)
