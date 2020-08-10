@@ -132,6 +132,87 @@ Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les
 
 Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tous les comportements liés à cette collection doivent être implémentés dans la classe contenant la collection (par exemple les méthodes de filtrage).
 
+Pour illustrer cette règle, voici un exemple provenant du code de la notion de [value objects](), nous avons une classe qui représente un ordre de commande :
+```java
+
+public class Order {
+
+    //Not a value objet because have an id
+    private final UUID orderId;
+    private Products products;
+    private Address addressToDeliver;
+
+    public Order(Products products, Address addressToDeliver) {
+        this.orderId = UUID.randomUUID();
+        this.products = products;
+        this.addressToDeliver = addressToDeliver;
+    }
+}
+
+```
+
+Cette classe est composée d'un `UUID`, d'une `Address` et ce qui va nous intéresser ici d'un objet `Products` qui représente une liste de `Product`.
+
+Jetons un oeil à cette classe :
+
+```java
+public class Products {
+
+    private final List<Product> products;
+
+    public Products() {
+        this.products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public Money getProductsCost() {
+        Money money = new Money(0);
+        for (Product product : products) {
+            Money productCost = product.getCost();
+            money = money.addMoney(productCost);
+        }
+        return money;
+    }
+}
+```
+
+Nous voyons bien que la classe ne comporte qu'un field qui est une collection de `Product`, la règle est donc respectée.
+Nous pouvons donc observer que la logique pour gérer plusieurs `Product` est bien présente dans cette classe. 
+On pourrait aussi facilement implémenter des méthodes de filtrage qui retourneraient tout les `Product` avec un prix minimum de 10€ par exemple.
+
+Maintenant, regardons comment se serait organisé le code s'il n'y avait pas de classe pour gérer cette collection, on aurait surement eu quelque chose de ce style : 
+
+```java
+public class Order {
+
+    //Not a value objet because have an id
+    private final UUID orderId;
+    private List<Product> products;
+    private Address addressToDeliver;
+
+    public Order(List<Product> products, Address addressToDeliver) {
+        this.orderId = UUID.randomUUID();
+        this.products = products;
+        this.addressToDeliver = addressToDeliver;
+    }
+
+    public Money getProductsCost() {
+        Money money = new Money(0);
+        for (Product product : products) {
+            Money productCost = product.getCost();
+            money = money.addMoney(productCost);
+        }
+        return money;
+    }
+}
+```
+
+Nous voyons bien que ça aurait été à l'objet `Order` de gérer cette logique, alors qu'il aurait pus déléguer cela à une classe qui gère une collection de `Product`. 
+Pour l'instant ce n'est pas choquant, mais si on rajoute différentes méthodes de filtrages, la classe va vite commencer à s'allonger, ce qui ne respecterait pas la [règle 7](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/objets_calistheniques/fr/OBJETS_CALISTHENIQUES.MD#r%C3%A8gle-7--ne-pas-avoir-dentit%C3%A9s-trop-grosses) et serait très difficile à lire et maintenir.
+
 ## Règle 5 : Un point par ligne (One dot per line)
 
 Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
