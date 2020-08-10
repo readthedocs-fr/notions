@@ -10,7 +10,7 @@ Pour qu'un objet soit déclaré comme étant calisthénique il doit respecter un
 
 ## Règle 1 : Un seul niveau d'indentation par méthode
 
-Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginez facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginer ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
+Dans l'optique d'optimiser la **lisibilité** de votre code, vous devez vous restreindre à un seul niveau d'indentation dans une méthode. Dans les faits, vous ne pourrez pas toujours imaginer facilement le comportement de votre méthode dans votre tête. Si l'on prend un exemple avec une boucle dans une boucle, ça devient tout de suite plus parlant, vous ne pouvez pas facilement imaginer ce que fait exactement à tout instant votre méthode. Prenons cet exemple : 
 ```Java
 class Board {
 
@@ -33,7 +33,7 @@ class Board {
     }
 }
 ```
-Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le [*Extract Method Pattern*](http://refactoring.com/catalog/extractMethod.html). Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : créer le plus de méthodes utiles possible. Ici par exemple, cela donnerait :
+Une manière simple de rendre cette méthode beaucoup plus **lisible** et **compréhensible** est d'appliquer le [*Extract Method Pattern*](http://refactoring.com/catalog/extractMethod.html). Appliquer ce pattern ne réduira pas le nombre de ligne de code (et ce n'est pas ce qu'on veut) mais il rendra la méthode beaucoup plus **intuitive** pour un développeur qui cherche à comprendre ce qu'elle fait. Derrière le nom du pattern que vous pourriez trouver un peu barbare se cache une méthode simple : extraire d'une "méthode mère" le maximum de méthodes pour simplifier et clarifier son code. Ici par exemple, cela donnerait :
 ```Java
 class Board {
     public String board() {
@@ -86,12 +86,14 @@ Cependant, il existe heureusement des solutions pour éviter ça, comme par exem
 ```Java
 public void login(String username, String password) {
     if (userRepository.isValid(username, password)) {
-        return redirect("homepage");
+        redirect("homepage");
+        return;
     }
 
     addFlash("error", "Bad credentials");
 
-    return redirect("login");
+    redirect("login");
+    return;
 }
 ```
 
@@ -118,7 +120,7 @@ public void login(String username, String password) {
 En outre, il convient de mentionner que la programmation orientée objet nous offre des fonctionnalités **puissantes**, telles que le **polymorphisme**. 
 Enfin, les patterns [**Null Object**](https://en.wikipedia.org/wiki/Null_object_pattern), [**State**](https://en.wikipedia.org/wiki/State_pattern#:~:text=The%20state%20pattern%20is%20a,concept%20of%20finite%2Dstate%20machines.) et [**Strategy**](https://en.wikipedia.org/wiki/Strategy_pattern#:~:text=In%20computer%20programming%2C%20the%20strategy,family%20of%20algorithms%20to%20use.) peuvent également vous aider !
 
-## Règle 3 : Encapsulez tous les primitifs et chaîne de caractères
+## Règle 3 : Encapsulez tous les primitifs et chaînes de caractères
 
 Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primitifs dans les objets, afin d'éviter l'anti-pattern Primitive Obsession.
 
@@ -137,7 +139,7 @@ Pour illustrer cette règle, voici un exemple provenant du code de la notion de 
 
 public class Order {
 
-    //Not a value objet because have an id
+    //Not a value object because it has an id
     private final UUID orderId;
     private Products products;
     private Address addressToDeliver;
@@ -247,7 +249,7 @@ class Board {
 }
 ```
 Il est normal d'avoir des attributs publics dans `Piece` et `Location`.
-En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est la même chose (voir règle 9).
+En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est, selon les principes des objets calisthéniques, la même chose (voir règle 9).
 
 Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
 
@@ -266,7 +268,7 @@ class Location {
     }
 }
 ```
-Rendre privé le field `piece` garantit que vous n'essaierez pas de faire quelque chose de mal avec.
+Rendre privé le field `piece` garantit que vous n'essaierez pas d'intéragir avec et ainsi de déplacer de la logique qui devrait se trouver dans la classe `Location`.
 Cependant, comme vous devez effectuer une action sur ce field, vous avez besoin d'une nouvelle méthode `addTo()`. 
 Ce n'est pas à l'objet `Location` de déterminer comment le `Piece` sera ajouté, alors changeons ça :
 
@@ -375,7 +377,7 @@ game.setScore(game.getScore() + ENEMY_DESTROYED_SCORE);
 Dans le code ci-dessus, le `getScore()` est utilisé pour prendre une décision, vous choisissez comment augmenter votre score, au lieu de laisser cette responsabilité à l'instance de `Game`.
 
 Une meilleure solution serait de **supprimer les getters/setters**, et de fournir des méthodes qui **ont du sens**. 
-N'oubliez pas que vous devez **dire à** la classe de faire quelque chose, et vous ne devez **pas le demander**. 
+N'oubliez pas que vous devez [**dire à** la classe de faire quelque chose, et vous ne devez **pas le demander**](https://martinfowler.com/bliki/TellDontAsk.html). 
 Dans l'exemple qui suit, vous dites à l'instance de `Game` de mettre à jour votre score en fonction de `ENEMY_DESTROYED_SCORE`.
 
 ```Java
