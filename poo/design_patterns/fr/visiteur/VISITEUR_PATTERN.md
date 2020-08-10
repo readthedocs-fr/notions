@@ -4,7 +4,7 @@
 
 ### Prérequis
 
-- Une bonne connaissance de la programmation orientée objet, en particulier sur les interfaces et l'héritage en général
+- Une bonne connaissance en programmation orientée objet, en particulier sur les interfaces et l'héritage en général
 - Savoir ce qu'est la surcharge de méthode
 - Etre à l'aise avec la lecture de `pseudo code`
 
