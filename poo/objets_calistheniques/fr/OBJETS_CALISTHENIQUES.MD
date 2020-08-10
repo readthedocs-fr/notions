@@ -251,7 +251,7 @@ class Board {
 }
 ```
 Il est normal d'avoir des attributs publics dans `Piece` et `Location`.
-En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est, selon les principes des objets calisthéniques, la même chose (voir règle 9).
+En fait, avoir une propriété `publique` ou une propriété `private` avec getter/setter est, selon les principes des objets calisthéniques, la même chose (voir [règle 9](#règle-9--nutilisez-pas-de-getter-et-de-setter-)).
 
 Cependant, la méthode `boardRepresentation()` est horrible, jetez un œil à cette ligne :
 
@@ -341,7 +341,7 @@ Donc plus vous avez des entités petites, plus elles sont faciles à comprendre 
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
-Il faut noter que cette règle est liée à la règle 3.
+Il faut noter que cette règle est liée à la [règle 3](#règle-3--encapsulez-tous-les-primitifs-et-chaînes-de-caractères).
 
 L'idée derrière cette règle est de distinguer deux types de classes :
 
@@ -352,7 +352,7 @@ Deux instances comme limite est un choix arbitraire qui vous oblige à beaucoup 
 
 ## Règle 9 : N'utilisez pas de getter et de setter !
 
-Ma règle préférée.
+Probablement la règle la plus importante de toute, elle favorise une bonne conception logicielle.
 
 Il est normal d'utiliser des getters pour obtenir l'état d'un objet, tant que vous n'utilisez pas le résultat pour prendre des décisions en dehors de l'objet. 
 **Toute décision basée entièrement sur l'état d'un objet doit être prise à l'intérieur de l'objet lui-même**.
