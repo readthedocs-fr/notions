@@ -66,10 +66,10 @@ Revenons sur les changements, il y a l'apparition de deux nouvelles méthodes : 
 ## Règle 2 : N'utilisez pas le mot clé else
 
 Le mot clé *else* est bien connu car il est intégré dans la construction *if/else* qui est présente dans presque tous les langages de programmation.
-Nous sommes d'accord que lire des instructions conditionnelles imbriquées n'est pas agréable.
+Or, lire des instructions conditionnelles imbriquées n'est pas agréable.
 C'est exactement pourquoi il faut l'éviter. 
 Il est beaucoup plus facile d'ajouter une nouvelle branche au code existant que de le réfactoriser vers une meilleure solution.
-Et à force de faire cela, vous vous retrouvez souvent avec un très mauvais code qui est __illisible et incompréhensible__.
+Et à force de faire cela, vous vous retrouvez souvent avec un très mauvais code qui est **illisible et incompréhensible**.
 
 ```Java
 public void login(String username, String password) {
@@ -104,7 +104,7 @@ ou vous pouvez adopter une approche **défensive**, ce qui signifie que vous met
 vous renvoyez un état d'erreur.
 C'est mieux car cela évite les problèmes potentiels auxquels vous n'avez pas pensé.
 
-Comme autre alternative, vous pouvez également introduire une variable afin de rendre votre instruction return paramétrable. Bien que pratique, ce n'est cependant pas toujours possible.
+Comme autre alternative, vous pouvez également introduire une variable afin de rendre votre instruction `return` paramétrable. Bien que pratique, ce n'est cependant pas toujours possible.
 
 ```Java
 public void login(String username, String password) {
@@ -124,24 +124,24 @@ Enfin, les patterns [**Null Object**](https://en.wikipedia.org/wiki/Null_object_
 
 ## Règle 3 : Encapsulez tous les primitifs et chaînes de caractères
 
-Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primitifs dans les objets, afin d'éviter l'anti-pattern Primitive Obsession.
+Suivre cette règle est assez simple, il vous suffit d'encapsuler tous les primitifs dans les objets, afin d'éviter l'anti-pattern [Primitive Obsession](https://refactoring.guru/smells/primitive-obsession).
 
 Si la variable primitive a un comportement, vous DEVEZ l'encapsuler.
-Pour cela, vous pouvez utiliser des **Value Objects** comme `Money` ou `Hour` par exemple. (Une fiche sur les value objets arrive bientôt)
+Pour cela, vous pouvez utiliser des **Value Objects** comme `Money` ou `Hour` par exemple. (Une fiche sur les value objects arrive bientôt)
 
 ## Règle 4 : Une collection par classe
 
 Toute classe qui contient une collection ne doit contenir **aucun autre field**.
-Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les manipuler, __créez une classe dédiée à cet ensemble__.
+Si vous avez un ensemble d'éléments (une collection) et que vous souhaitez les manipuler, **créez une classe dédiée à cet ensemble**.
 
 Chaque collection est **enveloppée dans sa propre classe**, donc maintenant tous les comportements liés à cette collection doivent être implémentés dans la classe contenant la collection (par exemple les méthodes de filtrage).
 
-Pour illustrer cette règle, voici un exemple provenant du code de la notion de [value objects](), nous avons une classe qui représente un ordre de commande :
+Pour illustrer cette règle, voici un exemple provenant du code de la notion de value objects, nous avons une classe qui représente un ordre de commande :
 ```java
 
 public class Order {
 
-    //Not a value object because it has an id
+    // Not a value object because it has an id
     private final UUID orderId;
     private Products products;
     private Address addressToDeliver;
@@ -185,14 +185,14 @@ public class Products {
 
 Nous voyons bien que la classe ne comporte qu'un field qui est une collection de `Product`, la règle est donc respectée.
 Nous pouvons donc observer que la logique pour gérer plusieurs `Product` est bien présente dans cette classe. 
-On pourrait aussi facilement implémenter des méthodes de filtrage qui retourneraient tout les `Product` avec un prix minimum de 10€ par exemple.
+On pourrait aussi facilement implémenter des méthodes de filtrage qui retourneraient tous les `Product` avec un prix minimum de 10€ par exemple.
 
-Maintenant, regardons comment se serait organisé le code s'il n'y avait pas de classe pour gérer cette collection, on aurait sûrement eu quelque chose de ce style : 
+Maintenant, regardons comment serait organisé le code s'il n'y avait pas de classe pour gérer cette collection, on aurait sûrement eu quelque chose de ce style : 
 
 ```java
 public class Order {
 
-    //Not a value object because it has an id
+    // Not a value object because it has an id
     private final UUID orderId;
     private List<Product> products;
     private Address addressToDeliver;
@@ -214,12 +214,12 @@ public class Order {
 }
 ```
 
-Nous voyons bien que ça aurait été à l'objet `Order` de gérer cette logique, alors qu'il aurait pus déléguer cela à une classe qui gère une collection de `Product`. 
-Pour l'instant ce n'est pas choquant, mais si on rajoute différentes méthodes de filtrage, la classe va vite commencer à s'allonger, ce qui ne respecterait pas la [règle 7](https://github.com/Emalios/notions/blob/calisthenics-objects-fr/poo/objets_calistheniques/fr/OBJETS_CALISTHENIQUES.MD#r%C3%A8gle-7--ne-pas-avoir-dentit%C3%A9s-trop-grosses) et serait très difficile à lire et maintenir.
+Nous voyons bien que ça aurait été à l'objet `Order` de gérer cette logique, alors qu'il aurait pu déléguer cela à une classe qui gère une collection de `Product`. 
+Pour l'instant ce n'est pas choquant, mais si on rajoute différentes méthodes de filtrage, la classe va vite commencer à s'allonger, ce qui ne respecterait pas la [règle 7](#r%C3%A8gle-7--ne-pas-avoir-dentit%C3%A9s-trop-grosses) et serait très difficile à lire et maintenir.
 
 ## Règle 5 : Un point par ligne (One dot per line)
 
-Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Ce serait une flèche en PHP, mais qui utilise PHP de toute façon ? :D
+Ce *point* est celui que vous utilisez pour **appeler des méthodes** en Java. Selon le langage, cela peut varier : par exemple, en PHP ce serait une flèche.
 
 Fondamentalement, la règle dit que vous ne devez pas enchaîner les appels de méthodes. 
 Cependant, cela ne s'applique pas aux [interfaces Fluent](http://flippinawesome.org/2013/05/20/fluent-apis-and-method-chaining/) et plus généralement à tout ce qui implémente le [modèle de chaînage de méthodes](https://martinfowler.com/dslCatalog/methodChaining.html) (par exemple, un générateur de requêtes ou un builder).
@@ -270,7 +270,7 @@ class Location {
     }
 }
 ```
-Rendre privé le field `piece` garantit que vous n'essaierez pas d'intéragir avec et ainsi de déplacer de la logique qui devrait se trouver dans la classe `Location`.
+Rendre privé le field `piece` garantit que vous n'essaierez pas d'interagir avec et ainsi de déplacer de la logique qui devrait se trouver dans la classe `Location`.
 Cependant, comme vous devez effectuer une action sur ce field, vous avez besoin d'une nouvelle méthode `addTo()`. 
 Ce n'est pas à l'objet `Location` de déterminer comment le `Piece` sera ajouté, alors changeons ça :
 
@@ -312,20 +312,20 @@ Et voilà qui respecte cette règle et qui est en plus, plus lisible !
 
 ## Règle 6 : N'abrégez pas !
 
-La bonne question étant : **pourquoi diable voulez-vous abréger ?**
+La bonne question étant : « **Pourquoi diable voulez-vous abréger ?** »
 
 Vous pouvez répondre que c'est parce que vous écrivez le même nom encore et encore ?
 Et je répondrai que cette méthode est réutilisée plusieurs fois, et qu'elle ressemble à une **duplication de code**.
 
 Vous direz donc ensuite que le nom de la méthode est de toute façon trop long. 
-Et je vous dirai que votre classe a peut-être de **multiples responsabilités**, ce qui est mauvais car cela viole le principe de [responsabilité unique](https://en.wikipedia.org/wiki/Single-responsibility_principle.
+Et je vous dirai que votre classe a peut-être de **multiples responsabilités**, ce qui est mauvais car cela viole le principe de [responsabilité unique](https://en.wikipedia.org/wiki/Single-responsibility_principle).
 
 Je dis souvent que si vous ne trouvez pas un nom décent pour une classe ou une méthode, il y a probablement un problème. 
 C'est une règle que j'utilise pour concevoir un logiciel en nommant des méthodes ou des attributs.
 
 De plus si vous abrégez, la compréhension de votre code peut devenir ambiguë, ce qui n'est pas une bonne chose, même pour vous quand vous allez vous relire plusieurs semaines après avoir écrit ce code. 
 
-N'abbrégez pas, point final. 
+N'abrégez pas, point final. 
 
 ## Règle 7 : Ne pas avoir d'entités trop grosses
 
@@ -345,8 +345,8 @@ Il faut noter que cette règle est liée à la règle 3.
 
 L'idée derrière cette règle est de distinguer deux types de classes :
 
--Les classes qui **conservent** l'état d'une **seule variable** (value objects).
--Les classes qui **coordonnent** **deux variables distinctes**.
+- Les classes qui **conservent** l'état d'une **seule variable** (value objects).
+- Les classes qui **coordonnent** **deux variables distinctes**.
 
 Deux instances comme limite est un choix arbitraire qui vous oblige à beaucoup découpler vos classes.
 
