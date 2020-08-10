@@ -2,6 +2,12 @@
 
 > :information_source: Exemples écrits en Java
 
+### Prérequis
+
+- Une bonne connaissance de la programmation orientée objet, en particulier sur les interfaces et l'héritage en général
+- Savoir ce qu'est la surcharge de méthode
+- Etre à l'aise avec la lecture de `pseudo code`
+
 Imaginons la situation suivante. Vous devez coder une simulation d'un Zoo qui contient **trois** animaux différents: des **lions**, une **baleine** et des **canards** (c'est pauvre, mais restriction de budget oblige). Etant donné que l'on ne souhaite pas spécialement déterminer de particularités pour les animaux (pour l'instant), on va se contenter de créer nos classes vides.
 
 ```java
@@ -11,6 +17,9 @@ class Lion implements Animal {}
 class Whale implements Animal {}
 class Duck implements Animal {}
 ```
+
+Le tout avec une classe principale:
+
 ```java
 import java.util.*;
 
@@ -25,12 +34,10 @@ class Main {
 }
 ```
 
-Une fois ceci créé, on apprend qu'il faut mettre en place en système pour nourrir les animaux. On aura besoin d'employés, qui s'occuperont de fournir la nourriture nécessaire
-aux bêtes. Pour l'instant, ne nous prenons pas la tête. Implémentons simplement une méthode `feed()` dans l'interface Animal qui déterminera comment l'animal doit être nourri.
+So far so good. Mais une fois ceci créé, on apprend qu'il faut mettre en place **un système pour nourrir les animaux**. On aura besoin **d'employés**, qui s'occuperont de **fournir la nourriture nécessaire aux bêtes**. Pour l'instant, ne nous prenons pas la tête. Implémentons simplement une méthode `feed()` dans l'interface Animal qui déterminera comment l'animal doit être nourri.
 
-Avant de montrer le code, il est important de préciser que tous les morceaux de code jusqu'à la fin de cet article contiendront une bonne dose de `pseudo code`, du code dont
-l'implémentation n'est volontairement pas montrée pour éviter de compliquer les choses. Il faudra s'y habituer, en lisant simplement le code sans chercher à comprendre ce qu'il se passe
-derrière.
+Avant de montrer le code, il est important de préciser que tous les morceaux de code jusqu'à la fin de cet article contiendront une bonne dose de `pseudo code`, du code **dont
+l'implémentation n'est volontairement pas montrée** pour éviter de compliquer les choses. Il faudra s'y habituer, en lisant simplement le code sans chercher à comprendre ce qu'il se passe derrière.
 
 ```java
 interface Animal {
@@ -67,9 +74,9 @@ class Duck implements Animal {
 }
 ```
 
-Excellent ! En utilisant le polymorphisme, on arrive à une super solution avec un code bien organisé. Enfin... vraiment ?
-Il y a déjà un léger problème: est-ce réellement à l'animal de déterminer comment il va être nourri ? Pas vraiment en fait, puisque l'alimentation des animaux devrait être gérée
-par le zoo lui même. Sinon on pourrait se retrouver avec un drôle d'animal comme ceci:
+Excellent ! En utilisant le **polymorphisme**, on arrive à une super solution avec un code bien organisé. Enfin... vraiment ?
+Il y a déjà un léger problème: est-ce réellement à l'animal de déterminer comment il va être nourri ? Pas vraiment en fait, puisque **l'alimentation des animaux devrait être gérée
+par le zoo lui même**. Sinon on pourrait se retrouver avec un drôle d'animal comme ceci:
 
 ```java
 class Ant implements Animal {
@@ -79,11 +86,11 @@ class Ant implements Animal {
     }
 }
 ```
-et le budget exploserait, ça serait la faillite. Cette perte de contrôle est problématique, mais il y a pire.
+et le budget exploserait, ça serait la faillite. Cette perte de contrôle est problématique, mais il y a encore pire.
 
 Si vous avez regardé attentivement le pseudo code, vous verrez que l'alimentation de la baleine dépend de "à quel point" les visiteurs du zoo l'ont déjà nourri pendant la journée,
 et les canards ne sont carréments pas nourris par le personnel. Ce qui implique que... les clients aussi devraient pouvoir nourrir les animaux du zoo. Et là on a un gros problème:
-les clients ne nourrissent pas de la même façon les animaux que le personnel. Utilisons les règles ci-dessous.
+**les clients ne nourrissent pas de la même façon les animaux que le personnel**. Utilisons les règles ci-dessous pour la suite de l'exemple.
 
 ***
 **Client**
@@ -102,12 +109,12 @@ rajouter d'autres manières de nourrir les animaux, il faudra implémenter une t
 l'alimentation, ce qui n'est pas logique.
 
 Une autre possibilité serait de ne pas avoir ces méthodes dans l'interface `Animal`, mais quelque part en vrac dans une classe `util`, mais cela serait encore pire (ne faites
-jamais ça). Non seulement l'organisation du code serait encore pire qu'avec la solution précédente, mais en plus on perd la beauté du polymorphisme et on sera forcé d'avoir:
+jamais ça). Non seulement **l'organisation du code serait encore pire** qu'avec la solution précédente, mais en plus **on perd la beauté du polymorphisme** et on sera forcé d'avoir:
 `feedLionByClient`, `feedLionByEmployee`, `feedWhaleByClient`, etc... Non décidément ça ne va pas.
 
 ## La solution
 
-Le pattern visiteur est une solution qui permet d'amener de l'ordre et de la logique dans le code. On va commencer par créer une classe qui va être utile pour décrire
+Le pattern visiteur est une solution qui permet d'amener de **l'ordre et de la logique** dans le code. On va commencer par créer une classe qui va être utile pour décrire
 l'alimentation des animaux par un employé. Cette classe va s'appeler `ZooEmployeeVisitor`, mais ne cherchez pas à comprendre pour l'instant pourquoi `Visitor`.
 
 ```java
@@ -133,7 +140,7 @@ class ZooEmployeeVisitor {
 }
 ```
 
-Pour l'instant, rien de spécial: on a délégué le comportement "alimentation des animaux par un employé" dans une classe à part.
+Pour l'instant, rien de spécial: **on a délégué le comportement "alimentation des animaux par un employé" dans une classe à part**.
 Maintenant, ajoutons le comportement "alimentation des animaux par un client". De nouveau, ne cherchons pas à comprendre pourquoi son nom comporte "Visitor".
 
 ```java
@@ -161,7 +168,7 @@ class ZooClientVisitor {
 }
 ```
 
-Hmmmm, ça sent les méthodes en commun, c'est une bonne chose. Faisons un peu de factorisation en ayant une interface commune, qu'on appellera `AnimalFeedingVisitor`.
+Hmmmm, ça sent les méthodes en commun, c'est une bonne chose. Faisons un peu de factorisation en ayant **une interface commune**, qu'on appellera `AnimalFeedingVisitor`.
 
 ```java
 interface AnimalFeedingVisitor {
@@ -266,3 +273,11 @@ méthode `feed` dans l'interface visiteur, et que toutes ses sous-classes l'impl
 
 La pattern visiteur est un pattern très pratique qui favorise grandement l'organisation et la logique du code, tout en étant très facile à implémenter. En revanche, il est important
 de ne pas en abuser afin d'équilibrer la logique du code avec la maintenabilité, facteur tout aussi important.
+
+En résumé, la recette de ce pattern est la suivante:
+
+- Vous avez une classe mère `Element`
+- Vous voulez définir plusieurs comportements qui interagissent avec des `Element`, et chaque comportement agit différemment en fonction de à quelle sous-classe de `Element` il a affaire
+- Créez une interface `Visitor`, qui contient autant de méthode `visit` qu'il n'y a d'implémentations de `Element`. Chacune de ces méthodes prend en paramètre un objet d'un type qui est une sous-classe de `Element`.
+- Créez une méthode `accept` dans `Element`, qui demande un `Visitor` en paramètre. Les implémentations de cette méthode sont presque tout le temps `visitor.visit(this)`, mais pour les "groupes d'éléments", une boucle peut être effectuée
+- Chaque implémentation de `Visitor` définit un comportement précis pour chaque sous-classe de `Element`
