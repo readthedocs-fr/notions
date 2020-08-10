@@ -341,7 +341,7 @@ Donc plus vous avez des entités petites, plus elles sont faciles à comprendre 
 
 Cette règle est probablement la plus difficile, mais elle favorise une cohésion élevée et une meilleure encapsulation dans votre classe.
 
-Il faut noter que cette règle est liée à la [règle 3](#règle-3--encapsulez-tous-les-primitifs-et-chaînes-de-caractères).
+Il faut noter que cette règle est liée à la [règle 3](#r%C3%A8gle-3--encapsulez-tous-les-primitifs-et-cha%C3%AEnes-de-caract%C3%A8res).
 
 L'idée derrière cette règle est de distinguer deux types de classes :
 
