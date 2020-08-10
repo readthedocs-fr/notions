@@ -16,8 +16,7 @@ public class Products {
     public Money getProductsCost() {
         Money money = new Money(0);
         for (Product product : products) {
-            Money productCost = product.getCost();
-            money = money.addMoney(productCost);
+            money = product.addCostTo(money);
         }
         return money;
     }

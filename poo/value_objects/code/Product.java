@@ -6,7 +6,7 @@ public class Product {
         this.cost = cost;
     }
 
-    public Money getCost() {
-        return cost;
+    public Money addCostTo(Money money) {
+        return money.addMoney(cost);
     }
 }
