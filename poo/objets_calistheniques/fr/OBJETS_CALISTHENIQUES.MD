@@ -1,5 +1,7 @@
 # Objets Calisthéniques
 
+(Traduction de l'article : https://williamdurand.fr/2013/06/03/object-calisthenics/)
+
 ## Rapide présentation 
 
 Avant tout, il est important de rappeler que les règles des objets calisthéniques ne sont qu'un **guide pour avoir un code plus propre**, il n'est en aucun cas *obligatoire* de respecter ces règles, bien que *conseillé*.
