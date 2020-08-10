@@ -1,9 +1,8 @@
 # Le pattern Visiteur
 
-Pour ce pattern, les exemples intermédiaires seront écrits en Java.
+> :information_source: Exemples écrits en Java
 
-Imaginons la situation suivante. Vous devez coder une simulation d'un Zoo qui contient trois animaux différents: des lions, une baleine et des canards (c'est pauvre, mais restriction
-de budget oblige). Etant donné que l'on ne souhaite pas spécialement déterminer de particularités pour les animaux (pour l'instant), on va se contenter de créer nos classes vides.
+Imaginons la situation suivante. Vous devez coder une simulation d'un Zoo qui contient **trois** animaux différents: des **lions**, une **baleine** et des **canards** (c'est pauvre, mais restriction de budget oblige). Etant donné que l'on ne souhaite pas spécialement déterminer de particularités pour les animaux (pour l'instant), on va se contenter de créer nos classes vides.
 
 ```java
 interface Animal {}
@@ -47,6 +46,7 @@ class Lion implements Animal {
         me.feedCarefully(this, food);
     }
 }
+
 class Whale implements Animal {
     @Override
     public void feed() {
@@ -58,6 +58,7 @@ class Whale implements Animal {
         me.feed(this, new WhaleFood(quantityToFeed));
     }
 }
+
 class Duck implements Animal {
     @Override
     public void feed() {
@@ -82,17 +83,19 @@ et le budget exploserait, ça serait la faillite. Cette perte de contrôle est p
 
 Si vous avez regardé attentivement le pseudo code, vous verrez que l'alimentation de la baleine dépend de "à quel point" les visiteurs du zoo l'ont déjà nourri pendant la journée,
 et les canards ne sont carréments pas nourris par le personnel. Ce qui implique que... les clients aussi devraient pouvoir nourrir les animaux du zoo. Et là on a un gros problème:
-les clients ne nourrissent pas de la même façon les animaux que le personnel. Partons du principe que:
+les clients ne nourrissent pas de la même façon les animaux que le personnel. Utilisons les règles ci-dessous.
 
+***
 **Client**
 - Ne nourrit pas les lions, c'est bien trop dangereux
 - Peut nourrir la baleine en achetant de la nourriture pour baleine à l'entrée du zoo
 - Peut nourrir les canards s'il possède du pain dans sa poche
 
 **Employé**
-- Nourrit les lions en étant prudents
+- Nourrit les lions en étant prudent
 - Nourrit la baleine en fonction de "à quel point" les clients l'ont nourrie pendant la journée
 - Ne nourrit pas les canards, les clients jettent beaucoup trop de pain de toutes façons
+***
 
 On pourrait éventuellement renommer notre méthode `feed()` en `feedByEmployee()` et ajouter une méthode `feedByClient()`, mais... ça commencerait à devenir atroce, si on cherche à
 rajouter d'autres manières de nourrir les animaux, il faudra implémenter une troisième méthode, puis une quatrième... sans compter que les animaux seront toujours ceux qui contrôlent
@@ -107,7 +110,7 @@ jamais ça). Non seulement l'organisation du code serait encore pire qu'avec la 
 Le pattern visiteur est une solution qui permet d'amener de l'ordre et de la logique dans le code. On va commencer par créer une classe qui va être utile pour décrire
 l'alimentation des animaux par un employé. Cette classe va s'appeler `ZooEmployeeVisitor`, mais ne cherchez pas à comprendre pour l'instant pourquoi `Visitor`.
 
-```
+```java
 class ZooEmployeeVisitor {
         
     public void feedLion(Lion lion) {
@@ -214,6 +217,35 @@ class DuckMom extends Duck {
 Et finalement c'est logique ! Une fois la nourriture jetée, l'animal a bien le pouvoir de décider comment la gérer. De manière générale, on préfère simplement `myAnimal.feed(feeder)`
 plutôt que `feeder.feed(myAnimal)` parce que c'est plus intuitif, et que ça donne un peu de pouvoir à l'animal à propos des étapes de l'alimentation, tout en laissant le contrôle au
 nourrisseur de la "procédure" d'alimentation même.
+
+Finalement, le code principal ressemblera à quelque chose comme cela:
+
+```java
+import java.util.*;
+
+class Main {
+    
+    public static void main(String... args) {
+    
+        AnimalFeedingVisitor feeder = getAnyFeeder();
+        List<Animal> animals = Arrays.asList(
+            new Lion(), new Lion()
+            new Whale(),
+            new Duck(), new Duck(), new Duck()
+        );
+        
+        for(Animal animal : animals) {
+            animal.accept(feeder);
+        }
+    }
+    
+    private static AnimalFeedingVisitor getAnyFeeder() {
+        // ici vous pouvez renvoyer l'implémentation que vous souhaitez
+        return new ZooClientVisitor();
+        // return new ZooEmployeeVisitor();
+    }
+}
+```
 
 ## Conventions
 
