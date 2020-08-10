@@ -288,4 +288,5 @@ En résumé, la recette de ce pattern est la suivante:
 ## Sources
 
 [Article Wikipedia](https://en.wikipedia.org/wiki/Visitor_pattern)
+
 [Visitor Design Pattern in Java - Baeldung](https://www.baeldung.com/java-visitor-pattern)
