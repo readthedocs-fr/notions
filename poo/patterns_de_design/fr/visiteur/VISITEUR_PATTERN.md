@@ -268,9 +268,9 @@ visiteur pur, car des conventions de nommage n'ont pas été respectées. Elles 
 
 ## Limitations
 
-Bien que très pratique, ce pattern pose quand même un petit problème: il entrave la maintenabilité du code. En effet, à chaque ajout d'un nouvel animal, non seulement il faudra
-implémenter ce dernier (dans notre exemple, les animaux ne font rien, mais si on complexifiait la situation cela serait différent), mais il faudra en plus ajouter manuellement une
-méthode `feed` dans l'interface visiteur, et que toutes ses sous-classes l'implémentent.
+Bien que très pratique, ce pattern pose quand même un petit problème: **il entrave la maintenabilité du code**. En effet, à chaque ajout d'un nouvel animal, non seulement il faudra
+implémenter ce dernier (dans notre exemple, les animaux ne font rien, mais si on complexifiait la situation cela serait différent), **mais il faudra en plus ajouter manuellement une
+méthode `feed` dans l'interface visiteur**, et que toutes ses sous-classes l'implémentent.
 
 ## Conclusion
 
