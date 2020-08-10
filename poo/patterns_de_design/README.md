@@ -10,4 +10,4 @@ utilisé comme support. Le cours présente généralement le pattern en s'appuya
 
 ## Table des matières
 
-- [Le pattern visiteur](fr/visiteur/VISITEUR_PATTERN.md)
+- [Le pattern visiteur - mise en situation et solution](fr/visiteur/VISITEUR_PATTERN.md)
