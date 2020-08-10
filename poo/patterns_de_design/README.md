@@ -1,8 +1,8 @@
-# Patterns de design
+# Design Patterns
 
 > Écrit par [Antoine Tran](https://github.com/Tran-Antoine)
 
-Un pattern de design (`design pattern` en anglais) est une manière de programmer une partie d'un logiciel, à la manière d'une solution pour résoudre un type de problème récurrent.
+Un design pattern (`patron de conception` en français, mais peu courant) est une manière de programmer une partie d'un logiciel, reconnu comme bonne pratique en réponse à un problème récurrent de conception d'un logiciel
 Ce cours présentera différents patterns, expliquant leur utilisation ainsi que le problème qu'ils cherchent à résoudre.
 
 Chaque chapitre présentant un pattern possèdera un fichier markdown contenant le contenu du cours, ainsi qu'un dossier contenant le code final (disponible dans un ou plusieurs langages)
