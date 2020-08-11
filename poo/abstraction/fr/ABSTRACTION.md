@@ -1,6 +1,6 @@
 # Abstraction
 
-L'idée de l'**abstraction**, c'est de découper une classe en morceaux, pour pouvoir partager (via un passage de paramètre dans une méthode par exemple) **un seul** de ces morceaux plutôt que l'objet "en entier". Pour comprendre l'utilité de ce principe et comment l'appliquer, prenons comme exemple une classe Humain, puisque c'est un truc qu'on connaît plutôt pas trop mal.
+L'idée de l'**abstraction**, c'est de découper une classe en morceaux, pour pouvoir partager (via un passage de paramètre dans une méthode par exemple) **un seul** de ces morceaux plutôt que l'objet "en entier". Pour comprendre l'utilité de ce principe et comment l'appliquer, prenons comme exemple une classe Human, puisque c'est un truc qu'on connaît plutôt pas trop mal.
 
 ```java
 
@@ -24,7 +24,7 @@ class Human {
     }
 
     void consumeEnergy(float value) {
-        this.energie -= value;
+        this.energy -= value;
     }
 }
 ```
