@@ -7,7 +7,7 @@ Eh bien il se caractérise par deux caractéristiques principales que nous allon
 ## -Ils n'ont pas d'identité.
 
 En effet, les value objects ne possèdent pas d'identité, car ce n'est pas du tout ce qui nous intéresse dans ces objets, ce qui nous intéresse,c'est les valeurs qu'ils contiennent. 
-Pour détailler, deux value objects avec une instance différente peuvent quand même être considérés comme égaux s'ils possèdent les mêmes valeurs. 
+Pour détailler, deux value objets sans identités peuvent, s'ils sont équivalents, être partagés, échangés, un remplacé par l'autre, etc, sans aucun problème.
 Alors que pour des objets classiques ça n'a pas de sens d'avoir plusieurs instances d'un objet avec le même identifiant.
 Par exemple, prenons deux objets `Money`, un qui est composé d'un billet de 10€ et un autre qui est composé de deux billets de 5€.
 Eh bien ces deux value objects **sont identiques** car ils ont la **même valeur** bien qu'ils n'aient **pas la même identité**.
