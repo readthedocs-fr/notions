@@ -2,7 +2,7 @@
 
 > Écrit par [Emalios](https://github.com/Emalios)
 
-Cette présentation porte sur la notion de **value objects**, un type d'objet que tout le monde devrait connaître.
+Cette présentation porte sur la notion de **value object**, un type d'objet que tout le monde devrait connaître.
 
 Bien que ces objets peuvent exister dans de nombreux langages de programmation, les exemples seront écrits en `Java` pour cette présentation.
 
