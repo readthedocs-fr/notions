@@ -66,9 +66,9 @@ Exemple :
 public class Main {
 
     public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Entrer un nombre :");
-        int i = Integer.parseInt(br.readLine());
+        int i = scanner.nextInt();
     }
 }
 ```
@@ -77,12 +77,12 @@ Ici, tout ce passe bien si l'utilisateur entre un entier, mais si l'utilisateur 
 public class Main {
 
     public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Entrer un nombre :");
         try {
-            int i = Integer.parseInt(br.readLine());
+            int i = scanner.nextInt();
         } catch (NumberFormatException ignored) {
-            System.out.println("Le nombre que vous avez entrer n'est pas valide");
+            System.out.println("Le nombre que vous avez entré n'est pas valide");
         }
     }
 }
