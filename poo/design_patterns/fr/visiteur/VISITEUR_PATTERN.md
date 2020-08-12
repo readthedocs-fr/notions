@@ -161,7 +161,8 @@ class ZooEmployeeVisitor {
 }
 ```
 
-Pour l'instant, rien de spécial: **on a délégué le comportement "alimentation des animaux par un employé" dans une classe à part**.
+Pour l'instant, rien de spécial : **on a délégué le comportement "alimentation des animaux par un employé" dans une classe à part**.
+
 Maintenant, ajoutons le comportement "alimentation des animaux par un client". De nouveau, ne cherchons pas à comprendre pourquoi son nom comporte "Visitor".
 
 ```java
