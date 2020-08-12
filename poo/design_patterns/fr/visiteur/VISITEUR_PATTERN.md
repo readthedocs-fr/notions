@@ -108,9 +108,10 @@ et les canards ne sont carréments pas nourris par le personnel. Ce qui implique
 
 ***
 **Client**
-- Ne nourrit pas les lions, c'est bien trop dangereux
-- Peut nourrir la baleine en achetant de la nourriture pour baleine à l'entrée du zoo
-- Peut nourrir les canards s'il possède du pain dans sa poche
+- Ne nourrit pas les lions, c'est bien trop dangereux ;
+- Peut nourrir la baleine en achetant de la nourriture pour baleine à l'entrée du zoo ;
+- Peut nourrir les canards s'il possède du pain dans sa poche.
+
 
 **Employé**
 - Nourrit les lions en étant prudent
