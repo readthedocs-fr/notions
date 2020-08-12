@@ -37,7 +37,7 @@ Composition de la stacktrace :<br>
 	at ga.enimaloc.A.a(A.java:35)
 	at ga.enimaloc.Main.main(Main.java:7)
 ```
-indique l'acheminement de l'exception commençant de bas en haut (l’haut étant la méthode ou a était lancée l'exception), chaque ligne se compose de la classe(et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
+indique l'acheminement de l'exception commençant de bas en haut (le haut étant la méthode contenant la **première** instruction ayant causé l'erreur), chaque ligne se compose de la classe(et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
 :warning: Attention : cet acheminement contient pas forcément que vos classes, veuillez bien chercher les ligne que concerne l'erreur, de haut en bas, lisez chaque ligne est arrêtez-vous quand la ligne concerne votre code.
 
 Maintenant, si on essaie de transposer en français, cela donnerait :<br>
@@ -58,7 +58,7 @@ public class Main {
     }
 }
 ```
-À la ligne `list.add(new Object());` vous obtiendrais une NullPointerException car `list` est `null`, pour corriger cela il faudrait définir la liste avec `list = new ArrayList();` ou directement a l'initialisation de celle-ci `private static List<Object> list = new ArrayList();`.
+À la ligne `list.add(new Object());`, vous obtiendrez une NullPointerException car `list` est `null`. Pour corriger cela, il faudrait affecter une valeur à la liste via `list = new ArrayList();` ou directement à l'initialisation de celle-ci comme ceci : `private static List<Object> list = new ArrayList();`.
 #### Deuxième cause : un choix de l'utilisateur
 Ici, vous devrez passer par un `try/catch` ou faire une vérification pour éviter que l'utilisateur provoque l'erreur.<br>
 Exemple :
@@ -72,7 +72,7 @@ public class Main {
     }
 }
 ```
-Ici, tout ce passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre une autre chose qu'un entier — exemple : un String —, vas lancer l'exception `NumberFormatException` pour corriger cela nous devrions faire :
+Ici, tout ce passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre quelque chose d'autre comme un mot, vas lancer l'exception `NumberFormatException` sera lancée. Afin de corriger cela, nous devrions faire :
 ```java
 public class Main {
 
