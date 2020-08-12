@@ -21,27 +21,119 @@ Toutes les classes héritant de la classe [RuntimeException](https://docs.oracle
 ### Compréhension :
 Une stacktrace est faite pour comprendre une erreur. Elle contient toutes les informations nécessaires.
 ```
-java.lang.Exception: Template exception
+java.lang.NullPointerException: Main cannot be null
+	at ga.enimaloc.B.c(B.java:16)
+	at ga.enimaloc.B.b(B.java:24)
+	at ga.enimaloc.A.a(A.java:35)
 	at ga.enimaloc.Main.main(Main.java:7)
 ```
-Ici, vous avez une stacktrace qui ne sera jamais invoquée, mais elle servira d'exemple.<br>
 Composition de la stacktrace :<br>
-- `java.lang.Exception` est le chemin de l'exception, il permet de déterminer le nom de l'exception et de savoir de quelle librairie elle provient.
-- `Template exception` est le message fourni lors de l'invocation. Il précise souvent la raison pour laquelle l'exception a été invoquée.
-- Le reste en dessous `at ga.enimaloc.Main.main(Main.java:7)` est le chemin de l'exception : `ga.enimaloc` est le package de la classe, `Main` est la classe, `main` la méthode, `Main.java` le fichier source, et `7` est la ligne de l'invocation.
+- `java.lang.NullPointerException` est la classe qui correspond à l'erreur, il permet de déterminer le nom de l'exception et de savoir de quelle librairie elle provient.
+- `Main cannot be null` est le message fourni lors de l'invocation. Il précise souvent la raison pour laquelle l'exception a été invoquée.
+- Le reste en dessous 
+```
+	at ga.enimaloc.B.c(B.java:16)
+	at ga.enimaloc.B.b(B.java:24)
+	at ga.enimaloc.A.a(A.java:35)
+	at ga.enimaloc.Main.main(Main.java:7)
+```
+indique l'acheminement de l'exception commençant de bas en haut (l’haut étant la méthode ou a était lancée l'exception), chaque ligne se compose de la classe(et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
+:warning: Attention : cet acheminement contient pas forcément que vos classes, veuillez bien chercher les ligne que concerne l'erreur, de haut en bas, lisez chaque ligne est arrêtez-vous quand la ligne concerne votre code.
 
 Maintenant, si on essaie de transposer en français, cela donnerait :<br>
-`Exception` faisant partie du package `java.lang` a été invoqué à la ligne `7` de la classe `Main` du package `ga.enimaloc` avec en précision `Template exception`.<br>
+`NullPointerException` faisant partie du package `java.lang` a été invoqué à la ligne `16` du fichier `B.java` du package `ga.enimaloc` avec en précision `Main cannot be null`.<br>
 <br>
 
 ### Correction
 #### Premiere cause : le code
-Dans ce cas-ci, vous devez regarder dans quel cas l'erreur est déclenchée et voir suivant votre code, en déboggant si besoin.
+Dans ce cas-ci, vous devez regarder dans quel cas l'erreur est déclenchée et voir suivant votre code, en déboggant si besoin.<br>
+Exemple :
+```java
+public class Main {
+
+    private static List<Object> list = null;
+
+    public static void main(String[] args) {
+        list.add(new Object());
+    }
+}
+```
+À la ligne `list.add(new Object());` vous obtiendrais une NullPointerException car `list` est `null`, pour corriger cela il faudrait définir la liste avec `list = new ArrayList();` ou directement a l'initialisation de celle-ci `private static List<Object> list = new ArrayList();`.
 #### Deuxième cause : un choix de l'utilisateur
-Ici, vous devrez passer par un `try/catch` ou faire une vérification pour éviter que l'utilisateur provoque l'erreur.
+Ici, vous devrez passer par un `try/catch` ou faire une vérification pour éviter que l'utilisateur provoque l'erreur.<br>
+Exemple :
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Entrer un nombre :");
+        int i = Integer.parseInt(br.readLine());
+    }
+}
+```
+Ici, tout ce passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre une autre chose qu'un entier — exemple : un String —, vas lancer l'exception `NumberFormatException` pour corriger cela nous devrions faire :
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Entrer un nombre :");
+        try {
+            int i = Integer.parseInt(br.readLine());
+        } catch (NumberFormatException ignored) {
+            System.out.println("Le nombre que vous avez entrer n'est pas valide");
+        }
+    }
+}
+```
 #### Troisième cause : l'environnement dans lequel l'application est lancée
 Comme la deuxième cause, vous devrez passer par un `try/catch` ou faire une vérification.
+Exemple :
+```java
+public class Main {
 
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://www.google.com/");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            InputStream inputStream = conn.getInputStream();
+            int ch;
+            StringBuffer buffer =new StringBuffer();
+            while((ch = inputStream.read()) != -1){
+                buffer.append((char) ch);
+            }
+            String content = buffer.toString();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'as aucun accès a internet, pour faire une vérification il faudra ajouter un `catch` de `java.net.UnknownHostException`, c'est-à-dire
+```java
+public class Main {
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://www.google.com/");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            InputStream inputStream = conn.getInputStream();
+            int ch;
+            StringBuffer buffer =new StringBuffer();
+            while((ch = inputStream.read()) != -1){
+                buffer.append((char) ch);
+            }
+            String content = buffer.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            System.out.println("Aucune connection n'est détecté !");
+        }
+    }
+}
+```
 ## Quelques erreurs courantes
 ### NullPointerException :
 Une [NullPointerException](https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html) (ou sous forme réduite NPE) est une exception héritant de la classe [RuntimeException](https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html), c'est donc une _unchecked exception_.<br>
