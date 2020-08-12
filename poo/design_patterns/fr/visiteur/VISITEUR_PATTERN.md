@@ -221,7 +221,8 @@ public void receiveFoodBy(AnimalFeedingVisitor visitor) {
 }
 ```
 
-Mais alors, était-ce vraiment nécessaire ? `a.f(b)` au lieu de `b.f(a)` ? Eh bien ça peut l'être. Imaginons une maman canard, qui serait également considéré comme "nourrissable".
+Mais alors, était-ce vraiment nécessaire ? `a.f(b)` au lieu de `b.f(a)` ? Eh bien ça peut l'être. Imaginons une maman canard, qui serait également considéré comme « nourrissable ».
+
 On pourrait alors décider dans cette classe de nourrir chacun des bébés canards de la maman individuellement quand la nourriture est jetée. Par exemple:
 
 ```java
