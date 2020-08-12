@@ -254,7 +254,8 @@ Et finalement c'est logique ! Une fois la nourriture jetée, l'animal a bien le 
 plutôt que `feeder.feed(myAnimal)` parce que c'est plus intuitif, et que ça donne un peu de pouvoir à l'animal à propos des étapes de l'alimentation, tout en laissant le contrôle au
 nourrisseur de la "procédure" d'alimentation même.
 
-Finalement, le code principal ressemblera à quelque chose comme cela:
+Finalement, le code principal ressemblera à quelque chose comme cela :
+
 
 ```java
 import java.util.*;
