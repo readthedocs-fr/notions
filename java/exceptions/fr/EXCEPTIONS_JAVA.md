@@ -54,7 +54,7 @@ Elle est invoquée quand le programme essaye d'accéder à une valeur `null` ; c
 ### IndexOutOfBoundException :
 Une [IndexOutOfBoundException](https://docs.oracle.com/javase/8/docs/api/java/lang/IndexOutOfBoundException.html) (ou sous forme réduite IOOB) est une exception héritant de la classe [RuntimeException](https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html), c'est donc une _unchecked exception_.<br>
 <br>
-Elle est invoquée quand le programme essaie d'accéder à un élément avec un index supérieur à la limite de l'objet.
+Elle est invoquée quand le programme essaie d'accéder à un élément avec un index invalide (inférieur à 0 ou supérieur à la limite de l'objet).
 
 ### StackOverflowError :
 Une [StackOverflowError](https://docs.oracle.com/javase/8/docs/api/java/lang/StackOverflowError.html) est une erreur héritant de la classe [Error](https://docs.oracle.com/javase/8/docs/api/java/lang/Error.html), c'est donc une erreur grave.<br>
