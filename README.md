@@ -15,6 +15,7 @@
 ## Programmation orientée objet
 
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
+- `📖` [Design patterns - présentation et exemples](poo/design_patterns)
 
 ## Java
 
