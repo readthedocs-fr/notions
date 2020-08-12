@@ -206,7 +206,8 @@ Parfait ! La logique du programme est désormais bien meilleure: c'est celui qui
 peut appeler une méthode de notre choix qui correspond à l'animal à nourrir, et en fournissant à cette méthode un animal, ce dernier sera nourri correctement. Et si l'on veut ajouter
 un nouvel animal, on devra ajouter une nouvelle méthode `feed`. 
 Faisons encore un peu mieux en rendant possible l'inverse, c'est à dire nourrir un animal à partir d'un nourrisseur (au lieu d'utiliser un nourisseur pour nourrir un animal). Ajoutons une méthode dans
-notre interface `Animal`:
+notre interface `Animal` :
+
 
 ```java
 interface Animal {
