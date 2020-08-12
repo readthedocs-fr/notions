@@ -214,7 +214,8 @@ interface Animal {
 }
 ```
 
-L'implémentation de cette méthode par les différents animaux sera toujours la même, c'est à dire:
+L'implémentation de cette méthode par les différents animaux sera toujours la même, c'est à dire :
+
 
 ```java
 @Override
