@@ -102,7 +102,8 @@ class Ant implements Animal {
 ```
 et le budget exploserait, ça serait la faillite. Cette perte de contrôle est problématique, mais il y a encore pire.
 
-Si vous avez regardé attentivement le pseudo code, vous verrez que l'alimentation de la baleine dépend de "à quel point" les visiteurs du zoo l'ont déjà nourri pendant la journée,
+Si vous avez regardé attentivement le pseudo code, vous verrez que l'alimentation de la baleine dépend de « à quel point » les visiteurs du zoo l'ont déjà nourri pendant la journée,
+
 et les canards ne sont carréments pas nourris par le personnel. Ce qui implique que... les clients aussi devraient pouvoir nourrir les animaux du zoo. Et là on a un gros problème:
 **les clients ne nourrissent pas de la même façon les animaux que le personnel**. Utilisons les règles ci-dessous pour la suite de l'exemple.
 
