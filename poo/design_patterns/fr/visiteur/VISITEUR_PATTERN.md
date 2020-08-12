@@ -114,9 +114,10 @@ et les canards ne sont carréments pas nourris par le personnel. Ce qui implique
 
 
 **Employé**
-- Nourrit les lions en étant prudent
-- Nourrit la baleine en fonction de "à quel point" les clients l'ont nourrie pendant la journée
-- Ne nourrit pas les canards, les clients jettent beaucoup trop de pain de toutes façons
+- Nourrit les lions en étant prudent ;
+- Nourrit la baleine en fonction de "à quel point" les clients l'ont nourrie pendant la journée ;
+- Ne nourrit pas les canards, les clients jettent beaucoup trop de pain de toutes façons.
+
 ***
 
 On pourrait éventuellement renommer notre méthode `feed()` en `feedByEmployee()` et ajouter une méthode `feedByClient()`, mais... ça commencerait à devenir atroce, si on cherche à
