@@ -23,7 +23,8 @@ class Whale implements Animal {}
 class Duck implements Animal {}
 ```
 
-Le tout avec une classe principale:
+Le tout avec une classe principale :
+
 
 ```java
 import java.util.*;
@@ -89,8 +90,9 @@ class Duck implements Animal {
 ```
 
 Excellent ! En utilisant le **polymorphisme**, on arrive à une super solution avec un code bien organisé. Enfin... vraiment ?
-Il y a déjà un léger problème: est-ce réellement à l'animal de déterminer comment il va être nourri ? Pas vraiment en fait, puisque **l'alimentation des animaux devrait être gérée
-par le zoo lui même**. Sinon on pourrait se retrouver avec un drôle d'animal comme ceci:
+Il y a déjà un léger problème : est-ce réellement à l'animal de déterminer comment il va être nourri ? Pas vraiment en fait, puisque **l'alimentation des animaux devrait être gérée
+par le zoo lui même**. Sinon on pourrait se retrouver avec un drôle d'animal comme ceci :
+
 
 ```java
 class Ant implements Animal {
@@ -105,7 +107,8 @@ et le budget exploserait, ça serait la faillite. Cette perte de contrôle est p
 
 Si vous avez regardé attentivement le pseudo code, vous verrez que l'alimentation de la baleine dépend de « à quel point » les visiteurs du zoo l'ont déjà nourri pendant la journée,
 
-et les canards ne sont carréments pas nourris par le personnel. Ce qui implique que... les clients aussi devraient pouvoir nourrir les animaux du zoo. Et là on a un gros problème:
+et les canards ne sont carréments pas nourris par le personnel. Ce qui implique que... les clients aussi devraient pouvoir nourrir les animaux du zoo. Et là on a un gros problème :
+
 **les clients ne nourrissent pas de la même façon les animaux que le personnel**. Utilisons les règles ci-dessous pour la suite de l'exemple.
 
 ***
@@ -127,7 +130,8 @@ rajouter d'autres manières de nourrir les animaux, il faudra implémenter une t
 l'alimentation, ce qui n'est pas logique.
 
 Une autre possibilité serait de ne pas avoir ces méthodes dans l'interface `Animal`, mais quelque part en vrac dans une classe `util`, mais cela serait encore pire (ne faites
-jamais ça). Non seulement **l'organisation du code serait encore pire** qu'avec la solution précédente, mais en plus **on perd la beauté du polymorphisme** et on sera forcé d'avoir:
+jamais ça). Non seulement **l'organisation du code serait encore pire** qu'avec la solution précédente, mais en plus **on perd la beauté du polymorphisme** et on sera forcé d'avoir :
+
 `feedLionByClient`, `feedLionByEmployee`, `feedWhaleByClient`, etc... Non décidément ça ne va pas.
 
 ## La solution
@@ -203,7 +207,8 @@ interface AnimalFeedingVisitor {
 }
 ```
 
-Parfait ! La logique du programme est désormais bien meilleure: c'est celui qui nourrit qui définit comment nourrir. Désormais, à partir de n'importe quel "nourrisseur d'animaux", on
+Parfait ! La logique du programme est désormais bien meilleure : c'est celui qui nourrit qui définit comment nourrir. Désormais, à partir de n'importe quel « nourrisseur » d'animaux", on
+
 peut appeler une méthode de notre choix qui correspond à l'animal à nourrir, et en fournissant à cette méthode un animal, ce dernier sera nourri correctement. Et si l'on veut ajouter
 un nouvel animal, on devra ajouter une nouvelle méthode `feed`. 
 Faisons encore un peu mieux en rendant possible l'inverse, c'est à dire nourrir un animal à partir d'un nourrisseur (au lieu d'utiliser un nourisseur pour nourrir un animal). Ajoutons une méthode dans
@@ -254,7 +259,8 @@ class DuckMom extends Duck {
 
 Et finalement c'est logique ! Une fois la nourriture jetée, l'animal a bien le pouvoir de décider comment la gérer. De manière générale, on préfère simplement `myAnimal.feed(feeder)`
 plutôt que `feeder.feed(myAnimal)` parce que c'est plus intuitif, et que ça donne un peu de pouvoir à l'animal à propos des étapes de l'alimentation, tout en laissant le contrôle au
-nourrisseur de la "procédure" d'alimentation même.
+nourrisseur de la « procédure » d'alimentation même.
+
 
 Finalement, le code principal ressemblera à quelque chose comme cela :
 
@@ -269,7 +275,8 @@ class Main {
         AnimalFeedingVisitor feeder = getAnyFeeder();
         
         List<Animal> animals = Arrays.asList(
-            new Lion(), new Lion()
+            new Lion(), new Lion(),
+
             new Whale(),
             new Duck(), new Duck(), new Duck()
         );
@@ -290,15 +297,17 @@ class Main {
 ## Conventions
 
 Vous ne l'avez peut-être pas réalisé, mais vous venez d'utiliser le pattern visiteur pour résoudre ce problème. En revanche, le code ci-dessus n'est pas encore totalement un pattern
-visiteur pur, car des conventions de nommage n'ont pas été respectées. Elles sont utiles car cela permet de rapidement reconnaître le pattern.
+visiteur pur, car des conventions de nommage n'ont pas été respectées. Elles sont utiles car cela permet de rapidement reconnaître le pattern :
 
-- les méthodes de l'interface `Visitor` (dans notre exemple `AnimalFeedingVisitor`) devraient toutes avoir le même nom, à savoir (ici) `feed` ou plus généralement `visit`.
-- La méthode `receiveFoodBy` qui a comme but d'accepter un nourrisseur devrait s'appeler `accept`.
-- Le nom de la classe / interface qui contient cette méthode `accept` devrait finir en `Element`
+- les méthodes de l'interface `Visitor` (dans notre exemple `AnimalFeedingVisitor`) devraient toutes avoir le même nom, à savoir (ici) `feed` ou plus généralement `visit` ;
+- La méthode `receiveFoodBy` qui a comme but d'accepter un nourrisseur devrait s'appeler `accept` ;
+- Le nom de la classe / interface qui contient cette méthode `accept` devrait finir en `Element`.
+
 
 ## Limitations
 
-Bien que très pratique, ce pattern pose quand même un petit problème: **il entrave la maintenabilité du code**. En effet, à chaque ajout d'un nouvel animal, non seulement il faudra
+Bien que très pratique, ce pattern pose quand même un petit problème : **il entrave la maintenabilité du code**. En effet, à chaque ajout d'un nouvel animal, non seulement il faudra
+
 implémenter ce dernier (dans notre exemple, les animaux ne font rien, mais si on complexifiait la situation cela serait différent), **mais il faudra en plus ajouter manuellement une
 méthode `feed` dans l'interface visiteur**, et que toutes ses sous-classes l'implémentent.
 
@@ -307,13 +316,14 @@ méthode `feed` dans l'interface visiteur**, et que toutes ses sous-classes l'im
 La pattern visiteur est un pattern très pratique qui favorise grandement l'organisation et la logique du code, tout en étant très facile à implémenter. En revanche, il est important
 de ne pas en abuser afin d'équilibrer la logique du code avec la maintenabilité, facteur tout aussi important.
 
-En résumé, la recette de ce pattern est la suivante:
+En résumé, la recette de ce pattern est la suivante :
 
-- Vous avez une classe mère `Element`
-- Vous voulez définir plusieurs comportements qui interagissent avec des `Element`, et chaque comportement agit différemment en fonction de à quelle sous-classe de `Element` il a affaire
-- Créez une interface `Visitor`, qui contient autant de méthode `visit` qu'il n'y a d'implémentations de `Element`. Chacune de ces méthodes prend en paramètre un objet d'un type qui est une sous-classe de `Element`.
-- Créez une méthode `accept` dans `Element`, qui demande un `Visitor` en paramètre. Les implémentations de cette méthode sont presque tout le temps `visitor.visit(this)`, mais pour les "groupes d'éléments", une boucle peut être effectuée
-- Chaque implémentation de `Visitor` définit un comportement précis pour chaque sous-classe de `Element`
+- Vous avez une classe mère `Element` ;
+- Vous voulez définir plusieurs comportements qui interagissent avec des `Element`, et chaque comportement agit différemment en fonction de la sous-classe de `Element` à laquelle il a affaire ;
+- Créez une interface `Visitor`, qui contient autant de méthode `visit` qu'il n'y a d'implémentations de `Element`. Chacune de ces méthodes prend en paramètre un objet d'un type qui est une sous-classe de `Element` ;
+- Créez une méthode `accept` dans `Element`, qui demande un `Visitor` en paramètre. Les implémentations de cette méthode sont presque tout le temps `visitor.visit(this)`, mais pour les "groupes d'éléments", une boucle peut être effectuée ;
+- Chaque implémentation de `Visitor` définit un comportement précis pour chaque sous-classe de `Element`.
+
 
 ## Sources
 
