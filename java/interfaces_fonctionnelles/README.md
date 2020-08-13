@@ -8,6 +8,8 @@ Ce cours porte sur la notion d'interface fonctionnelle, une notion qui a été i
 
 - [Interfaces fonctionnelles - définition, utilité et exemples](fr/INTERFACES_FONCTIONNELLES.md)
 
+***
+
 # Functional interfaces
 
 > Authored by [Antoine Tran](https://github.com/Tran-Antoine)
