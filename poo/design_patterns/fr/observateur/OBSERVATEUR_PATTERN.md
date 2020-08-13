@@ -139,19 +139,6 @@ class Alarm implements Observable {
     @Override
     public void notifyObservers() {
         observers.foreach(Observer::notify);
-
-       /*
-        Cette méthode ne vous dit rien ?
-        Allez lire le cours sur les interfaces fonctionnelles 
-        ainsi que celui sur le Method Referencing ou référencement de méthode.
-        
-        Cette ligne fait le même travail que la boucle ci dessous :
-       
-        for(Observer observer : observers) {
-            observer.notify();
-        }
-
-        */
     }
 }
 
@@ -182,8 +169,16 @@ class DoorLockerComponent implements Observer {
 
 *Je ne vais pas écrire tous les composants, vous avez compris l'idée.*
 
-- [Interfaces Fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md)
-- [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md#toujours-plus-court-toujours-plus-loin) 
+Le contenu de la méthode `notifyObservers()` ne vous dit rien ?
+Allez lire le cours sur les [interfaces fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md) ainsi que la note sur le [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md#toujours-plus-court-toujours-plus-loin) ou référencement de méthode.
+
+Cette ligne fait le même travail que la boucle ci dessous :
+       
+```java
+    for(Observer observer : observers) {
+        observer.notify();
+    }
+```
 
 Nous avons à présent un code qui suit l'**Observer Pattern.** Ajoutons un centre de contrôle pour la touche de réalisme et ça plaira sûrement au patron.
 
