@@ -1,5 +1,12 @@
 # Observer Pattern
 
+> :information_source: Exemples écrits en Java
+
+### Prérequis
+
+- Comprendre la notion d'héritage 
+
+---
 
 L'**Observer Pattern** *(ou observateur en français)* est un patron de conception prenant en compte au moins 2 sujets : un sujet **observable** et un ou plusieurs sujets **observateurs**.
 
