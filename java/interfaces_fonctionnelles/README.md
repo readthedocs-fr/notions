@@ -7,3 +7,13 @@ Ce cours porte sur la notion d'interface fonctionnelle, une notion qui a été i
 ## Table des matières
 
 - [Interfaces fonctionnelles - définition, utilité et exemples](fr/INTERFACES_FONCTIONNELLES.md)
+
+# Functional interfaces
+
+> Authored by [Antoine Tran](https://github.com/Tran-Antoine)
+
+This course is about functional interfaces, a feature that has been introduced with Java 8. It will cover its main aspects through explanations and examples, while also trying to make the reader understand why those interfaces are so valuable.
+
+## Table of contents
+
+- [Functional interfaces - definition, use cases and examples](e/FUNCTIONAL_INTERFACES.md)
