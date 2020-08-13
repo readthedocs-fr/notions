@@ -111,7 +111,7 @@ public class Main {
     }
 }
 ```
-Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'a aucun accès a internet, pour faire une vérification il faudra ajouter un `catch` de `java.net.UnknownHostException`, c'est-à-dire
+Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'a aucun accès à internet, pour faire une vérification il faudra ajouter un `catch` de `java.net.UnknownHostException`, c'est-à-dire
 ```java
 public class Main {
     public static void main(String[] args) {
