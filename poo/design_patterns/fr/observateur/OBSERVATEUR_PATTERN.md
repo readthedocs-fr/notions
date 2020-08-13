@@ -22,7 +22,7 @@ Rentrons dans le cœur du patron : **sa conception** !
 ---
 
 
-*Comme vous aller le constater, j'utilise parfois du pseudo-code, vous en avez peut-être déjà entendu parler et vous en entendrez encore sûrement parler. Le pseudo-code est du code suffisamment explicite pour être compréhensible sans devoir connaître l'exacte nature du code derrière*
+*Comme vous allez le constater, j'utilise parfois du pseudo-code, vous en avez peut-être déjà entendu parler et vous en entendrez encore sûrement parler. Le pseudo-code est du code suffisamment explicite pour être compréhensible sans devoir connaître son implémentation interne*
 
 Par exemple :
 
@@ -61,7 +61,7 @@ class Alarm {
         */
         Police.sendTheftAlert(this.house.getAddress())
         this.house.lockAllDoors();
-        this.house.getOwner().sendMessage("Someone entered in your house !");
+        this.house.getOwner().sendMessage("Someone entered your house !");
         //...
     }
 }
@@ -70,7 +70,7 @@ class Alarm {
 Ici, nous avons 2 problèmes :
 
 1. L'alarme n'est pas censée connaître les composants qui lui réagissent 
-2. Si nous voulons ajouter un nouveau dispositif auto-déclenchant, il nous faudrait d'abord le créer puis le rajouter dans la méthode `alert()`. À force cette méthode pourrait faire des dizaines et des dizaines de lignes.
+2. Si nous voulons ajouter un nouveau dispositif auto-déclenchant, il nous faudrait d'abord le créer puis le rajouter dans la méthode `alert()`. À force, cette méthode pourrait faire des dizaines et des dizaines de lignes.
 
 ## Qu'est ce qu'on fait alors Einstein ?
 
@@ -131,15 +131,17 @@ class Alarm implements Observable {
         this.speaker.startAlarm();
     }
 
+    @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
-
+    
+    @Override
     public void notifyObservers() {
         observers.foreach(Observer::notify);
 
        /*
-        Cette méthode ne vous dis rien ?
+        Cette méthode ne vous dit rien ?
         Allez lire le cours sur les interfaces fonctionnelles 
         ainsi que celui sur le Method Referencing ou référencement de méthode.
         
@@ -155,6 +157,7 @@ class Alarm implements Observable {
 
 class PoliceCallerComponent implements Observer {
     
+    @Override 
     public void notify() {
         System.out.println("Police successfully called");
     }
@@ -162,6 +165,7 @@ class PoliceCallerComponent implements Observer {
 
 class DoorLockerComponent implements Observer {
 
+    @Override
     public void notify() {
         lockAllDoors();
         System.out.print("The thief is blocked inside");
@@ -179,7 +183,7 @@ class DoorLockerComponent implements Observer {
 *Je ne vais pas écrire tous les composants, vous avez compris l'idée.*
 
 - [Interfaces Fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md)
-- [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md) (voir section **Toujours plus court, toujours plus loin**)
+- [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md#toujours-plus-court-toujours-plus-loin) 
 
 Nous avons à présent un code qui suit l'**Observer Pattern.** Ajoutons un centre de contrôle pour la touche de réalisme et ça plaira sûrement au patron.
 
