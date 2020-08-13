@@ -126,10 +126,10 @@ public class Main {
                 buffer.append((char) ch);
             }
             String content = buffer.toString();
+        } catch (UnknownHostException e) {
+            System.out.println("Aucune connexion n'est détecté !");
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (UnknownHostException e) {
-            System.out.println("Aucune connection n'est détecté !");
         }
     }
 }
