@@ -16,6 +16,7 @@
 
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
 - `📑` [Objets calisthéniques - définition et explications](poo/objets_calistheniques)
+- `📖` [Design patterns - présentation et exemples](poo/design_patterns)
 
 ## Java
 
