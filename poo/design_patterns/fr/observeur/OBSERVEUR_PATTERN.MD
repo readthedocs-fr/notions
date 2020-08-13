@@ -140,8 +140,8 @@ class Alarm implements Observable {
 
        /*
         Cette méthode ne vous dis rien ?
-        Allez lire le cours sur les interfaces fonctionnelles 
-        ainsi que celui sur le "Method Referencing"
+        Allez lire le cours sur les [interfaces fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md)
+        ainsi que celui sur le [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/referencement_methode/fr/REFERENCEMENT_METHODE.md) ou référencement de méthode.
         
         Cette ligne fait le même travail que la boucle ci dessous :
        
