@@ -18,4 +18,4 @@ This course is about functional interfaces, a feature that has been introduced b
 
 ## Table of contents
 
-- [Functional interfaces - definition, use cases and examples](e/FUNCTIONAL_INTERFACES.md)
+- [Functional interfaces - definition, use cases and examples](en/FUNCTIONAL_INTERFACES.md)
