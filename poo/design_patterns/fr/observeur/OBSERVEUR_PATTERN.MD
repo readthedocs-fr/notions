@@ -179,7 +179,7 @@ class DoorLockerComponent implements Observer {
 *Je ne vais pas écrire tous les composants, vous avez compris l'idée.*
 
 - [Interfaces Fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md)
-- [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/referencement_methode/fr/REFERENCEMENT_METHODE.md)
+- [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md) (voir section **Toujours plus court, toujours plus loin**)
 
 Nous avons à présent un code qui suit l'**Observer Pattern.** Ajoutons un centre de contrôle pour la touche de réalisme et ça plaira sûrement au patron.
 
