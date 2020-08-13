@@ -53,7 +53,7 @@ class Alarm {
       est appelée ne nous intéresse pas. 
       Il s'agit de pseudo-code
     */
-    public alert(){
+    public void alert(){
         /*
           Encore une fois du pseudo-code, 
           je n'ai pas défini la variable house
@@ -69,7 +69,7 @@ class Alarm {
 
 Ici, nous avons 2 problèmes :
 
-1. L'alarme n'est pas censé connaître les composants qui lui réagissent 
+1. L'alarme n'est pas censée connaître les composants qui lui réagissent 
 2. Si nous voulons ajouter un nouveau dispositif auto-déclenchant, il nous faudrait d'abord le créer puis le rajouter dans la méthode `alert()`. À force cette méthode pourrait faire des dizaines et des dizaines de lignes.
 
 ## Qu'est ce qu'on fait alors Einstein ?
@@ -207,6 +207,8 @@ Impeccable !
 À présent, dès que la méthode `alert()` de la classe `Alarm` est appelée, chacun de ses **Observers** se verra notifié et agira en conséquence.
 
 Et en prime, notre code suit une logique réaliste, ce n'est pas l'alarme qui connaît ses **Observers** mais bien le **Centre de contrôle** qui définit ce qui va se produire lors de l'alerte.
+
+Par ailleurs, nous retrouvons dans ce code un bel exemple du principe `Ouvert/Fermé` symbolisé par la lettre `O` dans la liste de principe dits [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/). En effet, notre classe `Alarm` est ouverte à l'extension mais fermée à la modification. Nous pouvons l'étendre à l'infini en lui ajoutant de plus en plus de composants sans pour autant devoir la modifier. Le système de l'alarme est terminé, nous n'avons plus besoin de le changer. Ainsi, nous sommes sûr de ne jamais mettre en péril le fonctionnement de cette classe lors de l'ajout d'un nouveau dispositif auto-réactif.
 
 ## Conclusion
 
