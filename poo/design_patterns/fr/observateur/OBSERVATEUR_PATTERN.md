@@ -59,7 +59,7 @@ class Alarm {
           je n'ai pas défini la variable house
           mais on comprend son principe 
         */
-        Police.sendTheftAlert(this.house.getAddress())
+        Police.sendTheftAlert(this.house.getAddress());
         this.house.lockAllDoors();
         this.house.getOwner().sendMessage("Someone entered your house !");
         //...
