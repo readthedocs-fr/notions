@@ -49,7 +49,7 @@ Sans utiliser l'Observer Pattern, le code pourrait ressembler à ça :
 class Alarm {
     
     /*
-      Ici la manière dont detectSmoke() 
+      Ici la manière dont alert() 
       est appelée ne nous intéresse pas. 
       Il s'agit de pseudo-code
     */
@@ -59,7 +59,7 @@ class Alarm {
           je n'ai pas défini la variable house
           mais on comprend son principe 
         */
-        Police.sendThiefAlert(this.house.getAddress())
+        Police.sendTheftAlert(this.house.getAddress())
         this.house.lockAllDoors();
         this.house.getOwner().sendMessage("Someone entered in your house !");
         //...
@@ -78,7 +78,7 @@ C'est pour ce genre de situation que l'Observer Pattern est né.
 
 Ce pattern se compose de 2 sujets comme dit plus haut : un sujet **observable** et un ou des sujets **observateurs**.
 
-Nous allons nous aider du principe d'abstraction afin d'écrire un code réutilisable dans la grande majorité voire dans l'entièreté des cas :
+Nous allons nous aider du principe d'abstraction afin d'écrire un code réutilisable dans la grande majorité voire l'entièreté des cas :
 
 ```java
 interface Observer {
@@ -115,7 +115,7 @@ interface Observer {
 
 interface Observable {
     void notifyObservers();
-    void addObserver observer);
+    void addObserver(Observer observer);
 }
 ```
 
@@ -136,9 +136,20 @@ class Alarm implements Observable {
     }
 
     public void notifyObservers() {
+        observers.foreach(Observer::notify);
+
+       /*
+        Cette méthode ne vous dis rien ?
+        Allez lire le cours sur les interfaces fonctionnelles 
+        ainsi que celui sur le "Method Referencing"
+        
+        Cette ligne fait le même travail que la boucle ci dessous :
+       
         for(Observer observer : observers) {
             observer.notify();
         }
+
+        */
     }
 }
 
@@ -153,7 +164,7 @@ class DoorLockerComponent implements Observer {
 
     public void notify() {
         lockAllDoors();
-        System.out.print("The theft is blocked inside");
+        System.out.print("The thief is blocked inside");
     }
 
     private void lockAllDoors() {
