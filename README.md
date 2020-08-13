@@ -22,3 +22,4 @@
 - `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
 - `📑` [Tests unitaires - utilisation en java](java/tests_unitaires)
 - `📑` [Listes à types indéfinis - de l'abstraction au niveau générique](java/généricité/listes_wildcard)
+- `📑` [Les exceptions en Java](java/exceptions)
