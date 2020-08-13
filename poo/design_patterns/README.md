@@ -13,4 +13,4 @@ utilisé comme support. Le cours présente généralement le pattern en s'appuya
 ## Table des matières
 
 - [Le pattern visiteur - mise en situation et solution](fr/visiteur/VISITEUR_PATTERN.md)
-- [Le pattern observeur - définition, problème et résolution](fr/observeur/OBSERVEUR_PATTERN.md)
+- [Le pattern observateur - définition, problème et résolution](fr/observateur/OBSERVATEUR_PATTERN.md)
