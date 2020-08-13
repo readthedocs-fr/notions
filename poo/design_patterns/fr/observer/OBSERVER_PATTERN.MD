@@ -220,6 +220,8 @@ Globalement il faut retenir que
 
 <ins>Notes :</ins>
 
+J'ai présenté ici l'**Observer Pattern** dans son style le plus épuré. Bien évidemment, vous pouvez l'adapter au gré de vos envies. Par exemple, la méthode `notify()` de l'**Observer** peut prendre un paramètre afin de le passer à chaque **Observer**. Dans mon cas, j'aurais pu passer l'adresse de la maison si j'avais eu besoin. La signature de la méthode aurait ressemblé à `void notify(Address address);`. La méthode `notifyObservers()` peut également être aménagée en fonction des besoins et vous pouvez inclure d'autres méthodes qui peuvent vous sembler utiles dans votre cas. Le principe reste le même 
+
 La programmation réactive utilise et amplifie grandement ce principe, je vous laisse vous renseigner sur le site officiel du projet [Reactor.io](https://projectreactor.io) qui est une, si pas la plus connue, des librairies Java pour la programmation réactive.
 
 L'**Observer Pattern** se lie très bien avec un Entity Component System (abrégé ECS) pour ceux qui en ont déjà entendu parler. Un billet sera peut-être écrit dessus un jour.
