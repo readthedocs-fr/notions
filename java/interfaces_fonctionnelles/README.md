@@ -14,7 +14,7 @@ Ce cours porte sur la notion d'interface fonctionnelle, une notion qui a été i
 
 > Authored by [Antoine Tran](https://github.com/Tran-Antoine)
 
-This course is about functional interfaces, a feature that has been introduced with Java 8. It will cover its main aspects through explanations and examples, while also trying to make the reader understand why those interfaces are so valuable.
+This course is about functional interfaces, a feature that has been introduced by Java 8. It will cover its main aspects through explanations and examples, while also trying to make the reader understand why those interfaces are so valuable.
 
 ## Table of contents
 
