@@ -28,7 +28,7 @@ java.lang.NullPointerException: Main cannot be null
 	at ga.enimaloc.Main.main(Main.java:7)
 ```
 Composition de la stacktrace :<br>
-- `java.lang.NullPointerException` est la classe qui correspond à l'erreur, il permet de déterminer le nom de l'exception et de savoir de quelle librairie elle provient.
+- `java.lang.NullPointerException` est la classe qui correspond à l'erreur, elle permet de déterminer le nom de l'exception et de savoir de quelle librairie elle provient.
 - `Main cannot be null` est le message fourni lors de l'invocation. Il précise souvent la raison pour laquelle l'exception a été invoquée.
 - Le reste en dessous 
 ```
@@ -37,7 +37,7 @@ Composition de la stacktrace :<br>
 	at ga.enimaloc.A.a(A.java:35)
 	at ga.enimaloc.Main.main(Main.java:7)
 ```
-indique l'acheminement de l'exception commençant de bas en haut (le haut étant la méthode contenant la **première** instruction ayant causé l'erreur), chaque ligne se compose de la classe(et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
+indique l'acheminement de l'exception commençant de bas en haut (le haut étant la méthode contenant la **première** instruction ayant causé l'erreur), chaque ligne se compose de la classe (et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
 :warning: Attention : cet acheminement contient pas forcément que vos classes, veuillez bien chercher les ligne que concerne l'erreur, de haut en bas, lisez chaque ligne est arrêtez-vous quand la ligne concerne votre code.
 
 Maintenant, si on essaie de transposer en français, cela donnerait :<br>
@@ -45,7 +45,7 @@ Maintenant, si on essaie de transposer en français, cela donnerait :<br>
 <br>
 
 ### Correction
-#### Premiere cause : le code
+#### Première cause : le code
 Dans ce cas-ci, vous devez regarder dans quel cas l'erreur est déclenchée et voir suivant votre code, en déboggant si besoin.<br>
 Exemple :
 ```java
@@ -72,7 +72,7 @@ public class Main {
     }
 }
 ```
-Ici, tout ce passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre quelque chose d'autre comme un mot, vas lancer l'exception `NumberFormatException` sera lancée. Afin de corriger cela, nous devrions faire :
+Ici, tout se passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre quelque chose d'autre comme un mot, l'exception `NumberFormatException` sera lancée. Afin de corriger cela, nous devrions faire :
 ```java
 public class Main {
 
@@ -111,7 +111,7 @@ public class Main {
     }
 }
 ```
-Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'as aucun accès a internet, pour faire une vérification il faudra ajouter un `catch` de `java.net.UnknownHostException`, c'est-à-dire
+Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'a aucun accès a internet, pour faire une vérification il faudra ajouter un `catch` de `java.net.UnknownHostException`, c'est-à-dire
 ```java
 public class Main {
     public static void main(String[] args) {
