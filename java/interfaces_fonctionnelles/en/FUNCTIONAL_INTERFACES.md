@@ -224,3 +224,18 @@ class SomeClass {
 
 1. Reference the method of an object (and not a class), for instance: `myObject::someMethod;` This will turn out to be useful if we require a method that returns `void` and asks for **one** (not two!) `SomeClass` type object. Why not two? Simply because we already indicate from which object `someMethod` will be called. All that's missing is thus the sole parameter.
 2. Use a static reference, for instance: `SomeClass::someMethod;`. This time the signature of the method must be a method that also returns `void` but asks for **two** `SomeObject` type objects, since here the object from which `someMethod` will be called must also be provided. The first parameter will be the latter, and the second will be the parameter of `someMethod`.
+
+## Standard library
+
+Since it would be impossible to cover all the systems that use functional interface, this section will be focused on describing the main interfaces provided by the standard library.
+
+- `Supplier<T>` supplies a `T` type object through a `get()` method
+- `Runnable` performs an action that requires no parameter, nor any return value
+- `Consumer<T>`is the same as `Runnable`, but requires a single parameter of type `T`
+- `Function<T, R>` acts as a function that asks for a `T` and returns a `R`
+- `Predicate<T>` is merely a shortcut for `Function<T, Boolean>`.
+- `BiConsumer<T, U>`, `BiFunction<T, U, R>`, `BiPredicate<T, U> are similar to the previous ones, but take two parameters instead of one
+
+## Conclusion
+
+Thanks to the new syntax Java 8 provided such as lambda expressions and method referencing, functional interfaces have been introduced to the language by allowing, in a way, to store functions in variables. However, we're still extremely far from reaching functional programming support (and Java will very likely never reach it), even though this feature is very practical and useful.
