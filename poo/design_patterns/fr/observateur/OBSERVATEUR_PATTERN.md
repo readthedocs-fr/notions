@@ -22,7 +22,7 @@ Rentrons dans le cœur du patron : **sa conception** !
 ---
 
 
-*Comme vous allez le constater, j'utilise parfois du pseudo-code, vous en avez peut-être déjà entendu parler et vous en entendrez encore sûrement parler. Le pseudo-code est du code suffisamment explicite pour être compréhensible sans devoir connaître son implémentation interne*
+*Comme vous allez le constater, j'utilise parfois du code facilité. Par code facilité, j'entends du code suffisamment explicite pour être compréhensible sans pour autant devoir connaître son implémentation interne*
 
 Par exemple :
 
@@ -51,11 +51,11 @@ class Alarm {
     /*
       Ici la manière dont alert() 
       est appelée ne nous intéresse pas. 
-      Il s'agit de pseudo-code
+      Il s'agit de code facilité 
     */
     public void alert(){
         /*
-          Encore une fois du pseudo-code, 
+          Encore une fois du code facilité,
           je n'ai pas défini la variable house
           mais on comprend son principe 
         */
