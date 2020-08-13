@@ -32,7 +32,7 @@ class Main {
     public static void main(String... args) {
     
         List<Animal> animals = Arrays.asList(
-            new Lion(), new Lion()
+            new Lion(), new Lion(),
             new Whale(),
             new Duck(), new Duck(), new Duck()
         );
@@ -274,7 +274,6 @@ class Main {
         
         List<Animal> animals = Arrays.asList(
             new Lion(), new Lion(),
-
             new Whale(),
             new Duck(), new Duck(), new Duck()
         );
