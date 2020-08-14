@@ -8,7 +8,7 @@
 
 ---
 
-The **Observer Pattern** is a design pattern which makes use of 2 subjects : a **observable** subject and one or more **observer** subject.
+The **Observer Pattern** is a design pattern which makes use of 2 subjects : an **observable** subject and one or more **observer** subject.
 
 When the observable subject switch of state, it will notify each one of its subjects which will react in consequence.
 
@@ -67,7 +67,7 @@ class Alarm {
 
 Here, 2 problems arise :
 
-1. The alarm isn't supposed to know the systems which reacts to it.
+1. The alarm isn't supposed to know the systems which react to it.
 2. If we want to add a new auto-activable system, we would have to create it and next add it in the `alert()` method. By doing this, the method could have lines and lines in the long run.
 
 ## So, what do we do Einstein ?
@@ -90,7 +90,7 @@ interface Observable {
 
 These interfaces seem very empty
 
-With this pattern, a class called **Observer** must be notifiable at any time of the day and night and an **observable** class must notify each one of the elements which are observing it.
+With this pattern, a class so-called **Observer** must be notifiable at any time of the day and night and an **observable** class must notify each one of the elements which are observing it.
 
 Let's add these 2 methods :
 
@@ -201,22 +201,22 @@ class ControlCenter {
 
 Perfect !
 
-Now, as soon as the `alert()` method from the `Alarm` class get called, each one of its **Observers** will get notified and will react in consequence.
+Now, as soon as the `alert()` method from the `Alarm` class gets called, each one of its **Observers** will get notified and will react in consequence.
 
-And as bonus, our code follows a realistic logic, it's not the alarm which knows its **Observers** but our **control center** which define what will happen when our alarm goes on.
+And as bonus, our code follows a realistic logic, it's not the alarm which knows its **Observers** but our **control center** which defines what will happen when our alarm goes on.
 
-Moreover, we can see in this code a nice example `Open/Closed` symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
+Moreover, we can see in this code a nice example of the `Open/Closed` principle symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
 
 While speaking about the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles, we can also notice the `D` letter principle named the `Dependency Inversion principle`. Indeed, by making use of `Observer` and `Observable` interfaces, we have build a code that directly refers to abstractions and not to implementations. Our `addObserver(Observer observer)` method takes an object of type `Observer` as parameter. We can pass it any **Observer** implementation, the class implementing the `Observable` interface will never have to deal with the implementation. It's a significant point in maintenability and readibility of our code because we will never have to care of consequences a new implementation will have on the global code, at least not of the POV of our **Observer Pattern**.
 
 ## Conclusion
 
-We have seen the problem type that a l'**Observer Pattern** can fix and his conception step by step.
+We have seen the problem type that an **Observer Pattern** can fix and its conception step by step.
 
 Overall, we must remember that :
 
 - This pattern allows us to split our code in many parts.
-- It helps us to store or code with a better logic.
+- It helps us to store our code with a better logic.
 - It's based on 2 important interfaces : **Observer** and **Observable**.
 - The **Observable** class notify each one of its **Observers** when it switch of state.
 - It helps us to easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles.
@@ -225,8 +225,8 @@ Overall, we must remember that :
 
 <ins>Notes :</ins>
 
-I presented here the **Observer Pattern** in its purest style. Of course, you can ajust adapt it according to your desires. For example, the **Observer** `notify()` method can take a parameter to pass it to each **Observer**. In my case, I could have passed the house address if I had had this need. The method's signature would have looked to `void notify(Address address);`. The `notifyObservers()` method can also get fitted out according to your needs and you can also include some other methods that look usefull for you in your case. The idea stay the same. 
+I presented here the **Observer Pattern** in its purest style. Of course, you can ajust it according to your desires. For example, the **Observer** `notify()` method can take a parameter to pass it to each **Observer**. In my case, I could have passed the house address if I had had this need. The method's signature would have looked to `void notify(Address address);`. The `notifyObservers()` method can also get fitted out according to your needs and you can also include some other methods that look usefull for you in your case. The idea stay the same. 
 
 The reactive paradigm uses and greatly amplifies this principle, I let you inquire on the official website of the [Reactor.io](https://projectreactor.io) project which is one of the best, if not the best, know of the Java libraries for reactive programming.
 
-The **Observer Pattern** suits really good with a Entity Component System (abreviated ECS) for those who have already heard of it. An article will maybe someday get written about it.
+The **Observer Pattern** suits really good with an Entity Component System (abreviated ECS) for those who have already heard of it. An article will maybe someday get written about it.
