@@ -61,7 +61,7 @@ interface BinaryOperation {
 }
 ```
 
-Our goal is to somehow be able to instantiate an object that will possess this `compute` function, so that we can perform operations between to numbers, such as an **addition**.
+Our goal is to somehow be able to instantiate an object that will possess this `compute` function, so that we can perform operations between two numbers, such as an **addition**.
 In Java 7 old fashioned style, the quickest way to do so would be the following:
 
 ```java
