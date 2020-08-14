@@ -56,7 +56,7 @@ So far so good, we have that we want. This code works perfectly, except, in real
 1. **We restraint the hiking of the objects of type Human**, whereas anything can **walk** and **exhausted** could take a hiking. It’s not really the kind to forbid to elephants and to tractors to participate :(
 2. We ask a whole human but us all we need is their legs (hum). This class hiking, however currently access to the human respiratory system (via `breathe()` ) and to his stomach (via `eat()` ) ! **So, we give too much power to this class Hiking, since it is able to do things who shouldn’t be accessible to it**. <br>
 
-So, how to contour this two problems? 
+So, how to get around this two problems? 
 
 The **interfaces** come to our rescue (interfaces are great). Let's make a `Walking` interface, which allows to describe something that moves and gets tired:
 
