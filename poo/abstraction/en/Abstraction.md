@@ -54,7 +54,7 @@ class Hiking {
 So far so good, we have that we want. This code works perfectly, except, in reality, it contains two major problems.
 
 1. **We restraint the hiking of the objects of type Human**, whereas anything can **walk** and **exhausted** could take a hiking. It’s not really the kind to forbid to elephants and to tractors to participate :(
-2. We ask a human in full but us all we need, this is his legs (hum). This class hiking, however currently access to the human respiratory system (via `breathe()` ) and to this stomach (via `eat()` ) ! **So, we give too much power to this class Hiking, since she is able to do things who shouldn’t be her accessible**. <br>
+2. We ask a whole human but us all we need is their legs (hum). This class hiking, however currently access to the human respiratory system (via `breathe()` ) and to his stomach (via `eat()` ) ! **So, we give too much power to this class Hiking, since it is able to do things who shouldn’t be accessible to it**. <br>
 
 So, how to contour this two problems? 
 
