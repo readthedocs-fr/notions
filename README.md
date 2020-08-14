@@ -17,6 +17,10 @@
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
 - `📖` [Design patterns - présentation et exemples](poo/design_patterns)
 
+## Programmation réactive
+
+- `📑` [Introduction au paradigme réactif](reactive/INTRODUCTION_FR.md)
+
 ## Java
 
 - `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
