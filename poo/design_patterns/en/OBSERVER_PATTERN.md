@@ -68,7 +68,7 @@ class Alarm {
 Here, 2 problems arise :
 
 1. The alarm isn't supposed to know the systems which reacts to it.
-2. If we want to add a new auto-activable system, we would have to create it and next add it in the `alert()` method. À force, cette méthode pourrait faire des dizaines et des dizaines de lignes.
+2. If we want to add a new auto-activable system, we would have to create it and next add it in the `alert()` method. By doing this, the method could have lines and lines in the long run.
 
 ## So, what do we do Einstein ?
 
