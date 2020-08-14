@@ -235,14 +235,16 @@ class SomeClass {
 
 1. Référencer la méthode d'un objet, par exemple : `myObject::someMethod;`. Cela sera utile si on demande une méthode qui renvoie `void` et qui demande **un** (et pas deux, attention !) objet de type `SomeClass`. Pourquoi pas deux ? Simplement parce qu'on indique déjà de quel objet on va appeler la méthode `someMethod`. Il suffit donc d'avoir ce paramètre `other`.
 2. Utiliser une référence static, par exemple: `SomeClass::someMethod`. Cette fois-ci, cela fonctionne si on demande une méthode qui renvoie `void` et qui demande **deux** objets de type SomeClass. Pourquoi deux ? Car cette fois, on n'indique pas depuis quel objet on va appeler `someMethod`, alors il faut aussi en fournir un. Sans oublier le paramètre `other`, il faut donc deux objets et non un seul.
-3. Référencer un constructeur, par exemple : `SomeClass::new`. Nous pouvons ainsi créer une nouvelle instance de la classe `SomeClass`. C'est utile dans le cas suivant par exemple : 
+3. Référencer un constructeur, par exemple : `SomeClass::new`. Nous pouvons ainsi créer une nouvelle instance de la classe `SomeClass`, puisqu'un constructeur n'est rien d'autre qu'une méthode un peu particulière qui n'a pas de nom. C'est utile dans le cas suivant par exemple : 
+
 ```java
 List<String> names = new ArrayList<>(Arrays.asList(
                          "Paul",
                          "Marc",
                          "Jean"
                      ));
-names.foreach(SomeClass::new);
+names.forEach(SomeClass::new);
+
 ```
 Cette possibilité nous fait économiser quelques caractères, sans ça nous aurions eu `names.foreach(name -> new SomeClass(name));`. Le compilateur est capable d'inférer (comprendre implicitement) qu'il faut passer la variable locale `name` en paramètre du constructeur.
 
