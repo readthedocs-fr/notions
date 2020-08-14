@@ -1,6 +1,6 @@
 # Introduction à la Programmation Réactive
 
-> Cours écrit par A~Z
+> Écrit par [A~Z](https://github.com/AZ-0)
 
 Avez vous déjà entendu parler de la programmation réactive ? Non ? Et bien, vous devriez !
 
