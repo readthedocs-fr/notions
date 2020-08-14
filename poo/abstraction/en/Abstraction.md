@@ -1,6 +1,6 @@
 # Abstraction
 
-The **abstraction** idea, is divide a class in parts, to be able to share (via a parameter passed in method for example) **only one** of this part rather the object “in full”. To understand the utility of this principle and how apply, take for example a class Human, since this is a thing that we know better.
+**Abstraction** is idea of dividing a class into several parts, to be able to share (via a parameter passed in a method for example) **only one** of these parts, rather than the object entirely. To understand the utility of this principle and how to apply it, take for example a class `Human` since this is something that we know well.
 
 
 ```java
@@ -30,7 +30,7 @@ class Human {
 }
 ```
 
-Now, imagine that we have a class `Hiking` that allows us to organise a walk. A thing of style:
+Now, imagine that we have a class `Hiking` that allows us to organise a walk. Something like:
 
 ```java
 
@@ -51,14 +51,14 @@ class Hiking {
 }
 ```
 
-So far so good, we have that we want. This code works perfectly, except, in reality, it contains two major problems.
+So far so good, we have what we want. This code works perfectly well, except that, in reality, it contains two major problems.
 
-1. **We restraint the hiking of the objects of type Human**, whereas anything can **walk** and **exhausted** could take a hiking. It’s not really the kind to forbid to elephants and to tractors to participate :(
-2. We ask a whole human but us all we need is their legs (hum). This class hiking, however currently access to the human respiratory system (via `breathe()` ) and to his stomach (via `eat()` ) ! **So, we give too much power to this class Hiking, since it is able to do things who shouldn’t be accessible to it**. <br>
+1. **We restraint the hiking of the objects of type Human**, whereas anything that can **walk** and **be exhausted** could take a hike. It’s not really the kind to forbid to elephants and to tractors to participate :(
+2. We ask for a whole human but all we need is their legs (hum). This hiking class however currently has access to the human breathing system (via `breathe()` ) and to his stomach (via `eat()` )! **So, we give too much power to this class, since it is able to do things that it shouldn’t be able to do**. <br>
 
-So, how to get around this two problems? 
+So, how do we get around these two problems? 
 
-The **interfaces** come to our rescue (interfaces are great). Let's make a `Walking` interface, which allows to describe something that moves and gets tired:
+**Interfaces** come to our rescue (interfaces are great). Let's make a `Walking` interface, which allows describing something that moves and gets tired:
 
 ```java
 interface Walking {
@@ -67,7 +67,7 @@ interface Walking {
 }
 ```
 
-So, now, our class Human will be able to **implement** this super interface, and in reality we add `implements Walking` and put a little `@Override` on their methods `move` and `consumeEnergy` and the turn is played, since this is a behaviour that we had already implemented beforehand, just without the interface.
+So now, our class `Human` will be able to **implement** this awesome interface, and all that's to di is to add `implements Walking` and put a little `@Override` on our `move` and `consumeEnergy` methos, and that's it, since this is a behavior that we had already implemented beforehand, only without the interface.
 
 ```java
 class Human implements Walking {
@@ -97,7 +97,7 @@ class Human implements Walking {
 }
 ```
 
-But, what to change? Now, instead of making a human list in our Hiking, we will do a **Walking list** (it’s more politically correct). And, there is almost nothing to change, it’s a good sign:
+But, what has changed? Well now, instead of making a Human list in our Hiking class, we will do a **Walking list** (it’s more politically correct). And, there is almost nothing to change, which is a good sign:
 
 ```java
 
@@ -118,14 +118,14 @@ class Hiking {
 }
 ```
 
-And, henceforth, not only our Hiking class hasn’t access to the Human methods `breathe` and `eat`, since, nowhere, we said to our work with humans (no, but think, if a hiking can make you swallow peas, it would be creepy, still), but more, it accepts the elephants and the tractors !
-Provided they implement `Walking` them too… and, who know how to out of print a tractor.
+And, henceforth, not only doesn't our Hiking class have access to the Human methods `breathe` and `eat`, since, we never specified that it's humans we're working with (think about it, if hiking could make you swallow peas, it would be creepy, right?), but also, it accepts the elephants and the tractors!
+But that would assuming that they implement `Walking` too… and, who knows how to make a tractor tired.
 
 ## Conclusion
 
-Make an abstraction to our **Human** class we allowed to do two very important opposite things:
+By making an abstraction to our **Human** class, we allowed two very important yet opposite things:
 
-- **An access restriction**, since `Hiking` hasn’t access to some functions to the `Human` class
-- **An ease of access**, since `Hiking` accepts henceforth, every object type implementing `Walking`, instead of being limited to humans.
+- **An access restriction**, since `Hiking` doesn’t have access to the functions that are specific to the `Human` class
+- **An ease of access**, since `Hiking` accepts henceforth every object whose type implements `Walking`, instead of being limited to humans.
 
-For more information on this principle [SOLID] (<https://fr.wikipedia.org/wiki/SOLID_(informatique)>) named **Dependency Inversion** (who is mainly based on abstraction), I invite you to read [Wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle) on this subject.
+For more information on the [SOLID] (<https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)>) principle called **Dependency Inversion** (witch is mainly based on abstraction), I invite you to read the [Wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle) article related to this topic.
