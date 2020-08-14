@@ -118,8 +118,8 @@ class Hiking {
 }
 ```
 
-And, henceforth, not only our Hiking class hasn’t access to the Human methods `breathe` and `eat`, since, nowhere, we said to our work with humans (no, but think, if a hiking can make you swallow peas, it would be creepy, still), but more, she accepts the elephants and the tractors !
-Provided that implements `Walking` them too… and, who know how to out of print a tractor.
+And, henceforth, not only our Hiking class hasn’t access to the Human methods `breathe` and `eat`, since, nowhere, we said to our work with humans (no, but think, if a hiking can make you swallow peas, it would be creepy, still), but more, it accepts the elephants and the tractors !
+Provided they implement `Walking` them too… and, who know how to out of print a tractor.
 
 ## Conclusion
 
