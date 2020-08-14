@@ -2,8 +2,8 @@
 
 La programmation est un domaine très intéressant, lucratif et vaste. 
 Commencer par python est très souvent un choix judicieux pour beaucoup de raisons.
-En voici quelques-unes :
 
+En voici quelques-unes :
 - Python possède une syntaxe très simple, permettant d'avoir des codes à la fois compactes et lisibles ;
 - Python est très complet. Concrètement, on peut faire énormément de choses avec. 
 De l'IA, en passant par le backend web jusqu'à son utilisation dans les domaines scientifiques ;
