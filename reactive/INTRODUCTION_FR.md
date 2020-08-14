@@ -12,8 +12,8 @@ Donc, commençons par la définition imbitable de wikipédia :
 En [français](https://fr.wikipedia.org/wiki/Programmation_r%C3%A9active)
 > En informatique, la programmation réactive est un paradigme de programmation visant à conserver une cohérence d'ensemble en propageant les modifications d'une source réactive (modification d'une variable, entrée utilisateur, etc.) aux éléments dépendants de cette source.
 
-Et en [anglais](https://en.wikipedia.org/wiki/Reactive_programming), parce que l'anglais c'est bien
-> In computing, reactive programming is a declarative programming paradigm concerned with data streams and the propagation of change. With this paradigm it is possible to express static (e.g., arrays) or dynamic (e.g., event emitters) data streams with ease, and also communicate that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the changed data flow.
+Et en [anglais](https://en.wikipedia.org/wiki/Reactive_programming), parce que l'anglais c'est bien (c'est même tellement bien que j'ai traduit pour vous)
+> En informatique, la programmation réactive est un paradigme de programmation déclarative portant principalement sur les flux de données (data streams) et la propagation du changement (propagation of change). Il est possible avec ce paradigme de facilement exprimer des flux de données statiques (comme des tableaux) ou dynamiques (comme des émetteurs d'événements), ainsi que de montrer clairement une dépendance dans le modèle d'exécution, ce qui facilite la propagation automatique de transformations d'un flux de données.
 
 D'ailleurs je préfère la version anglaise qui est bien plus complète :D
 
