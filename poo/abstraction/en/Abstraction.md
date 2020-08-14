@@ -1,6 +1,6 @@
 # Abstraction
 
-**Abstraction** is idea of dividing a class into several parts, to be able to share (via a parameter passed in a method for example) **only one** of these parts, rather than the object entirely. To understand the utility of this principle and how to apply it, take for example a class `Human` since this is something that we know well.
+**Abstraction** is the idea of dividing a class into several parts, to be able to share (via a parameter passed in a method for example) **only one** of these parts, rather than the object entirely. To understand the utility of this principle and how to apply it, take for example a class `Human` since this is something that we know well.
 
 
 ```java
