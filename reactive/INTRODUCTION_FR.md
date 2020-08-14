@@ -1,6 +1,6 @@
 # Introduction à la Programmation Réactive
 
-> Cours écris par A~Z
+> Cours écrit par A~Z
 
 Avez vous déjà entendu parler de la programmation réactive ? Non ? Et bien, vous devriez !
 
