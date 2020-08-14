@@ -20,7 +20,7 @@ Pas de panique, si vous ne comprenez pas c'est normal !
 
 ## Une première approche
 
-Si je vous dis `emitter`, vous pensez à quoi ?
+Si je vous dis emitter, vous pensez à quoi ?
 > Euh... Un truc qui émet ?
 
 **EXACT !** Un emitter, ça n'est ni plus, ni moins qu'un truc qui émet. Un émetteur, quoi. On appelle aussi ça `Publisher` par ailleurs.
@@ -31,14 +31,14 @@ Alors vu qu'on sait qu'un emitter ça émet des trucs, on va créer une structur
 Cette structure, on peut la transformer, c'est à dire qu'on peut modifier les valeurs émises, la manière dont elles sont émises, la manière dont elles sont organisées, etc...
 Cette structure, on peut lui attacher des side-effects, c'est à dire qu'on peut faire une truc sur un truc quand le truc en question est émis.
 Cette structure, c'est un flux de données (les fameux data streams dont parle wikipedia)
-Cette structure, ça s'appelle un Flux.
+Cette structure, ça s'appelle un `Flux`.
 
 
 
 ## Une seconde approche
 
-Je digresse. Je digresse tellement que tout d'un coup je décide qu'on va parler d'Observable. Alors un Observable, c'est quoi ?
-Un Observable, on peut l'observer (no joke). Ça veut dire que quand son état change, il va aller notifier tout ses Observer (ceux qui l'observent) qu'il a changé, pour qu'ils appliquent des effets, et si ce sont eux mêmes des Observable, changent leur état, notifient leur propres Observer, et ainsi de suite. C'est ce qu'on appelle la propagation du changement (propagation of change en anglais, c'est un terme qui revient souvent quand on essaie de définir la programmation réactive et vous allez vite comprendre pourquoi).
+Je digresse. Je digresse tellement que tout d'un coup je décide qu'on va parler d'`Observable`. Alors un Observable, c'est quoi ?
+Un Observable, on peut l'observer (no joke). Ça veut dire que quand son état change, il va aller notifier tout ses `Observer` (ceux qui l'observent) qu'il a changé, pour qu'ils appliquent des effets, et si ce sont eux mêmes des Observable, changent leur état, notifient leur propres Observer, et ainsi de suite. C'est ce qu'on appelle la propagation du changement (propagation of change en anglais, c'est un terme qui revient souvent quand on essaie de définir la programmation réactive et vous allez vite comprendre pourquoi).
 Tout ça, c'est l'[Observer Pattern][observer].
 
 > Mais dites donc, j'ai lu ce paragraphe pour rien alors ? C'est un complot pour me faire perdre mon temps, c'est ça ?!
@@ -46,7 +46,7 @@ Tout ça, c'est l'[Observer Pattern][observer].
 Heureusement qu'on peut aller plus loin ! L'observer pattern c'est sympa, mais ça a des limitations...
 
 
-### Un lien sauvage avec le sujet du cours apparait !
+### Un lien sauvage avec le sujet de la fiche apparait !
 
 Voyons, voyons... Nous savons déjà qu'un Flux, c'est un flux de données qui correspond aux données émises par un émetteur. Vous l'aurez peut-être d'ores et déjà compris, mais que se passe-t-il quand l'émetteur émet une valeur ? Cette valeur passe dans le flux de données, ce qui veut dire que celui-ci *change d'état*.
 
@@ -98,7 +98,10 @@ C'est un cas très courant, et créer un flux de données pour traiter un seul o
 Heureusement, il y a les `Mono`. Un Mono fonctionne en tout point comme un Flux, à ceci près qu'il ne se complètera toujours qu'avec au plus une valeur.
 Par exemple, si dans votre fameux appel à la database vous voulez récupérer les informations d'un seul client, un Mono est ce qu'il vous faut !
 
-Nous avons fini pour de bon, cette fois ci ^^
+Nous avons fini pour de bon, cette fois ci ^^  (enfin !)
+
+
+Ne vous attendez pas à magiquement savoir utiliser la programmation réactive correctement, il s'agit d'un paradigme à appréhender après tout. Seules vos larmes et votre sueur vous permettront de manipuler les Flux et les Mono comme s'il s'agissait de votre couteau suisse favori.
 Vous trouverez ci-dessous des liens pour approfondir les notions brièvement abordées pendant cette fiche.
 
 
