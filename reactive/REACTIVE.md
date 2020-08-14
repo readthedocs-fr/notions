@@ -13,8 +13,6 @@ Et en [anglais](https://en.wikipedia.org/wiki/Reactive_programming), parce que l
 
 D'ailleurs je préfère la version anglaise qui est bien plus complète :D
 
-> Ouhla, tout ceci est bien compliqué, je ne comprends rien
-
 Pas de panique, si vous ne comprenez pas c'est normal !
 
 
@@ -26,7 +24,7 @@ Si je vous dis `emitter`, vous pensez à quoi ?
 > Euh... Un truc qui émet ?
 
 **EXACT !** Un emitter, ça n'est ni plus, ni moins qu'un truc qui émet. Un émetteur, quoi. On appelle aussi ça `Publisher` par ailleurs.
-Et quand ça a finit d'émettre, ça émet un signal de complétion, histoire ceux qui écoutent la radio sâchent que le programme ne passera plus et qu'ils peuvent arrêter d'écouter.
+Et quand ça a finit d'émettre, ça émet un signal de complétion, histoire que ceux qui écoutent la radio sâchent que le programme ne passera plus et qu'ils peuvent arrêter d'écouter.
 Comme vous n'avez pas l'air très impressionné je vais passer à la suite :p
 
 Alors vu qu'on sait qu'un emitter ça émet des trucs, on va créer une structure qui va simplement correspondre à tous ces trucs émis, en fonction du temps.
@@ -48,11 +46,11 @@ Tout ça, c'est l'[Observer Pattern][observer].
 Heureusement qu'on peut aller plus loin ! L'observer pattern c'est sympa, mais ça a des limitations...
 
 
-### Un lien avec le sujet du cours sauvage apparait !
+### Un lien sauvage avec le sujet du cours apparait !
 
 Voyons, voyons... Nous savons déjà qu'un Flux, c'est un flux de données qui correspond aux données émises par un émetteur. Vous l'aurez peut-être d'ores et déjà compris, mais que se passe-t-il quand l'émetteur émet une valeur ? Cette valeur passe dans le flux de données, ce qui veut dire que celui-ci *change d'état*.
 
-MINDBLOW! Un Flux est un Observable!
+**MINDBLOW!** Un Flux est un Observable !
 Et en fait, c'est même mieux qu'un Observable classique tel que décrit plus haut. Si si, croyez moi sur parole !
 
 Quand son état change (ie quand une valeur est émise), la valeur va passer à travers les transformations du Flux, ainsi que les side-effects qu'on a pu lui assigner. Ces transformations et side-effects sont donc des Observer, non ? Mais ce sont aussi des Flux !
@@ -95,8 +93,9 @@ Rappelons tout ce qu'on a appris sur un Flux jusqu'à présent :
 
 En effet, c'est déjà pas mal. Cependant quelque chose me dérange... comme si... on avait oublié quelque chose...
 Ah oui ! Que fait on quand un Publisher n'émet qu'une, et une seule valeur ? (voire pas du tout)
-C'est un cas très courant, et créer un flux de données pour traiter un seul objet, c'est un peu comme construire une autoroute à la disposition d'une seule voiture. Heureusement, il y a les `Mono`. Un Mono fonctionne en tout point comme un Flux, à ceci près qu'il ne se complètera toujours qu'avec au plus une valeur.
+C'est un cas très courant, et créer un flux de données pour traiter un seul objet, c'est un peu comme construire une autoroute à la disposition d'une seule voiture. 
 
+Heureusement, il y a les `Mono`. Un Mono fonctionne en tout point comme un Flux, à ceci près qu'il ne se complètera toujours qu'avec au plus une valeur.
 Par exemple, si dans votre fameux appel à la database vous voulez récupérer les informations d'un seul client, un Mono est ce qu'il vous faut !
 
 Nous avons fini pour de bon, cette fois ci ^^
