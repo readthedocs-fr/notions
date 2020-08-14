@@ -28,57 +28,84 @@ Comme je suis méchant, je vais tout de suite sortir les grands mots: `Publisher
 
 **EXACT !** En effet, un Publisher ça publie des valeurs, mais d'une manière un peu spéciale. Et pour bien comprendre comment ça fonctionne, et aussi parce que j'aime bien quand ça explose, on va parler d'un canon. Ne faites pas attention aux `(x)`, vous comprendrez plus tard..
 
-Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-tech, il est capable de se recharge tout seul. Vous revenez, votre canon sous le bras, vous (1) l'installez sur une petite colline, (2) récupérez les mèches, et là vous (3) allumez les mèches (une mèche par boulet que vous voulez tirer), puis (4) attendez un temps indéterminé...
+Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-tech, il est capable de se recharge tout seul. Vous revenez, votre canon sous le bras, vous `(1)` l'installez sur une petite colline (en visant votre patron), `(2)` récupérez les mèches, et là vous `(3)` allumez les mèches (une mèche par boulet que vous souhaitez tirer), puis `(4)` attendez un temps indéterminé...
 - Vous ne savez pas quand le canon va tirer
 - Vous ne savez même pas s'il va tirer autant de boulets que vous avez allumé de mèches (a-t-il suffisamment de boulets en réserve ? va-t-il exploser ?)
 - Vous avez décidé de dancer à chaque fois que le canon lance un boulet
-- Vous avez décidé de courir si le canon explose
-- Vous avez décidé de boire du jus d'ananas quand le canon finit de lancer les boulets (et ce même s'il explose !)
+- Vous avez décidé de courir si le canon explose (Ça peut paraître évident, mais c'est important)
+- Vous avez décidé de vous faire la grève si votre patron n'est pas mort quand le canon n'a plus de boulet à lancer (et qu'il n'a pas explosé, sinon vous serez en train de courir)
 
-On va remplacer le canon par du code java, parce que cette fiche est tout de même censée être liée de la  programmation.
-Si vous ne savez pas ce qu'est la généricité, regardez dans les [fiches correspondantes](../java/généricité)
+On va remplacer le canon par du code java, parce qu'officiellement on est censé faire de la programmation.
 
 ```java
+// Ce cannon pourrait posséder une infinité de boulets OwO
 interface Cannon {
-	void install(Me me); //Pour installer le canon sur la colline
+	//Pour installer le canon sur la colline, et prendre le temps de viser
+	void install(Me me);
 }
 
+//Je n'ai pas déclaré la méthode dance() ni CannonBall, on fait du pseudo code par ici
 interface Me {
-	void onPrepare(FuseBatch fuses); //Après avoir installé le canon, celui-ci s'ouvre et nous donne un lot de mèches
+	//Après avoir installé le canon, celui-ci s'ouvre et nous donne une infinité de mèches
+	//C'est le futuuuuuur
+	void onPrepare(FuseBatch fuses);
 	
-	//Je n'ai pas déclaré la méthode dance() ni CannonBall, on fait du pseudo code par ici
-	default void onNext(CannonBall ball) {  dance(); } //Appelé quand le canon lance un boulet de canon
+	//Appelé quand le canon lance un boulet de canon sur votre patron
+	default void onNext(CannonBall ball) {
+		dance();
+	}
+
+	//Appelé quand le canon du futur a une erreur interne et explose. Ça, c'est high-tech.
+	default void onError(Throwable t) {
+		runForYourLife();
+	}
 	
-	default void onError(Throwable t) { runForYourLife(); } //Appelé quand le canon a une erreur interne et explose
-	
-	default void onComplete() { drinkAnanasJuice(); } //Appelé quand le canon arrête définitivement d'envoyer des boulets
+	//Appelé quand le canon n'a plus de boulets à envoyer sur votre patron.
+	default void onComplete() {
+		if (patron.isAliveAndKicking())
+			timeToGoOnStrike();
+	}
 }
 
 interface FuseBatch {
+	//Vous appelez cette méthode pour enflammer `fuseAmount` mèches,
+	// afin de demander au canon d'envoyer `fuseAmount` boulets.
 	void fire(long fuseAmount);
-	void cancel(); //Qui sait ? Si ça se trouve vous marcherez sur les mèches parce que l'envie vous prend d'arrêter.
+	
+	//Si par hasard vous changiez d'avis et vouliez conserver votre patron,
+	// éteignez les mèches grâce à cette méthode.
+	void cancel();
 }
 ```
 
-Maintenant que c'est fait, regardons trois interfaces de [reactive-streams](http://www.reactive-streams.org/) (dans le jdk depuis java 9)
+Maintenant que c'est fait, regardons à tout hasard du code venant de [reactive-streams](http://www.reactive-streams.org/) (dans le jdk depuis java 9)
+
+> Si vous ne connaissez pas la généricité, je vous invite à regarder les [fiches correspondantes](../java/généricité)
+
 ```java
 interface Publisher<T> {
 	void subscribe(Subscriber<? super T> subscriber); //On prépare la souscription
 }
 
 interface Subscriber<T> {
-	void onSubscribe(Subscription s); //Le Publisher envoie la souscription une fois préparée
+	//Le Publisher envoie la souscription une fois préparée
+	void onSubscribe(Subscription s);
 
-	void onNext(T t); //Appelé quand le Publisher émet un nouvel élément
+	//Appelé quand le Publisher émet un nouvel élément
+	void onNext(T t);
 	
-	void onError(Throwable t); //Appelé si une erreur est survenue lors de la génération / récupération d'un nouvel élément
+	//Appelé si une erreur est survenue lors de la génération / récupération d'un nouvel élément
+	void onError(Throwable t);
 	
-	void onComplete(); //Appelé quand le Publisher sait de manière certaine qu'il n'émettra plus jamais d'éléments
+	//Appelé quand le Publisher sait de manière certaine qu'il n'émettra plus jamais d'éléments
+	void onComplete();
 }
 
 interface Subscription {
 	//Demande au Publisher d'émettre `elementAmount` prochains éléments
-	//Le Publisher émet toujours exactement `elementAmount`, sauf si le flux est complété (auquel cas il appellera Sbscriber#onComplete ou Subscriber#onError)
+	//Le Publisher émet toujours exactement `elementAmount`,
+	// sauf si le flux d'émissions est complété,
+	// auquel cas il aura appelé Subscriber#onComplete ou Subscriber#onError auparavant
  	void request(long elementAmount);
 
 	void cancel(); //Demande au Publisher d'arrêter d'envoyer des données
@@ -92,4 +119,18 @@ Si vous avez compris l'exemple du canon en remplaçant les éléments correspond
 3. On utilise la souscription pour commander des éléments à amazon
 4. Ces éléments nous seront fournis, plus tard (encore plus tard si le livreur est coincé dans les bouchons). Il se pourrait que le colis se perde, ou qu'amazon soit en rupture de stock.
 
-Arrêtons nous ici pour l'introduction, vous avez peut-être déjà mal à la tête :o
+Maintenant que vous avez cette liste, vous devriez pouvoir comprendre les `(x)` mentionnés plus haut ! (une fiche rétroactive, ça c'est innovant)
+
+Nous allons nous arrêter ici pour une toute première introduction sur le Grand Principe de la programmation réactive, et j'espère que votre imagination s'emballera quant aux possiblités (immenses, nous le verrons plus tard) d'un tel paradigme.
+
+Vous trouverez ci-dessous quelque liens pour aller beaucoup plus loin que cette brève introduction, ne me remerciez pas.
+
+## Quelques liens ci-dessous pour allez beaucoup plus loin que cette brève introduction, ne me remerciez pas.
+
+* **[Reactor Reference Guide](https://projectreactor.io/docs/core/release/reference/#intro-reactive) :** Pourquoi vous devriez utiliser la programmation réactive tout partout
+* **[Introduction to Reactive Coding](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) :** Une très bonne, que dis-je, excellente ressource pour commencer à se familiariser avec du code en programmation réactive. Rx.js y est utilisé mais vous pouvez transposez dans votre langage sans problème.
+
+### Libs pour utiliser la sacro-sainte programmation réactive dans votre langage favori
+
+* **[Reactor](https://projectreactor.io/) :** uniquement pour les langages jvm, mais bien mieux nommée et intuitive que la floppée de Rx selon moi
+* **[ReactiveX](http://reactivex.io/) :** disponible dans moult langages, vous y trouverez certainement votre bonheur.
