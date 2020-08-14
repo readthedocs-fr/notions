@@ -1,6 +1,6 @@
 # Abstraction
 
-The **abstraction** idea, is chopper a class in parts, to be able to share (via a parameter passed in method for example) **an only** of this part rather the object “in full”.
+The **abstraction** idea, is divide a class in parts, to be able to share (via a parameter passed in method for example) **only one** of this part rather the object “in full”.
 To understand the utility of this principle and how apply, take for example a class Human, since this is a thing that we know better.
 
 ```java
