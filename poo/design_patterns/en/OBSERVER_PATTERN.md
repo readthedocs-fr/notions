@@ -8,7 +8,7 @@
 
 ---
 
-The **Observer Pattern** is a design pattern which makes use of 2 subjects : a subject **observable** and one or more subject **observers**.
+The **Observer Pattern** is a design pattern which makes use of 2 subjects : a **observable** subject and one or more **observer** subject.
 
 When the observable subject switch of state, it will notify each one of its subjects which will react in consequence.
 
@@ -33,29 +33,29 @@ We don't know the code of the class `Person`. We don't exactly know what `getJob
 
 ---
 
-Posons la situation.
+Let's pose the situation.
 
-Vous travaillez dans une entreprise de domotique. 
+You work for a home automation company.
 
-Votre société décide de développer une manière de déclencher différents dispositifs lorsqu'une alarme quelconque s'active.
+Your company decide to develop a way to enable some systems when any alarm goes on within a certain radius.
 
-Votre supérieur vous demande donc de concevoir un prototype.
+Your line manager ask you to design a prototype.
 
-Sans utiliser l'Observer Pattern, le code pourrait ressembler à ça :
+Without using the **Observer Pattern**, the code could look like this :
 
 ```java
 class Alarm {
     
     /*
-      Ici la manière dont alert() 
-      est appelée ne nous intéresse pas. 
-      Il s'agit de code facilité 
+      Here the way alert() 
+      gets called don't matter. 
+      It's an example of "easy code"
     */
     public void alert(){
         /*
-          Encore une fois du code facilité,
-          je n'ai pas défini la variable house
-          mais on comprend son principe 
+          And again, some easy code.
+          I didn't define the house variable 
+          but we can assume what it contains 
         */
         Police.sendTheftAlert(this.house.getAddress());
         this.house.lockAllDoors();
@@ -65,18 +65,18 @@ class Alarm {
 }
 ```
 
-Ici, nous avons 2 problèmes :
+Here, 2 problems arise :
 
-1. L'alarme n'est pas censée connaître les composants qui lui réagissent 
-2. Si nous voulons ajouter un nouveau dispositif auto-déclenchant, il nous faudrait d'abord le créer puis le rajouter dans la méthode `alert()`. À force, cette méthode pourrait faire des dizaines et des dizaines de lignes.
+1. The alarm isn't supposed to know the systems which reacts to it.
+2. If we want to add a new auto-activable system, we would have to create it and next add it in the `alert()` method. À force, cette méthode pourrait faire des dizaines et des dizaines de lignes.
 
-## Qu'est ce qu'on fait alors Einstein ?
+## So, what do we do Einstein ?
 
-C'est pour ce genre de situation que l'Observer Pattern est né.
+The **Observer Pattern** is born for this kind of situation.
 
-Ce pattern se compose de 2 sujets comme dit plus haut : un sujet **observable** et un ou des sujets **observateurs**.
+This pattern is made of 2 subjects, like said earlier : an **observable** subject and one or more **observer** subject.
 
-Nous allons nous aider du principe d'abstraction afin d'écrire un code réutilisable dans la grande majorité voire l'entièreté des cas :
+We'll use the abstraction principle to write a reusable code in most or all cases.
 
 ```java
 interface Observer {
@@ -88,11 +88,11 @@ interface Observable {
 }
 ```
 
-Ces interfaces semblent bien vides.
+These interfaces seem very empty
 
-Avec ce pattern, une classe dite **Observer** se doit d'être notifiable à toute heure du jour et de la nuit et une classe **observable** doit notifier les éléments qui l'observent.
+With this pattern, a class called **Observer** must be notifiable at any time of the day and night and an **observable** class must notify each one of the elements which are observing it.
 
-Ajoutons donc ces 2 méthodes :
+Let's add these 2 methods :
 
 ```java
 interface Observer {
@@ -104,7 +104,7 @@ interface Observable {
 }
 ```
 
-Bon il faut évidemment pouvoir lier un **Observer** à un élément observable :
+Okey </br> Of course we must be able to link an **Observer** to an **Observable** element :
 
 ```java
 interface Observer {
@@ -117,7 +117,7 @@ interface Observable {
 }
 ```
 
-Essayons de récrire notre système d'alarme en utilisant ces 2 interfaces :
+Let's try to rewrite our alarm system making use of these 2 interfaces :
 
 ```java
 class Alarm implements Observable {
@@ -165,12 +165,12 @@ class DoorLockerComponent implements Observer {
 //...
 ```
 
-*Je ne vais pas écrire tous les composants, vous avez compris l'idée.*
+*I'm not going to write all of the systems, you understood the main idea.*
 
-Le contenu de la méthode `notifyObservers()` ne vous dit rien ?
-Allez lire le cours sur les [interfaces fonctionnelles](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md) ainsi que la note sur le [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/fr/INTERFACES_FONCTIONNELLES.md#toujours-plus-court-toujours-plus-loin) ou référencement de méthode.
+You can't figure yourself what the method `notifyObservers()` will produce ?
+Go read the course about the [functional interfaces](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md) as well as the note about the [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md#toujours-plus-court-toujours-plus-loin).
 
-Cette ligne fait le même travail que la boucle ci dessous :
+This line will produce the same effect as the following for loop :
        
 ```java
     for(Observer observer : observers) {
@@ -178,7 +178,7 @@ Cette ligne fait le même travail que la boucle ci dessous :
     }
 ```
 
-Nous avons à présent un code qui suit l'**Observer Pattern.** Ajoutons un centre de contrôle pour la touche de réalisme et ça plaira sûrement au patron.
+We now have a code that perfectly suits the **Observer Pattern**. Let's add a control center for the realistic touch and it will surely please to our boss.
 
 ```java
 class ControlCenter {
@@ -199,34 +199,34 @@ class ControlCenter {
 }
 ```
 
-Impeccable !
+Perfect !
 
-À présent, dès que la méthode `alert()` de la classe `Alarm` est appelée, chacun de ses **Observers** se verra notifié et agira en conséquence.
+Now, as soon as the `alert()` method from the `Alarm` class get called, each one of its **Observers** will get notified and will react in consequence.
 
-Et en prime, notre code suit une logique réaliste, ce n'est pas l'alarme qui connaît ses **Observers** mais bien le **Centre de contrôle** qui définit ce qui va se produire lors de l'alerte.
+And as bonus, our code follows a realistic logic, it's not the alarm which knows its **Observers** but our **control center** which define what will happen when our alarm goes on.
 
-Par ailleurs, nous retrouvons dans ce code un bel exemple du principe `Ouvert/Fermé` *(Open/Closed en anglais)* symbolisé par la lettre `O` dans la liste de principe dits [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/). En effet, notre classe `Alarm` est ouverte à l'extension mais fermée à la modification. Nous pouvons l'étendre à l'infini en lui ajoutant de plus en plus de composants sans pour autant devoir la modifier. Le système de l'alarme est terminé, nous n'avons plus besoin de le changer. Ainsi, nous sommes sûr de ne jamais mettre en péril le fonctionnement de cette classe lors de l'ajout d'un nouveau dispositif auto-réactif.
+Moreover, we can see in this code a nice example `Open/Closed` symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
 
-En parlant des principes [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/), nous pouvons également noter la présence du principe de la lettre `D`, soit le principe d'`Inversion de Dépendance` *(Dependency Inversion principle en anglais, d'où le D)*. En effet, en mettant en place les interfaces `Observer` et `Observable`, nous avons conçu un code qui se réfère directement aux abstractions et non aux implémentations. Notre méthode `addObserver(Observer observer)` prend un objet de type `Observer` en paramètre. Nous pouvons lui passer n'importe quelle implémentation, la classe implémentant `Observable` n'aura jamais à traiter avec celle ci. C'est un point significatif dans la maintenabilité du code puisque nous n'aurons pas à nous soucier des conséquences qu'une nouvelle implémentation pourrait avoir sur le code général, du moins pas du point de vue de l'**Observer Pattern**.
+While speaking about the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles, we can also notice the `D` letter principle named the `Dependency Inversion principle`. Indeed, by making use of `Observer` and `Observable` interfaces, we have build a code that directly refers to abstractions and not to implementations. Our `addObserver(Observer observer)` method takes an object of type `Observer` as parameter. We can pass it any **Observer** implementation, the class implementing the `Observable` interface will never have to deal with the implementation. It's a significant point in maintenability and readibility of our code because we will never have to care of consequences a new implementation will have on the global code, at least not of the POV of our **Observer Pattern**.
 
 ## Conclusion
 
-On a vu le type de problème que l'**Observer Pattern** peut résoudre ainsi que sa construction pas à pas.
+We have seen the problem type that a l'**Observer Pattern** can fix and his conception step by step.
 
-Globalement il faut retenir que 
+Overall, we must remember that :
 
-- Ce pattern permet de fractionner le code.
-- Il permet de le ranger de manière plus logique.
-- Il se fonde sur 2 interfaces importante : **Observer** et **Observable**.
-- La classe **Observable** notifie chacun de ses **Observers** lors d'un changement d'état.
-- Il permet de mettre en œuvre facilement 2 des principes dits [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/)
+- This pattern allows us to split our code in many parts.
+- It helps us to store or code with a better logic.
+- It's based on 2 important interfaces : **Observer** and **Observable**.
+- The **Observable** class notify each one of its **Observers** when it switch of state.
+- It helps us to easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles.
 
 ---
 
 <ins>Notes :</ins>
 
-J'ai présenté ici l'**Observer Pattern** dans son style le plus épuré. Bien évidemment, vous pouvez l'adapter au gré de vos envies. Par exemple, la méthode `notify()` de l'**Observer** peut prendre un paramètre afin de le passer à chaque **Observer**. Dans mon cas, j'aurais pu passer l'adresse de la maison si j'avais eu besoin. La signature de la méthode aurait ressemblé à `void notify(Address address);`. La méthode `notifyObservers()` peut également être aménagée en fonction des besoins et vous pouvez inclure d'autres méthodes qui peuvent vous sembler utiles dans votre cas. Le principe reste le même 
+I presented here the **Observer Pattern** in its purest style. Of course, you can ajust adapt it according to your desires. For example, the **Observer** `notify()` method can take a parameter to pass it to each **Observer**. In my case, I could have passed the house address if I had had this need. The method's signature would have looked to `void notify(Address address);`. The `notifyObservers()` method can also get fitted out according to your needs and you can also include some other methods that look usefull for you in your case. The idea stay the same. 
 
-La programmation réactive utilise et amplifie grandement ce principe, je vous laisse vous renseigner sur le site officiel du projet [Reactor.io](https://projectreactor.io) qui est une, si pas la plus connue, des librairies Java pour la programmation réactive.
+The reactive paradigm uses and greatly amplifies this principle, I let you inquire on the official website of the [Reactor.io](https://projectreactor.io) project which is one of the best, if not the best, know of the Java libraries for reactive programming.
 
-L'**Observer Pattern** se lie très bien avec un Entity Component System (abrégé ECS) pour ceux qui en ont déjà entendu parler. Un billet sera peut-être écrit dessus un jour.
+The **Observer Pattern** suits really good with a Entity Component System (abreviated ECS) for those who have already heard of it. An article will maybe someday get written about it.
