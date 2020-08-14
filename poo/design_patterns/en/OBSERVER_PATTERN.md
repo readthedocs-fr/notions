@@ -4,13 +4,13 @@
 
 ### Prerequisite
 
-- Feel comfortable with inheritance's notion 
+- Be comfortable with the notion of inheritance 
 
 ---
 
-The **Observer Pattern** is a design pattern which makes use of 2 subjects : an **observable** subject and one or more **observer** subject.
+The **Observer Pattern** is a design pattern which makes use of 2 subjects : an **observable** subject and one or more **observer** subjects.
 
-When the observable subject switch of state, it will notify each one of its subjects which will react in consequence.
+When the observable's state changes, it will notify each one of its observers which will react accordingly.
 
 You have surely already used this principle without realizing it.
 
@@ -21,7 +21,7 @@ Let's take a look over the heart of the pattern: **its conception** !
 ---
 
 
-*As you will notice, I'm sometimes using what I call "easy code". Easy code is, for me, some piece of code which is explicit enough to get easily understable without having the inner workings knowledge*
+*As you will notice, I'll sometimes use what I call "easy code". Easy code is, for me, some piece of code which is explicit enough to be easily understood without having knowledge of the internal implementation*
 
 For example :
 
@@ -33,13 +33,13 @@ We don't know the code of the class `Person`. We don't exactly know what `getJob
 
 ---
 
-Let's pose the situation.
+Let's set up the situation.
 
 You work for a home automation company.
 
-Your company decide to develop a way to enable some systems when any alarm goes on within a certain radius.
+Your company decided to develop a way to trigger some systems when any alarm occurs within a certain radius.
 
-Your line manager ask you to design a prototype.
+Your line manager asked you to design a prototype.
 
 Without using the **Observer Pattern**, the code could look like this :
 
@@ -65,16 +65,16 @@ class Alarm {
 }
 ```
 
-Here, 2 problems arise :
+However, we have 2 issues:
 
-1. The alarm isn't supposed to know the systems which react to it.
+1. The alarm isn't supposed to know the systems that react to it.
 2. If we want to add a new auto-activable system, we would have to create it and next add it in the `alert()` method. By doing this, the method could have lines and lines in the long run.
 
 ## So, what do we do Einstein ?
 
-The **Observer Pattern** is born for this kind of situation.
+The **Observer Pattern** was born for this kind of situation.
 
-This pattern is made of 2 subjects, like said earlier : an **observable** subject and one or more **observer** subject.
+This pattern is made of 2 subjects, as said earlier: an **observable** subject and one or more **observer** subjects.
 
 We'll use the abstraction principle to write a reusable code in most or all cases.
 
@@ -88,9 +88,9 @@ interface Observable {
 }
 ```
 
-These interfaces seem very empty
+These interfaces seem very empty... for now.
 
-With this pattern, a class so-called **Observer** must be notifiable at any time of the day and night and an **observable** class must notify each one of the elements which are observing it.
+With this pattern, a so-called **Observer** class must be notifiable at any time of the day and night and an **observable** class must notify each one of the elements which are observing it.
 
 Let's add these 2 methods :
 
@@ -104,7 +104,9 @@ interface Observable {
 }
 ```
 
-Okey </br> Of course we must be able to link an **Observer** to an **Observable** element :
+Okay.
+
+Of course we must be able to link an **Observer** to an **Observable** element :
 
 ```java
 interface Observer {
@@ -165,9 +167,9 @@ class DoorLockerComponent implements Observer {
 //...
 ```
 
-*I'm not going to write all of the systems, you understood the main idea.*
+*I'm not going to write all the systems, you understood the main idea.*
 
-You can't figure yourself what the method `notifyObservers()` will produce ?
+Can't figure out how the `notifyObservers()` method works?
 Go read the course about the [functional interfaces](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md) as well as the note about the [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md#toujours-plus-court-toujours-plus-loin).
 
 This line will produce the same effect as the following for loop :
@@ -178,7 +180,7 @@ This line will produce the same effect as the following for loop :
     }
 ```
 
-We now have a code that perfectly suits the **Observer Pattern**. Let's add a control center for the realistic touch and it will surely please to our boss.
+We now have a code that perfectly suits the **Observer Pattern**. Let's add a control center for the realistic touch and it will surely please our boss.
 
 ```java
 class ControlCenter {
@@ -201,9 +203,9 @@ class ControlCenter {
 
 Perfect !
 
-Now, as soon as the `alert()` method from the `Alarm` class gets called, each one of its **Observers** will get notified and will react in consequence.
+Now, as soon as the `alert()` method from the `Alarm` class gets called, each one of its **Observers** will get notified and will react accordingly.
 
-And as bonus, our code follows a realistic logic, it's not the alarm which knows its **Observers** but our **control center** which defines what will happen when our alarm goes on.
+And as a bonus, our code follows a realistic logic, since it's not the alarm that knows its **Observers** but rather our **control center**, which defines what will happen when our alarm occurs.
 
 Moreover, we can see in this code a nice example of the `Open/Closed` principle symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
 
@@ -211,22 +213,22 @@ While speaking about the [SOLID](https://github.com/readthedocs-fr/notions/tree/
 
 ## Conclusion
 
-We have seen the problem type that an **Observer Pattern** can fix and its conception step by step.
+We have seen the kind of problem that an **Observer Pattern** can fix and its conception step by step.
 
 Overall, we must remember that :
 
-- This pattern allows us to split our code in many parts.
-- It helps us to store our code with a better logic.
+- This pattern allows us to split our code into many parts.
+- It helps us store our code with better logic.
 - It's based on 2 important interfaces : **Observer** and **Observable**.
-- The **Observable** class notify each one of its **Observers** when it switch of state.
-- It helps us to easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles.
+- The **Observable** class notifies each one of its **Observers** when its state changes
+- It helps us easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles.
 
 ---
 
 <ins>Notes :</ins>
 
-I presented here the **Observer Pattern** in its purest style. Of course, you can ajust it according to your desires. For example, the **Observer** `notify()` method can take a parameter to pass it to each **Observer**. In my case, I could have passed the house address if I had had this need. The method's signature would have looked to `void notify(Address address);`. The `notifyObservers()` method can also get fitted out according to your needs and you can also include some other methods that look usefull for you in your case. The idea stay the same. 
+I presented here the **Observer Pattern** in its purest style. Of course, you can adjust it according to your desires. For example, the **Observer** `notify()` method can take a parameter to pass it to each **Observer**. In my case, I could have passed the house address if I had had this need. The method's signature would have looked like this: `void notify(Address address);`. The `notifyObservers()` method can also get fitted out according to your needs and you can also include some other methods that look useful for you in your case. The idea stays the same. 
 
-The reactive paradigm uses and greatly amplifies this principle, I let you inquire on the official website of the [Reactor.io](https://projectreactor.io) project which is one of the best, if not the best, know of the Java libraries for reactive programming.
+The reactive paradigm uses and greatly amplifies this principle, I let you inquire on the official website of the [Reactor.io](https://projectreactor.io) project which is one of the best, if not the best known amongst the Java libraries for reactive programming.
 
-The **Observer Pattern** suits really good with an Entity Component System (abreviated ECS) for those who have already heard of it. An article will maybe someday get written about it.
+The **Observer Pattern** is very suitable with an Entity Component System (abbreviated ECS) for those who have already heard of it. An article will maybe someday be written about it.
