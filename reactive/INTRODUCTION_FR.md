@@ -22,95 +22,74 @@ Pas de panique, si vous ne comprenez pas c'est normal !
 
 ## La lumière de l'explication dans l'obscurité de wikipédia
 
-### Une première approche
+Comme je suis méchant, je vais tout de suite sortir les grands mots: `Publisher`! Ouuuuh, ça fait peur... (et ça rime)
 
-Si je vous dis emitter, vous pensez à quoi ?
-> Euh... Un truc qui émet ?
+> Haha, j'ai pas peur, je sais parler anglais ! Un Publisher, c'est un truc qui publie d'autres trucs, non ?
 
-**EXACT !** Un emitter, ça n'est ni plus, ni moins qu'un truc qui émet. Un émetteur, quoi. On appelle aussi ça `Publisher` par ailleurs.
-Et quand ça a finit d'émettre, ça émet un signal de complétion, histoire que ceux qui écoutent la radio sâchent que le programme ne passera plus et qu'ils peuvent arrêter d'écouter.
-Comme vous n'avez pas l'air très impressionné je vais passer à la suite :p
+**EXACT !** En effet, un Publisher ça publie des valeurs, mais d'une manière un peu spéciale. Et pour bien comprendre comment ça fonctionne, et aussi parce que j'aime bien quand ça explose, on va parler d'un canon. Ne faites pas attention aux `(x)`, vous comprendrez plus tard..
 
-Alors vu qu'on sait qu'un emitter ça émet des trucs, on va créer une structure qui va simplement correspondre à tous ces trucs émis, en fonction du temps.
-Cette structure, on peut la transformer, c'est à dire qu'on peut modifier les valeurs émises, la manière dont elles sont émises, la manière dont elles sont organisées, etc...
-Cette structure, on peut lui attacher des side-effects, c'est à dire qu'on peut faire une truc sur un truc quand le truc en question est émis.
-Cette structure, c'est un flux de données (les fameux data streams dont parle wikipedia)
-Cette structure, ça s'appelle un `Flux`.
+Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-tech, il est capable de se recharge tout seul. Vous revenez, votre canon sous le bras, vous (1) l'installez sur une petite colline, (2) récupérez les mèches, et là vous (3) allumez les mèches (une mèche par boulet que vous voulez tirer), puis (4) attendez un temps indéterminé...
+- Vous ne savez pas quand le canon va tirer
+- Vous ne savez même pas s'il va tirer autant de boulets que vous avez allumé de mèches (a-t-il suffisamment de boulets en réserve ? va-t-il exploser ?)
+- Vous avez décidé de dancer à chaque fois que le canon lance un boulet
+- Vous avez décidé de courir si le canon explose
+- Vous avez décidé de boire du jus d'ananas quand le canon finit de lancer les boulets (et ce même s'il explose !)
 
-### Une seconde approche
+On va remplacer le canon par du code java, parce que cette fiche est tout de même censée être liée de la  programmation.
+Si vous ne savez pas ce qu'est la généricité, regardez dans les [fiches correspondantes](../java/généricité)
 
-Je digresse. Je digresse tellement que tout d'un coup je décide qu'on va parler d'`Observable`. Alors un Observable, c'est quoi ?
-Un Observable, on peut l'observer (no joke). Ça veut dire que quand son état change, il va aller notifier tout ses `Observer` (ceux qui l'observent) qu'il a changé, pour qu'ils appliquent des effets, et si ce sont eux mêmes des Observable, changent leur état, notifient leur propres Observer, et ainsi de suite. C'est ce qu'on appelle la propagation du changement (propagation of change en anglais, c'est un terme qui revient souvent quand on essaie de définir la programmation réactive et vous allez vite comprendre pourquoi).
-Tout ça, c'est l'[Observer Pattern][observer].
+```java
+interface Cannon {
+	void install(Me me); //Pour installer le canon sur la colline
+}
 
-> Mais dites donc, j'ai lu ce paragraphe pour rien alors ? C'est un complot pour me faire perdre mon temps, c'est ça ?!
+interface Me {
+	void onPrepare(FuseBatch fuses); //Après avoir installé le canon, celui-ci s'ouvre et nous donne un lot de mèches
+	
+	//Je n'ai pas déclaré la méthode dance() ni CannonBall, on fait du pseudo code par ici
+	default void onNext(CannonBall ball) {  dance(); } //Appelé quand le canon lance un boulet de canon
+	
+	default void onError(Throwable t) { runForYourLife(); } //Appelé quand le canon a une erreur interne et explose
+	
+	default void onComplete() { drinkAnanasJuice(); } //Appelé quand le canon arrête définitivement d'envoyer des boulets
+}
 
-Heureusement qu'on peut aller plus loin ! L'observer pattern c'est sympa, mais ça a des limitations...
+interface FuseBatch {
+	void fire(long fuseAmount);
+	void cancel(); //Qui sait ? Si ça se trouve vous marcherez sur les mèches parce que l'envie vous prend d'arrêter.
+}
+```
 
-#### Un lien sauvage avec le sujet de la fiche apparait !
+Maintenant que c'est fait, regardons trois interfaces de [reactive-streams](http://www.reactive-streams.org/) (dans le jdk depuis java 9)
+```java
+interface Publisher<T> {
+	void subscribe(Subscriber<? super T> subscriber); //On prépare la souscription
+}
 
-Voyons, voyons... Nous savons déjà qu'un Flux, c'est un flux de données qui correspond aux données émises par un émetteur. Vous l'aurez peut-être d'ores et déjà compris, mais que se passe-t-il quand l'émetteur émet une valeur ? Cette valeur passe dans le flux de données, ce qui veut dire que celui-ci *change d'état*.
+interface Subscriber<T> {
+	void onSubscribe(Subscription s); //Le Publisher envoie la souscription une fois préparée
 
-**MINDBLOW!** Un Flux est un Observable !
-Et en fait, c'est même mieux qu'un Observable classique tel que décrit plus haut. Si si, croyez moi sur parole !
+	void onNext(T t); //Appelé quand le Publisher émet un nouvel élément
+	
+	void onError(Throwable t); //Appelé si une erreur est survenue lors de la génération / récupération d'un nouvel élément
+	
+	void onComplete(); //Appelé quand le Publisher sait de manière certaine qu'il n'émettra plus jamais d'éléments
+}
 
-Quand son état change (ie quand une valeur est émise), la valeur va passer à travers les transformations du Flux, ainsi que les side-effects qu'on a pu lui assigner. Ces transformations et side-effects sont donc des Observer, non ? Mais ce sont aussi des Flux !
-Quand on applique une transformation à un Flux, cela crée un nouveau Flux, avec peut-être une nouvelle organisation, peut-être des éléments mappés, peut-être exactement les même éléments, et une action se déclenchant à chaque passage. En transformant un Flux on a pu créer un nouveau Flux qui observe le premier afin de déduire ses propres éléments.
-Qu'est-ce qu'on retient ? Un Flux, c'est à la fois un Observable, et un Observer (et un Publisher ! En effet, il émet lui aussi des données).
+interface Subscription {
+	//Demande au Publisher d'émettre `elementAmount` prochains éléments
+	//Le Publisher émet toujours exactement `elementAmount`, sauf si le flux est complété (auquel cas il appellera Sbscriber#onComplete ou Subscriber#onError)
+ 	void request(long elementAmount);
 
-Bon, un Flux c'est un hybride Observable/Observer/Publisher, ok, c'est sympa. Mais en fait c'est encore plus sympa.
-Donc maintenant entrons dans le vif du sujet !
+	void cancel(); //Demande au Publisher d'arrêter d'envoyer des données
+}
+```
 
-### Le vif du sujet
+Ça alors ! Quelle troublante et imprévisible ressemblance !
+Si vous avez compris l'exemple du canon en remplaçant les éléments correspondants, alors vous avez compris le grand principe de la programmation réactive.
+1. On commande une souscription au programme prime d'amazon
+2. On reçoit la souscription préparée sur mesure. Notez bien qu'il ne fait pas de sens d'acheter une nouvelle souscription tant que l'ancienne n'est pas épuisée.
+3. On utilise la souscription pour commander des éléments à amazon
+4. Ces éléments nous seront fournis, plus tard (encore plus tard si le livreur est coincé dans les bouchons). Il se pourrait que le colis se perde, ou qu'amazon soit en rupture de stock.
 
-Il existe deux types d'Observable, les hot observables ainsi que les cold observables. Et figurez vous qu'un flux ça peut être soit l'un, soit l'autre. UwU.
-
-Un hot observable, c'est pas compliqué. Son état peut changer n'importe quand, et les Observer ont intérêt à être déjà prêts quand le changement arrive. Par exemple, un émetteur qui capture les évènements de clics de souris sur une ui est un hot Observable: les clics de souris peuvent arriver n'importe quand !
-En représentant ces clics de souris par un Flux, on se retrouve tout simplement avec un data stream dont le type de donnée est un évènement de clic de souris. Rien de compliqué, n'est-ce pas ? Il suffit ensuite d'appliquer autant de transformations et d'effets secondaires à chaque évènement que nécessaire pour pouvoir y associer le comportement désiré.
-
-Un cold observable, c'est pas compliqué non plus, on a de la chance. Un cold observable a froid (comme son nom pourrait l'indiquer), il est fatigué, il est paresseux. Il bougera uniquement si on le force. Il est *lazy*. Un cold Observable ne changera son état qu'à partir du moment où on lui demande. Par exemple, un Flux qui serait un cold observable n'émettra jamais rien avant qu'on lui demande. Et après cela, il n'aura émis *que* ce qu'on lui demande: c'est un partisan du moindre effort !
-
-Cette action de forcer un cold observable à se remuer le cul s'appelle lui souscrire. On aura beau lui attacher autant d'Observer qu'on veut, si on ne souscrit pas à un cold observable il n'émettra jamais rien. D'ailleurs, ça permet de s'assurer que tout les Observer sont définis et prêts avant de déclencher l'émission des valeurs, car la souscription doit être la *dernière* action que l'on fait sur un cold observable; après on n'y touche plus !
-
-Par exemple, pour lancer un appel à une database vous aurez besoin d'un Flux se comportant comme un cold observable: d'abord il faut définir toutes les manipulations qui auront lieu sur les valeurs récupérées, et ensuite seulement vous pourrez lui souscrire, déclenchant alors l'appel à la database. Toutes vos manipulations seront effectuées de manière totalement asynchrone une fois que l'appel est de retour.
-
-Un autre effet intéressant du cold observable est que le signal de complétion (propriété du Flux en tant que Publisher) retirera toutes les souscriptions, tandis qu'un hot observable pourrait ne jamais finir et ne jamais émettre de signal de complétion.
-
-Pfiou, cette section était plutôt longue.
-
-## Mais on n'a pas encore fini !
-
-Rappelons tout ce qu'on a appris sur un Flux jusqu'à présent :
- - c'est un Publisher
- - c'est un Observable (hot ou cold)
- - c'est un Observer
- - c'est un flux de données
-
-> C'est déjà pas mal !
-
-En effet, c'est déjà pas mal. Cependant quelque chose me dérange... comme si... on avait oublié quelque chose...
-Ah oui ! Que fait on quand un Publisher n'émet qu'une, et une seule valeur ? (voire pas du tout)
-C'est un cas très courant, et créer un flux de données pour traiter un seul objet, c'est un peu comme construire une autoroute à la disposition d'une seule voiture. 
-
-Heureusement, il y a les `Mono`. Un Mono fonctionne en tout point comme un Flux, à ceci près qu'il ne se complètera toujours qu'avec au plus une valeur.
-Par exemple, si dans votre fameux appel à la database vous voulez récupérer les informations d'un seul client, un Mono est ce qu'il vous faut !
-
-Nous avons fini pour de bon, cette fois ci ^^  (enfin !)
-
-
-Ne vous attendez pas à magiquement savoir utiliser la programmation réactive correctement, il s'agit d'un paradigme à appréhender après tout. Seules vos larmes et votre sueur vous permettront de manipuler les Flux et les Mono comme s'il s'agissait de votre couteau suisse favori.
-Vous trouverez ci-dessous des liens pour approfondir les notions brièvement abordées pendant cette fiche.
-
-
-# Les liens ci-dessous pour approfondir les notions brièvement abordées pendant cette fiche.
-
-* **[Observer Pattern][observer] :** Les grands principes de l'observer pattern
-* **[Hot/Cold Observables](https://leecampbell.com/2010/08/19/rx-part-7-hot-and-cold-observables/) :** Pour une explication plus détaillée de la différence entre hot et cold observables
-* **[Reactor Reference Guide](https://projectreactor.io/docs/core/release/reference/#intro-reactive) :** Pourquoi vous devriez utiliser la programmation réactive partout
-* **[Introduction to Reactive](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) :** Une très bonne ressource pour commencer à se familiariser avec du code en programmation réactive. Rx.js y est utilisé mais vous pouvez transposez dans votre langage.
-
-### Libs pour utiliser la sacro-sainte programmation réactive dans votre langage favori
-* **[Reactor](https://projectreactor.io/) :** uniquement pour les langages jvm, mais bien mieux nommée et intuitive que RxJava selon moi
-* **[ReactiveX](http://reactivex.io/) :** disponible dans moult langages, vous trouverez une liste dans le lien
-
-[observer]: https://github.com/readthedocs-fr/notions/blob/master/poo/design_patterns/fr/observateur/OBSERVATEUR_PATTERN.md "L'Observer Pattern c'est bien, la programmation réactive c'est mieux !"
+Arrêtons nous ici pour l'introduction, vous avez peut-être déjà mal à la tête :o
