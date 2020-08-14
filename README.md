@@ -16,9 +16,16 @@
 
 - `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
 - `📑` [Value objects - définition, explications et exemples](poo/value_objects)
+- `📑` [Objets calisthéniques - définition et explications](poo/objets_calistheniques)
+- `📖` [Design patterns - présentation et exemples](poo/design_patterns)
 
 ## Java
 
 - `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
 - `📑` [Tests unitaires - utilisation en java](java/tests_unitaires)
 - `📑` [Listes à types indéfinis - de l'abstraction au niveau générique](java/généricité/listes_wildcard)
+- `📑` [Les exceptions en Java](java/exceptions)
+
+## Python
+
+- `📑` [Starter kit - Bien débuter avec le langage Python](python/starter_kit)
