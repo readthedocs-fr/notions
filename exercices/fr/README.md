@@ -5,8 +5,4 @@ Les **corrections** sont données sous forme de pseudo-code afin d'être facilem
 
 ## Énoncés
 
-- `📑` Fonction composée - par [Alexandre Orékhoff](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/fonction_composee/ENONCE.md)
-
-## Corrections
-
-- `📑` Fonction composée - par [Alexandre Orékhoff](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/fonction_composee/CORRECTION.md) *(en écriture)*
+- `📑` Fonction composée - par [Alexandre Orékhoff](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/enonces/FONCTION_COMPOSEE.md)
