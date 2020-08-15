@@ -170,7 +170,7 @@ class DoorLockerComponent implements Observer {
 *I'm not going to write all the systems, you understood the main idea.*
 
 Can't figure out how the `notifyObservers()` method works?
-Go read the course about the [functional interfaces](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md) as well as the note about the [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md#toujours-plus-court-toujours-plus-loin).
+Go read the course about the [functional interfaces](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md) as well as the note about the [Method Referencing](https://github.com/readthedocs-fr/notions/blob/master/java/interfaces_fonctionnelles/en/FUNCTIONAL_INTERFACES.md#always-shorter-always-further).
 
 This line will produce the same effect as the following for loop :
        
