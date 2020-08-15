@@ -188,7 +188,7 @@ Assez magique non ? Cette syntaxe s'appelle une **expression lambda**. Voyons ce
     ```java
     Action myAction = (str) -> {
       System.out.println(str);
-      System.our.println("Une chaîne de caractères a été affichée à l'aide d'une lambda !");
+      System.out.println("Une chaîne de caractères a été affichée à l'aide d'une lambda !");
     }
     ```
 
