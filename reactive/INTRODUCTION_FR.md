@@ -33,7 +33,7 @@ Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-
 - Vous ne savez même pas s'il va tirer autant de boulets que vous avez allumé de mèches (a-t-il suffisamment de boulets en réserve ? va-t-il exploser ?)
 - Vous avez décidé de danser à chaque fois que le canon lance un boulet
 - Vous avez décidé de courir si le canon explose (Ça peut paraître évident, mais c'est important)
-- Vous avez décidé de vous faire la grève si votre patron n'est pas mort quand le canon n'a plus de boulet à lancer (et qu'il n'a pas explosé, sinon vous seriez en train de courir)
+- Vous avez décidé de faire la grève si votre patron n'est pas mort quand le canon n'a plus de boulet à lancer (et qu'il n'a pas explosé, sinon vous seriez en train de courir)
 
 On va remplacer le canon par du code java, parce qu'officiellement on est censé faire de la programmation.
 
