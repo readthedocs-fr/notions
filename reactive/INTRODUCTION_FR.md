@@ -26,19 +26,19 @@ Comme je suis méchant, je vais tout de suite sortir les grands mots: `Publisher
 
 > Haha, j'ai pas peur, je sais parler anglais ! Un Publisher, c'est un truc qui publie d'autres trucs, non ?
 
-**EXACT !** En effet, un Publisher ça publie des valeurs, mais d'une manière un peu spéciale. Et pour bien comprendre comment ça fonctionne, et aussi parce que j'aime bien quand ça explose, on va parler d'un canon. Ne faites pas attention aux `(x)`, vous comprendrez plus tard..
+**EXACT !** En effet, un Publisher ça publie des valeurs, mais d'une manière un peu spéciale. Et pour bien comprendre comment ça fonctionne, et aussi parce que j'aime bien quand ça explose, on va parler d'un canon. Ne faites pas attention aux `(x)`, vous comprendrez plus tard…
 
-Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-tech, il est capable de se recharge tout seul. Vous revenez, votre canon sous le bras, vous `(1)` l'installez sur une petite colline (en visant votre patron), `(2)` récupérez les mèches, et là vous `(3)` allumez les mèches (une mèche par boulet que vous souhaitez tirer), puis `(4)` attendez un temps indéterminé...
+Oui, supposons que vous alliez acheter un canon au marché. C'est un canon high-tech, il est capable de se recharger tout seul. Vous revenez, votre canon sous le bras, vous `(1)` l'installez sur une petite colline (en visant votre patron), `(2)` récupérez les mèches, et là vous `(3)` allumez les mèches (une mèche par boulet que vous souhaitez tirer), puis `(4)` attendez un temps indéterminé...
 - Vous ne savez pas quand le canon va tirer
 - Vous ne savez même pas s'il va tirer autant de boulets que vous avez allumé de mèches (a-t-il suffisamment de boulets en réserve ? va-t-il exploser ?)
-- Vous avez décidé de dancer à chaque fois que le canon lance un boulet
+- Vous avez décidé de danser à chaque fois que le canon lance un boulet
 - Vous avez décidé de courir si le canon explose (Ça peut paraître évident, mais c'est important)
-- Vous avez décidé de vous faire la grève si votre patron n'est pas mort quand le canon n'a plus de boulet à lancer (et qu'il n'a pas explosé, sinon vous serez en train de courir)
+- Vous avez décidé de vous faire la grève si votre patron n'est pas mort quand le canon n'a plus de boulet à lancer (et qu'il n'a pas explosé, sinon vous seriez en train de courir)
 
 On va remplacer le canon par du code java, parce qu'officiellement on est censé faire de la programmation.
 
 ```java
-// Ce cannon pourrait posséder une infinité de boulets OwO
+// Ce canon pourrait posséder une infinité de boulets OwO
 interface Cannon {
 	//Pour installer le canon sur la colline, et prendre le temps de viser
 	void install(Me me);
@@ -114,10 +114,10 @@ interface Subscription {
 
 Ça alors ! Quelle troublante et imprévisible ressemblance !
 Si vous avez compris l'exemple du canon en remplaçant les éléments correspondants, alors vous avez compris le grand principe de la programmation réactive.
-1. On commande une souscription au programme prime d'amazon
+1. On commande une souscription au programme Prime d'Amazon
 2. On reçoit la souscription préparée sur mesure. Notez bien qu'il ne fait pas de sens d'acheter une nouvelle souscription tant que l'ancienne n'est pas épuisée.
-3. On utilise la souscription pour commander des éléments à amazon
-4. Ces éléments nous seront fournis, plus tard (encore plus tard si le livreur est coincé dans les bouchons). Il se pourrait que le colis se perde, ou qu'amazon soit en rupture de stock.
+3. On utilise la souscription pour commander des éléments à Amazon
+4. Ces éléments nous seront fournis, plus tard (encore plus tard si le livreur est coincé dans les bouchons). Il se pourrait que le colis se perde, ou qu'Amazon soit en rupture de stock.
 
 Maintenant que vous avez cette liste, vous devriez pouvoir comprendre les `(x)` mentionnés plus haut ! (une fiche rétroactive, ça c'est innovant)
 
