@@ -21,7 +21,7 @@ class Human {
     }
 
     void move() {
-        System.out.println("Un humain souhaite se déplacer !");
+        System.out.println("A human wants to move!");
     }
 
     void consumeEnergy(float value) {
@@ -87,7 +87,7 @@ class Human implements Walking {
 
     @Override
     void move() {
-        System.out.println("Un humain souhaite se déplacer !");
+        System.out.println("A human wants to move!");
     }
 
     @Override
