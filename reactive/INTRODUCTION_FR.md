@@ -123,14 +123,14 @@ Maintenant que vous avez cette liste, vous devriez pouvoir comprendre les `(x)` 
 
 Nous allons nous arrêter ici pour une toute première introduction sur le Grand Principe de la programmation réactive, et j'espère que votre imagination s'emballera quant aux possiblités (immenses, nous le verrons plus tard) d'un tel paradigme.
 
-Vous trouverez ci-dessous quelque liens pour aller beaucoup plus loin que cette brève introduction, ne me remerciez pas.
+Vous trouverez ci-dessous quelques liens pour aller beaucoup plus loin que cette brève introduction, ne me remerciez pas.
 
-## Quelques liens ci-dessous pour allez beaucoup plus loin que cette brève introduction, ne me remerciez pas.
+## Quelques liens ci-dessous pour aller beaucoup plus loin que cette brève introduction, ne me remerciez pas.
 
-* **[Reactor Reference Guide](https://projectreactor.io/docs/core/release/reference/#intro-reactive) :** Pourquoi vous devriez utiliser la programmation réactive tout partout
-* **[Introduction to Reactive Coding](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) :** Une très bonne, que dis-je, excellente ressource pour commencer à se familiariser avec du code en programmation réactive. Rx.js y est utilisé mais vous pouvez transposez dans votre langage sans problème.
+* **[Reactor Reference Guide](https://projectreactor.io/docs/core/release/reference/#intro-reactive) :** Pourquoi vous devriez utiliser la programmation réactive tout partout.
+* **[Introduction to Reactive Coding](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) :** Une très bonne, que dis-je, excellente ressource pour commencer à se familiariser avec du code en programmation réactive. Rx.js y est utilisé mais vous pouvez transposer dans votre langage sans problème.
 
 ### Libs pour utiliser la sacro-sainte programmation réactive dans votre langage favori
 
-* **[Reactor](https://projectreactor.io/) :** uniquement pour les langages jvm, mais bien mieux nommée et intuitive que la floppée de Rx selon moi
+* **[Reactor](https://projectreactor.io/) :** uniquement pour les langages jvm, mais bien mieux nommée et intuitive que la floppée de Rx selon moi.
 * **[ReactiveX](http://reactivex.io/) :** disponible dans moult langages, vous y trouverez certainement votre bonheur.
