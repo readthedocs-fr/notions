@@ -1,5 +1,8 @@
 # Fonction composée
 
+> Écrit par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+
+
 Bonjour et bienvenue, installez vous confortablement... voilààà parfait. Commençons !
 
 ## Prérequis
