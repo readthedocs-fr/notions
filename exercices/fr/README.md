@@ -1,12 +1,16 @@
 # Exercices
 
-Cette section est consacrée aux **exercices**. Ils seront proposés sous forme réalisable dans la grande majorité des langages. </br></br>
-Les **corrections** sont données soit sous forme de pseudo-code afin d'être facilement assimilables à la plupart des langages soit sous forme de codes écrits dans différents langages. </br> Mais retenez bien une chose, il n'y a jamais qu'une seule solution possible !
+Cette section est consacrée aux **exercices**. Ils sont rangés par langage afin d'être facilement retrouvable. Si vous ne trouvez pas un exercice dans un certain langage mais que vous le pensez faisable, libre à vous de contribuer :wink:
+
+Les **corrections** sont données avec des explications quand c'est nécessaires.
+Mais retenez bien une chose, il n'y a jamais qu'une seule solution possible !
+
+N'hésitez pas à proposer vos propres exercices et corrections en contribuant au dépôt via le système de `fork`et de `Pull Request`.
 
 ## Énoncés
 
-- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/fonction_composee/ENONCE.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/ENONCE.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
 
 ## Corrections
 
-- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/fonction_composee/CORRECTION.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/CORRECTION.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
