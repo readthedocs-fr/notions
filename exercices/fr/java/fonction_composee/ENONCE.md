@@ -24,7 +24,7 @@ Pour deux fonctions `f` et `g`, elle se note `f o g` et se lit `f rond g`.
 
 Pour bien comprendre ce que c'est, voyons l'exemple suivant :
 
-Soit les fonctions :
+Soient les fonctions :
 
 `f(x) = 3x`
 `g(x) = x + 2`
@@ -87,7 +87,7 @@ Imaginons nos 2 fonctions `f` et `g` :
 
 ```java
     public int f(int x) {
-        return 3*x;
+        return 3 * x;
     }
 
     public int g(int x) {

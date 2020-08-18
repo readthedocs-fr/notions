@@ -229,7 +229,7 @@ public Function<Integer, Integer> compose(List<Function<Integer, Integer>> funct
 
 Expliquons vite fait ce qu'est la récursivité pour ceux qui ne connaissent pas.
 
-Quelque chose de récursif, c'est quelque chose qui fait tout le temps appel à lui même jusqu'à ce que la boucle d'appel se casse ou soit stoppée**.**
+Quelque chose de récursif, c'est quelque chose qui fait tout le temps appel à lui même jusqu'à ce que la boucle d'appel se casse ou soit stoppée.
 
 Ça peut être une liste, une méthode, une manière de parcourir un objet itérable etc
 
@@ -249,7 +249,7 @@ Si cette condition est atteinte, cela signifie que la seule méthode de la liste
 
 ```java
 public Function<Integer, Integer> compose(List<Function<Integer, Integer>> functions) {
-    if(funcitons.size() == 1) {
+    if(functions.size() == 1) {
         return functions.get(0);
     }
 }
