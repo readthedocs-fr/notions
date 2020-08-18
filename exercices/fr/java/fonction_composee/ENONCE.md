@@ -19,7 +19,7 @@ Bonjour et bienvenue, installez vous confortablement... voilààà parfait. Comm
 
 La fonction composée est, en mathématique, un assemblage de plusieurs fonctions. 
 
-C'est à dire que la variable *(x)* sera affecté par la 1ère fonction, ensuite, ce n'est plus la variable qui sera affecté par la seconde fonction mais bien **le résultat** de la variable par la 1ère fonction
+C'est à dire que la variable *(x)* sera affectée par la 1ère fonction, ensuite, ce n'est plus la variable qui sera affectée par la seconde fonction mais bien **le résultat** de la variable par la 1ère fonction
 Pour deux fonctions `f` et `g`, elle se note `f o g` et se lit `f rond g`. 
 
 Pour bien comprendre ce que c'est, voyons l'exemple suivant :
@@ -65,7 +65,8 @@ Si oui, continuez plus bas, sinon lisez 😉
 
 Comme vous l'avez remarqué, la fonction `f` a *disparue*.
 Cependant, si vous regardez de plus près, vous remarquerez qu'on la retrouve dans l'expression `3.(x + 2)`. En effet, ce n'est rien d'autre que sa forme `3x` modifiée. 
-Comme nous l'avons dit plus haut, la fonction `g` était le `x` de la fonction `f`.                                    Je l'ai donc simplement remplacé dans l'expression.
+Comme nous l'avons dit plus haut, la fonction `g` était le `x` de la fonction `f`.
+Je l'ai donc simplement remplacé dans l'expression.
 
 Maintenant, essayons de voir ce que donnerait cette fonction `h(x)`.
 
@@ -125,7 +126,8 @@ Après vous avoir expliqué ce qu'était une fonction composée, à vous de boss
 Je veux que vous écriviez une fonction capable de construire la fonction composée de plusieurs fonctions.
 
 1. Commencez par la composée de 2 fonctions seulement.
-2. Une fois ceci fait, essayez d'étendre votre fonction à une fonction capable de prendre une infinité de fonction en paramètre et d'en sortir la fonction composée.                                            *Je vous suggère de passer par une liste de fonctions en paramètre pour cette deuxième étape.*
+2. Une fois ceci fait, essayez d'étendre votre fonction à une fonction capable de prendre une infinité de fonction en paramètre et d'en sortir la fonction composée.
+*Je vous suggère de passer par une liste de fonctions en paramètre pour cette deuxième étape.*
 3. Enfin généralisez votre fonction à n'importe quel type de valeur.
 
 ---

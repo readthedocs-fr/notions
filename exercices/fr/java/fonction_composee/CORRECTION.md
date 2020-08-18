@@ -241,7 +241,7 @@ Pour l'arrêter, il faut une condition exutoire *(de sortie)*. Cette condition d
 
 Ici, nous allons faire en sorte que la méthode se rappelle tant qu'il y a des fonctions à traiter dans la liste qu'on lui passe en paramètre.
 
-Notre méthode va traiter une condition avec la suivante, une fois qu'elles auront été composée en une nouvelle fonction, celle ci se verra ajoutée à la fin de la liste afin qu'on puisse la récupérer.
+Notre méthode va traiter une condition avec la suivante, une fois qu'elles auront été composées en une nouvelle fonction, celle ci se verra ajoutée à la fin de la liste afin qu'on puisse la récupérer.
 
 Notre condition, c'est donc qu'il ne reste qu'une seule fonction dans la liste (notre fonction composée).
 
@@ -299,7 +299,7 @@ public Function<Integer, Integer> compose(List<Function<Integer, Integer>> funct
 }
 ```
 
-Et voilà, notre méthodes `compose()` est terminée.
+Et voilà, notre méthode `compose()` est terminée.
 
 Normalement sur le milieu du code, vous devriez pouvoir vous en sortir vous même pour comprendre.
 
