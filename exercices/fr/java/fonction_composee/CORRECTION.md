@@ -20,7 +20,7 @@ Okey, donc, on doit écrire une méthode capable de déterminer et renvoyer la c
 
 C'est pour l'avoir bien en tête (sisi je vous assure).
 
-On va commencer par appliquer la première étape et faire une **méthode** qui peut **composer 2 fonctions** **en** **une seule**.
+On va commencer par appliquer la première étape et faire une **méthode** qui peut **composer 2 fonctions en une seule**.
 
 Il faut donc que notre méthode prenne **2 fonctions en paramètre**. Il faut également que notre méthode **renvoie cette fonction composée.**
 
@@ -223,7 +223,7 @@ public Function<Integer, Integer> compose(List<Function<Integer, Integer>> funct
 
 (Évidemment, dans cette correction, vous n'avez pas le choix, c'est moi qui décide ce que j'écris et je décide de partir sur la deuxième option 👀)
 
-*Néanmoins, comme dit au début, toute solution qui fonctionne est une solution correcte, il n'y a pas de solution meilleure que toutes les autres Si vous avez choisi de partir sur les boucles, bien vu, c'est déjà nickel d'être arrivé jusqu'ici. Vous avez réussi l'exercice. Mais regardez quand même ce que ça donne sous une autre forme, ça ne peut être que bénéfique* 😇
+*Néanmoins, comme dit au début, toute solution qui fonctionne est une solution correcte, il n'y a pas de solution meilleure que toutes les autres. Si vous avez choisi de partir sur les boucles, bien vu, c'est déjà nickel d'être arrivé jusqu'ici. Vous avez réussi l'exercice. Mais regardez quand même ce que ça donne sous une autre forme, ça ne peut être que bénéfique* 😇
 
 ### Interlude récursivité
 
