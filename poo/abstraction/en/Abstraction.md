@@ -25,7 +25,7 @@ class Human {
     }
 
     void consumeEnergy(float value) {
-        this.energie -= value;
+        this.energy -= value;
     }
 }
 ```
