@@ -264,7 +264,7 @@ public Function<Integer, Integer> compose(List<Function<Integer, Integer>> funct
     }
     
     if(functions.size() == 0) {
-        return x -> 0; //la forme x-> y
+        return x -> x; //la forme x-> y
     }
 }
 ```
@@ -280,7 +280,7 @@ public Function<Integer, Integer> compose(List<Function<Integer, Integer>> funct
     }
     
     if(functions.size() == 0) {
-        return x -> 0; //la forme x-> y
+        return x -> x; //la forme x-> y
     }
     
     //Nous récupérons et supprimons les 2 fonctions de la liste
@@ -343,7 +343,7 @@ public <I, O> Function<Integer, Integer> compose(List<Function<Integer, Integer>
     }
     
     if(functions.size() == 0) {
-        return x -> 0; 
+        return x -> x; 
     }
     
     Function<Integer, Integer> g = functions.remove(functions.size() - 1);
@@ -366,7 +366,7 @@ public <I, O> Function<I, O compose(List<Function<I, O>> functions) {
     }
     
     if(functions.size() == 0) {
-        return x -> 0; 
+        return x -> x; 
     }
     
     Function<I, O> g = functions.remove(functions.size() - 1);
