@@ -1,6 +1,6 @@
 # Fonction composée - Correction
 
-> Avant de commencer, sachez qu'il n'existe jamais qu'une seule solution. 
+> Avant de commencer, sachez qu'il existe toujours plusieurs solutions. 
 Si celle se trouvant ci dessous ne correspond pas à la vôtre, elle n'est pas forcément fausse. 
 Enjoy !
 
