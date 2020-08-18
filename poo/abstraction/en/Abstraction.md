@@ -128,4 +128,4 @@ By making an abstraction to our **Human** class, we allowed two very important y
 - **An access restriction**, since `Hiking` doesn’t have access to the functions that are specific to the `Human` class
 - **An ease of access**, since `Hiking` accepts henceforth every object whose type implements `Walking`, instead of being limited to humans.
 
-For more information on the [SOLID] (<https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)>) principle called **Dependency Inversion** (witch is mainly based on abstraction), I invite you to read the [Wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle) article related to this topic.
+For more informations on the [SOLID] (<https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)>) principle called **Dependency Inversion** (witch is mainly based on abstraction), I invite you to read the [Wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle) article related to this topic.
