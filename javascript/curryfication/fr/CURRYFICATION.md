@@ -11,7 +11,12 @@ Il est à noter que la plupart des fonctions curryfiées permettent toujours de 
 - `fn(a, b, c)`
 
 ## Utilité
-Bien que la curryfication puisse sembler aux premiers abords superflue, elle est au contraire bien utile. Elle permet notamment de simplifier le débogage (les fonctions currifiées ont pour but d'être dites "pures", donc qu'elles ne provoquent pas d'effet de bord et que leur valeur de retour ne dépend que des arguments fournis), améliore la lisibilité en réduisant les répétitions, et permet également de créer des modèles.
+Bien que la curryfication puisse sembler aux premiers abords superflue, elle est au contraire bien utile. Elle permet notamment de simplifier le débogage (les fonctions currifiées ont pour but d'être dites "pures", donc qu'elles ne provoquent pas d'effet de bord et que leur valeur de retour ne dépend que des arguments fournis), améliore la lisibilité en réduisant les répétitions, et permet également d'appliquer une [partial application](https://en.wikipedia.org/wiki/Partial_application) sur une fonction à plusieurs arguments.
+
+### Ordre des arguments
+Malgré le fait que la curryfication permette la séparation des arguments d'une fonction, ceux-ci doivent cependant toujours être fournis dans le même ordre. Ainsi, une fonction curryfiée `fn(a, b, c)` doit d'abord recevoir l'argument `a`, puis l'argument `b`, et enfin l'argument `c`.
+
+Il s'agit également un des points négatifs de la curryfication : une fois curryfiée, une fonction perd la signature de ses arguments (leur nom, leur type). Assurez-vous donc d'essayer de donner un ordre logique à vos arguments.
 
 ## Exemple de fonction curryfiée
 Prenons l'exemple d'une fonction qui a pour but d'annoncer le trajet entre deux villes ; appelons-la `travel`.
