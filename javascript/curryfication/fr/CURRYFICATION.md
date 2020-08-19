@@ -29,7 +29,7 @@ Maintenant, curryfions-la :
 const travelParisToBordeaux = travel("Paris")("Bordeaux");
 console.log(travelParisToBordeaux); // "Vous voyagez de Paris à Bordeaux"
 ```
-Comme dit précédemment, nous pouvons nous servir de la curryfication pour créer des modèles, comme par exemple :
+Comme dit précédemment, nous pouvons nous servir de la curryfication pour appliquer une partial application et créer des sortes de modèles, comme par exemple :
 ```js
 const travelFromParis = travel("Paris");
 
