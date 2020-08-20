@@ -69,7 +69,7 @@ ramdaErrorNow("Ceci est un test avec Ramda"); // [ERROR] Wed, 19 Aug 2020 16:58:
 ```
 
 ### Implémentation interne
-Bien entendu, il reste possible d'implémenter soi-même. Nous vous proposons ainsi cette implémentation, à prendre ou à laisser :
+Bien entendu, il reste possible de l'implémenter soi-même. Nous vous proposons ainsi cette implémentation, à prendre ou à laisser :
 ```js
 function curry(fn) {
 	if (typeof fn !== "function") {
