@@ -1,4 +1,4 @@
-# La curryfication en JavaScript
+# La curryfication
 ## Préambule
 
 La curryfication est une notion souvent employée en programmation fonctionnelle. Elle consiste à transformer une fonction à plusieurs arguments en fonction à un seul argument, retournant une fonction reposant sur les arguments restants.
@@ -10,9 +10,12 @@ Il est à noter que la plupart des fonctions curryfiées permettent toujours de 
 - `fn(a, b)(c)`
 - `fn(a, b, c)`
 
+Nous aborderons cette notion à l'aide d'exemples en JavaScript.
+
 ## Utilité
- ## Utilité
-Bien que la curryfication puisse sembler aux premiers abords superflue, elle est au contraire bien utile. Elle permet notamment de simplifier le débogage (les fonctions curryfiées ont pour but d'être dites "pures", donc qu'elles ne provoquent pas d'effet de bord et que leur valeur de retour ne dépende que des arguments fournis), améliore la lisibilité en réduisant les répétitions, et permet également d'appliquer une [partial application](https://en.wikipedia.org/wiki/Partial_application) sur une fonction à plusieurs arguments.
+Bien que la curryfication puisse sembler aux premiers abords superflue, elle est au contraire bien utile. Elle permet notamment :
+- d'améliorer la lisibilité en réduisant les répétitions grâce à l'application d'une [partial application](https://en.wikipedia.org/wiki/Partial_application) sur une fonction à plusieurs arguments (on lie une valeur par défaut à un argument afin de créer une base réutilisable),
+- de simplifier le débogage ; les fonctions curryfiées ont pour but d'être dites "[pures](https://fr.wikipedia.org/wiki/Fonction_pure)" :elles ne provoquent donc pas d'[effet de bord](https://fr.wikipedia.org/wiki/Effet_de_bord_(informatique)) (modification de l'environnement extérieur à la fonction : mutation d'une variable non locale, d'une variable statique locale, d'un flux d'entrée ou de sortie...) et leur valeur de retour ne dépende que des arguments fournis (l'environnement extérieur n'influe donc pas sur le retour de la fonction).
 
 ### Ordre des arguments
 Malgré le fait que la curryfication permette la séparation des arguments d'une fonction, ceux-ci doivent cependant toujours être fournis dans le même ordre. Ainsi, une fonction curryfiée `fn(a, b, c)` doit d'abord recevoir l'argument `a`, puis l'argument `b`, et enfin l'argument `c`.

@@ -5,4 +5,4 @@ Cette notion porte sur la curryfication (currying en anglais), notion particuli√
 
 ## Table des mati√®res
 
-- [La curryfication en JavaScript](fr/CURRYFICATION.md)
+- [La curryfication](fr/CURRYFICATION.md)
