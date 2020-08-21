@@ -20,7 +20,14 @@ Bien que la curryfication puisse sembler aux premiers abords superflue, elle est
 ### Ordre des arguments
 Malgré le fait que la curryfication permette la séparation des arguments d'une fonction, ceux-ci doivent cependant toujours être fournis dans le même ordre. Ainsi, une fonction curryfiée `fn(a, b, c)` doit d'abord recevoir l'argument `a`, puis l'argument `b`, et enfin l'argument `c`.
 
-Il s'agit également d'un des points négatifs de la curryfication : une fois curryfiée, une fonction perd la signature de ses arguments (leurs noms et leurs types). Assurez-vous donc d'essayer de donner un ordre logique à vos arguments.
+### Typage
+Selon l'implémentation de la curryfication (comme la nôtre plus bas), la fonction curryfiée peut perdre sa signature (les noms et types des variables, le type de retour).
+
+Pour pallier ce problème, nous avons donc deux solutions :
+- assurez-vous d'essayer de donner un ordre logique à vos arguments, et d'en avoir un nombre assez petit (un maximum de trois est idéal) ; ceci s'applique néanmoins dans tout cas, curryfication ou pas !
+- utiliser une implémentation qui le supporte, comme [Ramda](https://ramdajs.com/) ou [lodash](https://lodash.com). En JavaScript, vous pouvez donc typer avec JSDoc ; en TypeScript, le simple typage de votre fonction suffit. Dans les deux cas, assurez-vous néanmoins d'avoir installé `@types/ramda` ou `@types/lodash` en fonction de l'implémentation que vous avez choisie.
+
+Après un test de notre côté, nous vous recommandons cependant Ramda, qui gère bien mieux les arguments, leur type, et donc l'autocomplétion, que lodash.
 
 ## Exemple de fonction curryfiée
 Prenons l'exemple d'une fonction qui a pour but d'annoncer le trajet entre deux villes ; appelons-la `travel`.
@@ -48,7 +55,7 @@ Grâce à la curryfication, on peut ainsi éviter de répéter deux fois l'argum
 ## Implémentation et usage
 Nous pouvons implémenter cette notion à l'aide d'une simple fonction qui fera le travail à notre place.
 ### Implémentation externe (via une bibliothèque)
-Certaines bibliothèques, comme [lodash](https://lodash.com) ou [Ramda](https://ramdajs.com/) mettent déjà à disposition une fonction de curryfication.
+Certaines bibliothèques, comme lodash ou Ramda mettent déjà à disposition une fonction de curryfication.
 ```js
 import _ from "lodash";
 import R from "ramda";
