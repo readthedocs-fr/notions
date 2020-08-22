@@ -76,7 +76,8 @@ public class Main {
     
 }
 ```
-Ici, tout se passe bien si l'utilisateur entre un entier, mais si l'utilisateur envoie autre chose comme un mot, l'exception `NumberFormatException` sera invoquée. Afin de corriger cela, nous devrions faire :
+Ici, tout se passe bien si l'utilisateur entre un entier, mais si l'utilisateur entre quelque chose d'autre comme un mot, l'exception `NumberFormatException` sera lancée. Afin de corriger cela, nous devrions faire :
+
 ```java
 public class Main {
 
