@@ -67,7 +67,7 @@ interface Walking {
 }
 ```
 
-So now, our class `Human` will be able to **implement** this awesome interface, and all that's to di is to add `implements Walking` and put a little `@Override` on our `move` and `consumeEnergy` methos, and that's it, since this is a behavior that we had already implemented beforehand, only without the interface.
+So now, our class `Human` will be able to **implement** this awesome interface, and all that's to di is to add `implements Walking` and put a little `@Override` on our `move` and `consumeEnergy` methods, and that's it, since this is a behavior that we had already implemented beforehand, only without the interface.
 
 ```java
 class Human implements Walking {
