@@ -64,7 +64,7 @@ Vous comprenez ?
 Si oui, continuez plus bas, sinon lisez 😉
 
 Comme vous l'avez remarqué, la fonction `f` a *disparue*.
-Cependant, si vous regardez de plus près, vous remarquerez qu'on la retrouve dans l'expression `3.(x + 2)`. En effet, ce n'est rien d'autre que sa forme `3x` modifiée. 
+Cependant, si vous regardez de plus près, vous remarquerez qu'on la retrouve dans l'expression `3*(x + 2)`. En effet, ce n'est rien d'autre que sa forme `3x` modifiée. 
 Comme nous l'avons dit plus haut, la fonction `g` était le `x` de la fonction `f`.
 Je l'ai donc simplement remplacé dans l'expression.
 
@@ -147,11 +147,7 @@ Voici une liste de fonctions que vous pouvez utiliser pour vos tests :
 - `g(x) = log(x)` - `0`
 - `h(x) = 100*cos(x)` - `100`
 - `i(x) = sqrt(x)` - `10`
-- `j(x) = x*5/2` - `25`
-
-Nous arrivons ainsi à un beau nombre, 25.
-C'est un carré parfait lui-même formé de la somme des 2 carrés parfaits le précédant.
-C'est un de ceux que j'aime bien.
+- `j(x) = x*5/2` - `25`, un beau nombre: un carré parfait lui-même formé de la somme des 2 carrés parfaits le précédant. C'est un de ceux que j'aime bien.
 
 ## Conclusion
 

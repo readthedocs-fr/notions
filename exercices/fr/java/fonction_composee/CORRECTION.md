@@ -24,7 +24,7 @@ On va commencer par appliquer la première étape et faire une **mét
 
 Il faut donc que notre méthode prenne **2 fonctions en paramètre**. Il faut également que notre méthode **renvoie cette fonction composée.**
 
-Pour écrire ce code, nous allons nous servir du package `java.util.function` et des classes qui s'y trouvent, notamment la classe `Function`.
+Pour écrire ce code, nous allons nous servir du package `java.util.function` et des classes/interfaces qui s'y trouvent, notamment l'interface `Function`.
 
 ```java
 public Function compose(Function f, Function g) {
@@ -32,7 +32,7 @@ public Function compose(Function f, Function g) {
 }
 ```
 
-Bon, jusque là, pas trop de problème, nous avons la signature de notre méthode. Il reste cependant un léger souci, j'ai déclaré mes types de retour et de paramètre en `rawtypes`. `Rawtype` traduisible par `sans type` en français signifie que je n'ai pas assigné de type à certaines classes génériques. 
+Bon, jusque là, pas trop de problème, nous avons la signature de notre méthode. Il reste cependant un léger souci, j'ai déclaré mes types de retour et de paramètre en `rawtypes`. `Rawtype` traduisible par `type brut` en français signifie que je n'ai pas spécifié les types génériques des objets `Function` avec lesquels je vais travailler.
 
 Elles n'acceptent donc par défaut que des `Object`. 
 
@@ -231,7 +231,7 @@ Expliquons vite fait ce qu'est la récursivité pour ceux qui ne connaissent pas
 
 Quelque chose de récursif, c'est quelque chose qui fait tout le temps appel à lui même jusqu'à ce que la boucle d'appel se casse ou soit stoppée.
 
-Ça peut être une liste, une méthode, une manière de parcourir un objet itérable etc
+Ça peut être une liste, une méthode, une manière de parcourir un objet itérable, etc.
 
 ---
 
@@ -393,5 +393,3 @@ L'exercice n'était pas simple, félicitation à ceux qui l'ont réussi, un gran
 J'espère que ça vous a bien fait réfléchir, que ça vous a plu et que surtout vous avez appris des choses 😛 
 
 On se retrouve bientôt pour quelque chose de tout aussi croustillant ;)
-
-Enjoy !
