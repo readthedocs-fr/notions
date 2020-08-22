@@ -93,7 +93,7 @@ public class Main {
 }
 ```
 #### Troisième cause : l'environnement dans lequel l'application est lancée
-Comme pour la cause précédente, vous devrez passer par un `try/catch` ou faire une vérification.
+Comme pour la deuxième cause, vous devrez passer par un `try/catch` ou faire une vérification.
 Exemple :
 ```java
 public class Main {
