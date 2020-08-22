@@ -38,7 +38,8 @@ Composition de la stacktrace :<br>
 	at ga.enimaloc.Main.main(Main.java:7)
 ```
 indique l'acheminement de l'exception commençant de bas en haut (le haut étant la méthode contenant la **première** instruction ayant causé l'erreur), chaque ligne se compose de la classe (et de son package), de la méthode, du fichier source, et de la ligne de l'invocation.<br>
-:warning: Attention : cet acheminement ne contient pas forcément que vos classes, veuillez bien chercher les lignes concernées par l'erreur, de haut en bas, lisez chaque ligne et arrêtez-vous quand cette dernière concerne votre code.
+:warning: Attention : cet acheminement ne contient pas forcément que vos classes, veuillez bien chercher les lignes concernées par l'erreur, de haut en bas, lisez chaque ligne et arrêtez-vous à la dernière concernant votre code.
+
 
 Maintenant, si on essaie de transposer en français, cela donnerait :<br>
 `NullPointerException` faisant partie du package `java.lang` a été invoquée à la ligne `16` du fichier `B.java` présent dans le package `ga.enimaloc` en précisant `Main cannot be null`.<br>
