@@ -117,7 +117,7 @@ public class Main {
     
 }
 ```
-Ceci causerait l'exception `java.net.UnknownHostException` si la machine n'a aucun accès à internet, pour éviter cela, il faudrait vérifier que le client est bien connecté en ajoutant un `catch` de `java.net.UnknownHostException` :
+Ceci lancerait l'exception `java.net.UnknownHostException` si la machine n'a aucun accès à internet, pour éviter cela, il faudrait vérifier que le client est bien connecté en ajoutant un `catch` de `java.net.UnknownHostException` :
 ```java
 public class Main {
 
