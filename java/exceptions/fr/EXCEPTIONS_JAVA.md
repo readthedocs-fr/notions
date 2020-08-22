@@ -47,7 +47,8 @@ Maintenant, si on essaie de transposer en français, cela donnerait :<br>
 
 ### Correction
 #### Première cause : le code
-Dans ce cas-ci, vous devez comprendre dans quelle partie l'erreur est déclenchée en suivant votre code et en déboggant si besoin.<br>
+Dans ce cas-ci, vous devez comprendre dans quelle partie et quand est-ce que l'erreur est déclenchée en suivant votre code et en déboggant si besoin.<br>
+
 Exemple :
 ```java
 public class Main {
