@@ -146,7 +146,7 @@ public class Main {
 ### NullPointerException :
 Une [NullPointerException](https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html) (aussi connue par l'abréviation NPE) est une exception héritant de la classe [RuntimeException](https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html), c'est donc une _unchecked exception_.<br>
 <br>
-Elle est invoquée quand le programme essaie d'accéder à une valeur nulle, cela inclut :
+Elle est invoquée quand le programme essaie d'accéder à une valeur `null`, cela inclut :
 - L'invocation de la méthode d'instance d'un objet `null`.
 - La récupération/modification d'un élément dans un tableau défini à `null`.
 - Invoquer une exception qui est `null`.
