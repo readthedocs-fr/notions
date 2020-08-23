@@ -26,4 +26,4 @@ Although this principle is applicable to many language of programming, examples 
 
 ## Table of contents
 
-- [Abstraction - definition, utility and example](en/ABSTRACTION.md)
+- [Abstraction - definition, utility and examples](en/ABSTRACTION.md)
