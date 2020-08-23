@@ -1,0 +1,4 @@
+class ConcertSaver is
+
+    method saveConcert(concertHall: ConcertHall, day: string) is
+        // Sauvegarde dans un fichier des données du spectacle en rapport avec la salle

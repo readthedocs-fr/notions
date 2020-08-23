@@ -1,0 +1,12 @@
+class AveragePresenter is
+
+    private field averageCalculator: AverageCalculator
+
+    constructor AveragePresenter(averageCalculator: AverageCalculator) is
+        this.averageCalculator = averageCalculator
+
+    method toString() : string is
+        return "Student average : " + averageCalculator.calculAverage()
+
+    method toJSON(): string is
+        return "{ \"average\":" + averageCalculator.calculAverage() + " }"

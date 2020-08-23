@@ -1,0 +1,19 @@
+class ConcertHall is
+
+    private field classicSeats: integer
+    private field vipSeats: integer
+    private field handicapSeats: integer
+
+    constructor ConcertHall(classicSeats: integer, vipSeats: integer, handicapSeats: integer) is
+        this.classicSeats = classicSeats
+        this.vipSeats = vipSeats
+        this.handicapSeats = handicapSeats
+
+    method getClassicSeats(): integer
+        return classicSeats
+
+    method getVipSeats(): integer
+        return vipSeats
+
+    method getHandicapSeats(): integer
+        return handicapSeats

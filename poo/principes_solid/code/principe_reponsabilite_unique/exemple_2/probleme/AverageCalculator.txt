@@ -1,0 +1,18 @@
+class AverageCalculator is
+
+    private field student: Student
+
+    constructor AverageCalculator(student: Student) is
+        this.student = student
+
+    method printAverage(): string is
+        return "Student average : " + calculAverage()
+
+    method calculAverage(): float is
+
+        results = student.getResults()
+
+        if (results.isEmpty()) then
+            return 0
+
+        return // Calcul de la moyenne des notes

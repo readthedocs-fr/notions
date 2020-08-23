@@ -1,0 +1,7 @@
+class PriceCalculator is
+
+
+    method calculTotalPrice(concertHall: ConcertHall): integer is
+        return concertHall.getClassicSeats() * 15
+        		+ concertHall.getHandicapSeats() * 15
+        		+ concertHall.getVipSeats() * 30

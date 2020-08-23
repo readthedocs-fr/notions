@@ -1,0 +1,22 @@
+class ConcertHall is
+
+    private field hallNumber: integer
+    private field classicSeats: integer
+    private field handicapSeats: integer
+
+    constructor ConcertHall(hallNumber: integer, classicSeats: integer, handicapSeats: integer)
+        this.hallNumber = hallNumber
+        this.classicSeats = classicSeats
+        this.handicapSeats = handicapSeats
+
+    method getTotalPrice(): integer is
+        return getTotalSeats() * 15
+
+    method getRowCount(): integer is
+        return getTotalSeats() / 10
+
+    method getTotalSeats(): integer is
+        return classicSeats + handicapSeats
+
+    method registerShow(day: string) is
+        // Sauvegarde dans un fichier des données du spectacle en rapport avec la salle

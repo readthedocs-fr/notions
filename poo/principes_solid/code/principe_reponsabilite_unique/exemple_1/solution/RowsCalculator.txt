@@ -1,0 +1,7 @@
+class RowsCalculator is
+
+    method calculRows(concertHall: ConcertHall): integer is
+    	seatsCount = concertHall.getClassicSeats()
+        			+ concertHall.getHandicapSeats()
+        			+ concertHall.getClassicSeats()
+        return seatsCount / 10

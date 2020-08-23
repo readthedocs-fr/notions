@@ -1,0 +1,15 @@
+class ConcertHallFacade is
+
+    private field concertHall: ConcertHall
+
+    constructor ConcertHallFacade(concertHall: ConcertHall) is
+        this.concertHall = concertHall
+
+    method getTotalPrice() is
+        return new PriceCalculator().calculTotalPrice(concertHall)
+
+    method getHalRows() is
+        return new RowsCalculator().calculRows(concertHall)
+
+    method saveConcert(day: string) is
+        new ConcertSaver().saveConcert(concertHall, day)

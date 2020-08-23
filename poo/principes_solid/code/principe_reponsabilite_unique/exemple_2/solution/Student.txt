@@ -1,0 +1,9 @@
+class Student is
+
+    private field results: vector of Integer
+
+    constructor Student(results: vector of Integer)
+        this.results = results
+
+    method getResults(): vector of Integer is
+        return results
