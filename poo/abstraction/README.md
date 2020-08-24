@@ -1,4 +1,3 @@
-[FR]
 # Abstraction
 
 > Écrit par [Antoine Tran](https://github.com/Tran-Antoine)
