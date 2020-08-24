@@ -21,7 +21,8 @@ Bien que ce principe soit applicable à de nombreux langages de programmation, l
 This course aims to explain abstraction, a fundamental principle commonly used in object-oriented programming. Abstraction allows, paradoxically, to bring both restriction and facility of access at different levels in a program through interfaces. This principle is mainly covered in the [dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) definition, belonging to the **SOLID** conception principles. It allows a clearer, more secure, and more modulable code. <br>
 
 
-Although this principle is applicable to many language of programming, examples will be written in `Java` for this course.
+Although this principle is applicable to many programming languages, the examples will be written in `Java` for this course.
+
 
 ## Table of contents
 
