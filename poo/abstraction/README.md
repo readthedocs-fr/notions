@@ -9,3 +9,23 @@ Bien que ce principe soit applicable à de nombreux langages de programmation, l
 ## Table des matières
 
 - [Abstraction - définition, utilité et exemples](fr/ABSTRACTION.md)
+
+***
+
+# Abstraction
+
+> Original article authored by [Antoine Tran](https://github.com/Tran-Antoine)
+
+
+> Translation authored by [QuentinBubu](https://github.com/QuentinBubu)
+
+
+This course aims to explain abstraction, a fundamental principle commonly used in object-oriented programming. Abstraction allows, paradoxically, to bring both restriction and facility of access at different levels in a program through interfaces. This principle is mainly covered in the [dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) definition, belonging to the **SOLID** conception principles. It allows a clearer, more secure, and more modulable code. <br>
+
+
+Although this principle is applicable to many programming languages, the examples will be written in `Java` for this course.
+
+
+## Table of contents
+
+- [Abstraction - definition, utility and examples](en/ABSTRACTION.md)
