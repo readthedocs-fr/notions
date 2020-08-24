@@ -10,9 +10,7 @@ Bien que ce principe soit applicable à de nombreux langages de programmation, l
 
 - [Abstraction - définition, utilité et exemples](fr/ABSTRACTION.md)
 
-----
-
-[EN]
+***
 
 # Abstraction
 
