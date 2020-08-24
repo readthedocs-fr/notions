@@ -14,7 +14,7 @@ Bien que ce principe soit applicable à de nombreux langages de programmation, l
 
 # Abstraction
 
-> Written by [Antoine Tran](https://github.com/Tran-Antoine)
+> Original article authored [Antoine Tran](https://github.com/Tran-Antoine)
 
 > Translated by [QuentinBubu](https://github.com/QuentinBubu)
 
