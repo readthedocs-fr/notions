@@ -6,7 +6,7 @@
 
 Ce cours porte sur les principes SOLID, popularisés par Robert C. Martin dans le livre *Agile Software Development, Principles, Patterns and Practices* écrit en 2002. Ces principes, qui sont au nombre de 5, forment un socle de méthodes, d'habitudes et de pratiques permettant de développer des application **claires**, **fiables**, **maintenables** et **robustes**. Ils s'inscrivent dans la notion de **software craftmanship** qui met en avant des pratiques visant à créer des logiciels maintenables et fiables car bien développés plutôt qu'un logiciel fonctionnel mais mal conçu et ne pouvant pas évoluer.
 
-Voici les énonciations des 5 principes formant l'acronyme SOLID :
+Voici les 5 principes formant l'acronyme SOLID :
 
 * (SRP) Single Responsability Principle
 * (OCP) Open Closed Principle
