@@ -21,7 +21,7 @@ Bien que la curryfication puisse sembler aux premiers abords superflue, elle est
 Malgré le fait que la curryfication permette la séparation des arguments d'une fonction, ceux-ci doivent cependant toujours être fournis dans le même ordre. Ainsi, une fonction curryfiée `fn(a, b, c)` doit d'abord recevoir l'argument `a`, puis l'argument `b`, et enfin l'argument `c`.
 
 ### Typage
-Selon l'implémentation de la curryfication (comme la nôtre plus bas), la fonction curryfiée peut perdre sa signature (les noms et types des variables, le type de retour).
+Selon si votre fonction a été curryfiée par une fonction de curryfication, celle-ci peut perdre sa signature (les noms et types des variables, le type de retour).
 
 Pour pallier ce problème, nous avons donc deux solutions :
 - assurez-vous d'essayer de donner un ordre logique à vos arguments, et d'en avoir un nombre assez petit (un maximum de trois est idéal) ; ceci s'applique néanmoins dans tout cas, curryfication ou pas !
@@ -35,7 +35,7 @@ Prenons l'exemple d'une fonction qui a pour but d'annoncer le trajet entre deux 
 const travelParisToBordeaux = travel("Paris", "Bordeaux");
 console.log(travelParisToBordeaux); // "Vous voyagez de Paris à Bordeaux"
 ```
-Maintenant, curryfions-la :
+Une fois curryfiée, cela nous donne ceci :
 ```js
 const travelParisToBordeaux = travel("Paris")("Bordeaux");
 console.log(travelParisToBordeaux); // "Vous voyagez de Paris à Bordeaux"
@@ -53,16 +53,33 @@ console.log(travelToDestination); // "Vous voyagez de Paris à Bordeaux", ou "Vo
 Grâce à la curryfication, on peut ainsi éviter de répéter deux fois l'argument précédent, ici Paris.
 
 ## Implémentation et usage
-Nous pouvons implémenter cette notion à l'aide d'une simple fonction qui fera le travail à notre place.
-### Implémentation externe (via une bibliothèque)
+Nous pouvons implémenter cette notion de deux façons différentes : curryfier notre fonction dès sa déclaration, ou la curryfier à l'aide d'une simple fonction qui fera le travail à notre place. Pour les deux sections ci-dessous, nous nous baserons sur la fonction `log` :
+```js
+function log(level, date, message) {
+    return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
+}
+```
+
+### Curryfication à la déclaration
+Afin de profiter d'une fonction curryfiée, vous pouvez la curryfier dès sa déclaration (celle-ci ne sera cependant appelable que sous la forme `fn(a)(b)(c)`). L'idée est donc de déclarer une fonction à un seul argument, retournant une fonction à un seul argument, et ce autant de fois qu'il y a d'arguments nécessaires dans votre fonction.
+
+Ainsi, notre fonction `log` ci-dessus devient :
+```js
+function log(level) {
+	return function(date) {
+		return function(message) {
+			return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
+		}
+	}
+}
+```
+
+### Fonction de curryfication
+#### Implémentation externe (via une bibliothèque)
 Certaines bibliothèques, comme lodash ou Ramda mettent déjà à disposition une fonction de curryfication.
 ```js
 import _ from "lodash";
 import R from "ramda";
-
-function log(level, date, message) {
-    return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
-}
 
 // lodash
 const lodashCurried = _.curry(log); // lodashCurried(level)(date)(message), lodashCurried(level)(date, message), lodashCurried(level, date)(message), lodashCurried(level, date, message)
@@ -75,7 +92,7 @@ const ramdaErrorNow = ramdaCurried("ERROR")(new Date());
 ramdaErrorNow("Ceci est un test avec Ramda"); // [ERROR] Wed, 19 Aug 2020 16:58:01 GMT: Ceci est un test avec Ramda
 ```
 
-### Implémentation interne
+#### Implémentation interne
 Bien entendu, il reste possible de l'implémenter soi-même. Nous vous proposons ainsi cette implémentation, à prendre ou à laisser :
 ```js
 function curry(fn) {
