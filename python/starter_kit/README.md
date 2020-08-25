@@ -12,13 +12,13 @@ Dans cette fiche, nous allons voir quelles sont les étapes pour bien démarrer 
 
 # Starting well with Python
 
-> Originally written by [TNtube](https://github.com/TNtube)
+> Original article authored by [TNtube](https://github.com/TNtube)
 
-> English translation by [FuseTim](https://github.com/fusetim)
+> Translation authored by [FuseTim](https://github.com/fusetim)
 
 You make your first steps in the programming world?
 You wish to begin with a simple and intuitive language such as Python?
-In this sheet, we gonna see what are the steps to well begin in the vast and interesting world that is the programming in Python.
+In this sheet, we are going to see what are the steps to well begin in the vast and interesting world that is the programming in Python.
 
 ## Table of Contents
 - [How to well begin with Python](en/START_WELL.md)

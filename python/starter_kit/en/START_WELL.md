@@ -24,7 +24,7 @@ such as the course of **[ TODO ]**.
 
 
 
-### What not to do when you begin
+### Errors to not do when you begin
 
 Many people begin programming with the idea that is not necessary complicated,
 and we can quickly make very big projects without the need to aquire all the bases.
@@ -32,13 +32,13 @@ Well, that is mostly a big mistake.
 
 In fact, learn a language whether it is Python or another, need to be done carefully.
 You should not try to drive a car without learn to do it. Thus, a lot of beginners 
-in Python launches themselves in libraries too much advanced for them, like `Pygame`, `Tkinter` or such as `discord.py`
+in Python launch themselves in libraries too much advanced for them, like `Pygame`, `Tkinter` or such as `discord.py`
 that need advanced notions such as the Oriented Object Programming, the error handling,
 decorators or even the manipulation of threads/async.
 
 If you do not know what is a function, an object or manipulate loops likes `for` and `while` loops,
-you have everything to gain to let your project on a side for a time to consolidate your knowledges and even, make
-projects at your scale in order to accumulate knowledges for the one that is close to your heart.
+you have everything to gain to let your project on a side for a time to consolidate your knowledge and even, make
+projects at your scale in order to accumulate knowledge for the one that is close to your heart.
 Do not be afraid to let a project during several months.
 Accumulate frustration by continuously failling on a too ambicious project can disgust you with
 programming in general (that would be counterproductive).
