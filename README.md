@@ -6,7 +6,7 @@
 	</p>
 </p>
 
-> Ce dépôt contient des **cours** et **fiches pratiques** sur des sujets techniques ainsi que des **exercices** traitant de concepts particuliers.
+> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques ainsi que des **exercices** traitant de concepts particuliers.
 > Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
 >
 > **Légende** :
