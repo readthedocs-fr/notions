@@ -27,10 +27,10 @@ such as the course of **[ TODO ]**.
 ### Errors to not do when you begin
 
 Many people begin programming with the idea that is not necessary complicated,
-and we can quickly make very big projects without the need to aquire all the bases.
+and they can quickly make very big projects without the need to aquire all the bases.
 Well, that is mostly a big mistake.
 
-In fact, learn a language whether it is Python or another, need to be done carefully.
+In fact, learn a language whether it is Python or another, needs to be done carefully.
 You should not try to drive a car without learn to do it. Thus, a lot of beginners 
 in Python launch themselves in libraries too much advanced for them, like `Pygame`, `Tkinter` or such as `discord.py`
 that need advanced notions such as the Oriented Object Programming, the error handling,
@@ -49,14 +49,14 @@ programming in general (that would be counterproductive).
 What is better to begin with programming more than give yourself objectives. Have a project
 is a very great way to learn. Indeed, after seeing the theory in courses,
 begin a project, permits to practice. Practicing is the only way that permits to remember durably.
-Thus, we can begin small and adapted projects to what we learn.
+Thus, we can begin small and adapted projects to what we learned.
 
 Here are some examples:
 - A fair price game after seeing loops and conditions ;
 - A hangman, when you master the treatment of character strings ;
 - A tic-tac-toe in shell, pretty fun and instructive to assimilate the loops.
 
-Once the basis mastered, do not hesitate to be curious. Relying on your knowledge do not permits to evolve.
+Once the basis mastered, do not hesitate to be curious. Relying on your knowledge does not permit to evolve.
 There are always things to learn, to experiment or to discover.
 
 ### Conclusion
