@@ -61,7 +61,6 @@ Si j'écris que
 
 Vous comprenez ?
 
-Si oui, continuez plus bas, sinon lisez 😉
 
 Comme vous l'avez remarqué, la fonction `f` a *disparue*.
 Cependant, si vous regardez de plus près, vous remarquerez qu'on la retrouve dans l'expression `3*(x + 2)`. En effet, ce n'est rien d'autre que sa forme `3x` modifiée. 

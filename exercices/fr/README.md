@@ -9,8 +9,8 @@ N'hésitez pas à proposer vos propres exercices et corrections en contribuant a
 
 ## Énoncés
 
-- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/ENONCE.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+- `🎯` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/ENONCE.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
 
 ## Corrections
 
-- `📑` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/CORRECTION.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+- `🎯` [Fonction composée](https://github.com/readthedocs-fr/notions/blob/master/exercices/fr/java/fonction_composee/CORRECTION.md) - par [Alexandre Orékhoff](https://github.com/Hokkaydo)

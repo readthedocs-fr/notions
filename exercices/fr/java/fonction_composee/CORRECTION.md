@@ -127,7 +127,7 @@ Pour cela nous allons utiliser la forme suivante :
 
 `x -> y`
 
-Elle signifie "Cette fonction prend une valeur x et renvoie une valeur y"
+Elle signifie "Cette fonction prend une valeur x et renvoie une valeur y". Je vous invite à lire la fiche sur les [interfaces fonctionnelles en java](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) afin d'y voir plus clair.
 
 Go :
 
