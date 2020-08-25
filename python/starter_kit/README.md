@@ -13,6 +13,7 @@ Dans cette fiche, nous allons voir quelles sont les étapes pour bien démarrer 
 # Starting well with Python
 
 > Originally written by [TNtube](https://github.com/TNtube)
+
 > English translation by [FuseTim](https://github.com/fusetim)
 
 You make your first steps in the programming world?
