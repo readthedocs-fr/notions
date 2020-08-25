@@ -10,7 +10,7 @@
 > Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
 >
 > **Légende** :
-> `📑` Fiche pratique · `📖` Cours . `🎯` Exercice
+> `📑` Fiche pratique · `📖` Cours · `🎯` Exercice
 
 ## Exercices
 
