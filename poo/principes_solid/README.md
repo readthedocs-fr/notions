@@ -8,11 +8,11 @@ Ce cours porte sur les principes SOLID, popularisés par Robert C. Martin dans l
 
 Voici les énonciations des 5 principes formant l'acronyme SOLID :
 
-* Single Responsability Principle (SRP) - *Une classe doit avoir une et une seule raison d'être modifiée*
-* Open Closed Principle (OCP) - *Les classes et les méthodes dovient être ouvertes à l'extension, mais fermées à la modification*
-* Liskov Substitution Principle (LSP) - *Les super-types doivent pouvoir être substitués par leur implémentations*
-* Interface Segregation Principle (ISP) - *Le client ne doit pas dépendre de méthodes qu'il n'utilise pas*
-* Dependency Inversion Principle (DIP) - *Les modules de haut niveau ne doivent pas dépendre de modules de bas niveau, les deux doivent dépendre d'abstraction. Les abstractions ne doivent pas dépendre d'implémentations, les implémentations doivent dépendre d'abstractions*
+* (SRP) Single Responsability Principle
+* (OCP) Open Closed Principle
+* (LSP) Liskov Substitution Principle
+* (ISP) Interface Segregation Principle
+* (DIP) Dependency Inversion Principle
 
 ## Prérequis
 
@@ -22,10 +22,10 @@ Voici les énonciations des 5 principes formant l'acronyme SOLID :
 
 ## Table des matières
 
-> Ces principes s'appliquant à tous les langages orientés objets, les exemples seront écrits en *pseudo code* et l'ensemble de ces exemples seront disponibles dans un dossier `code`.
+> Ces principes s'appliquant à tous les langages orientés objets, les exemples seront écrits en *pseudo code* et l'ensemble de ces exemples seront disponibles dans le dossier `code`.
 
-1. [Le principe de responsabilité unique - Chacun son rôle](fr/1_principe_responsabilite_unique/Single_Responsability_Principle.md)
-2. [Le principe ouvert-fermé - S'ouvrir au monde tout en s'en protégeant](fr/2_principe_ouvert_fermé/Open_Closed_Principle.md)
-3. [Le principe de substitution de Liskov - La preuve qu'un carré n'est pas un rectangle](fr/3_principe_substitution_liskov/Liskov_Substitution_Principle.md)
-4. [Le principe de ségrégation des interface - Diviser pour être moins dépendant](fr/4_principe_segregation_interfaces/Interface_Segregation_Principle.md)
-5. [Le principe d'inversion de dépendance - Dépendre ou ne pas dépendre, telle est la question](fr/5_principe_inversion_dependance/Dependance_Inversion_Principle.md)
+1. [Le principe de responsabilité unique - Chacun son rôle](fr/1-Principe_de_Responsabilite_Unique.md)
+2. [Le principe ouvert-fermé - S'ouvrir au monde tout en s'en protégeant](fr/2-Principe_Ouvert_Ferme.md)
+3. [Le principe de substitution de Liskov - La preuve qu'un carré n'est pas un rectangle](fr/3-Principe_Substitution_Liskov.md)
+4. [Le principe de ségrégation des interface - Diviser pour être moins dépendant](fr/4-Principe_Segregation_Interfaces.md)
+5. [Le principe d'inversion de dépendance - Dépendre ou ne pas dépendre, telle est la question](fr/5-Principe_Inversion_Dependances.md)
