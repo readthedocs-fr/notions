@@ -75,7 +75,7 @@ public class MyGenericClass<S, T> {
 
 En effet, je suis sûr que `firstVariable` et `value` sont de même type : `S`. Je peux donc faire ce que je veux avec. 
 
-Les listes, toutes les classes qui implémentent l'interface `List`, sont d'excellents exemples de générécité.
+Les listes, ainsi que toutes les classes qui implémentent l'interface `Collection`, sont d'excellents exemples de générécité.
 
 Je peux également avoir ceci :
 
@@ -267,7 +267,7 @@ public interface Function<T, R> {
 } 
 ```
 Vous voyez qu'elle a besoin de 2 types génériques : un type quelconque (`<T>`) et un type de résultat (`<R>`).
-Afin de comprendre son fonctionnement, je vous suggère de jeter un coup à [cette fiche](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) sur les interfaces fonctionnelles dont faire parte notre chère et bien-aimée interface `Function`.
+Afin de comprendre son fonctionnement, je vous suggère de jeter un coup d'oeil à [cette fiche](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) sur les interfaces fonctionnelles dont notre chère et bien-aimée interface `Function` fait partie .
 
 Mon type de retour est ici un objet de type `Function` et cette fonction prend en paramètre un nombre et renvoie un nombre. Ç'aurait pu être n'importe quoi d'autre, une fonction qui prend un `String`en paramètre et renvoie un `Double`etc...
 
@@ -281,7 +281,7 @@ Pour cela nous allons utiliser la forme suivante :
 
 `x -> y`
 
-Elle signifie "Cette fonction prend une valeur x et renvoie une valeur y". Je vous invite à lire la fiche sur les [interfaces fonctionnelles en java](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) afin d'y voir plus clair.
+Elle signifie "Cette fonction prend une valeur x et renvoie une valeur y". Encore une fois, je vous invite à lire la fiche sur les [interfaces fonctionnelles en java](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) si cette syntaxe vous est inconnue.
 
 Go :
 
