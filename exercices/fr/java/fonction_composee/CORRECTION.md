@@ -60,12 +60,12 @@ public class MyGenericClass<S, T, U> {
 }
 ```
 
-Ici, j'ai défini 3 variables de types, ce sont mes paramètres génériques. 
+Ici, j'ai défini 2 variables de types, ce sont mes paramètres génériques. 
 Je peux à présent faire ceci dans mon code : 
 
 ```java
-public class MyGenericClass<S, T, U> {
-    S firstVariable;
+public class MyGenericClass<S, T> {
+    T firstVariable;
 
     public MyGenericClass(S value){
         this.firstVariable = value;
@@ -75,28 +75,177 @@ public class MyGenericClass<S, T, U> {
 
 En effet, je suis sûr que `firstVariable` et `value` sont de même type : `S`. Je peux donc faire ce que je veux avec. 
 
-Des excellents exemples d'utilisation de la généricité, sont les listes, toutes les classes qui implémentent l'interface `List`.
+Les listes, toutes les classes qui implémentent l'interface `List`, sont d'excellents exemples de générécité.
 
 Je peux également avoir ceci :
 
 ```java
-public class MyGenericClass<S, T, U> {
-    S firstVariable;
+public class MyGenericClass<S, T> {
+    private S firstVariable;
 
     public MyGenericClass(S value){
         this.firstVariable = value;
     }
 
-    public U doSomething(S sValue, U uValue) {
-        System.out.println(sValue + uValue);
-        return uValue;
+    public T doSomething(S sValue, T tValue) {
+        System.out.println(sValue.toString() + tValue.toString() + firstVariable.toString());
+        return tValue;
     }
 }
 ```
 
-Ici, lors de l'utilisation de cette méthode, je suis sûr de récupérer en retour un objet du même type que celui passé en second paramètre.
+Ici, lors de l'utilisation de cette méthode, je suis sûr de récupérer en retour un objet du même type que celui passé en second paramètre, ils sont tous les deux de type `T`. 
 
-Bref, les types génériques, ce sont des types variables.
+Un petit exemple rapide de généricité pourrait être le suivant :
+
+J'ai une classe `Person` qui représente une personne lambda. 
+ :
+```java
+public class Person {
+    private String name;
+    private String surname;
+    private int size;
+    private int weight;
+    
+    public Person(String name, String surname, int size, int weight) {
+        this.name = name;
+        this.surname = surname;
+        this.size = size;
+        this.weight = weight;
+    }
+}
+```
+J'aimerais qu'elle contienne 2 méthodes : `getIdentity()` et `getMeasurements()`.
+Cependant, comme vous pouvez le remarquer, ces deux méthodes sont censées renvoyer chacune 2 paramètres. `name` et `surname` pour la première, et `size` et `weight` pour la seconde. Il me faudrait donc créer une classe qui peut agir comme "boîte de stockage" pour renvoyer ces 2 éléments à chaque fois :
+
+```java
+public Identity {
+
+    private String name;
+    private String```java
+public Identity {
+
+    private String name;
+    private String surname;
+    
+    public Identity(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+    
+    //Getter
+    
+    //Setter
+}
+```
+Voilà pour les noms.
+Et rebelote ...
+
+```java
+public Measurements {
+
+    private int size;
+    private int weight;
+    
+    public Measurements(int size, int weight) {
+        this.size = size;
+        this.weight = weight;
+    }
+    
+    //Getter
+    
+    //Setter
+}
+```
+Et maintenant, simplement, les méthodes qui utilisent ces classes :
+
+```java
+    //Code de la classe Person
+    
+    public Identity getIdentity() {
+        return new Identity(this.name, this.surname);
+    }
+    
+    public Measurements getMeasurements() {
+        return new Measurements(this.size, this.weight);
+    }
+```
+
+Bon.
+Techniquement ce code fonctionne...
+Le problème ? Eh bien... on se répète !!
+
+Vous voyez bien que nos deux classes `Identity` et `Measurements` ont sensiblement la même structure. Seuls leurs types changent.
+Bonne nouvelle, c'est là que la généricité devient utile ;)
+
+La générécité permet de garder une même structure tout en de changeant les types de paramètre et de renvoi.
+
+Tout d'abord, la signature de la classe (nom, `modifiers` (`public`, `final` etc), types). Nous essayons de `générifier` 2 classes qui ne travaillent qu'avec un seul type chacune : `String` pour la classe `Identity` et `int` pour la classe `Measurements`.
+Donc, résumé : 1 types, 2 variables. 
+2 variables, 2 valeurs, `BiValue` vous semble une bonne idée ?
+
+```java
+public class BiValue<T> {
+
+}
+```
+
+Super
+Ici vous voyez donc comment se déclare un `type générique` : son nom, qui l'identifiera dans toute la classe, il suit le nom de la classe et il est encadré de 2 chevrons. Par convention, on nomme généralement le type générique d'une seule lettre. En fonction du nombre et de l'utilité qu'on compte accorder à ces types, les lettres peuvent changer. En général :
+- Un seul type générique -> `<T>
+- Comme seul type générique, on peut également trouver `<R>` pour `Result`, résultat en français.
+- Une paire de clé - valeur (comme une `Map` par exemple) -> `<K, V>` (et oui, pour définir plusieurs types génériques, on les sépare simplement d'une virugle). `K` pour la clé, soit `Key` en anglais et évidemment `V` pour valeur, `Value` en anglais.
+- 2 types -> `<T, U>`
+- 3 et 4 types -> `<S, T, U>` et `<S, T, U, V>`
+- 5 types et plus (très rare et généralement pas une bonne idée) -> On rajoute une lettre en remontant à chaque fois d'une lettre en arrière dans l'alphabet en partant de `S` (`<R, S, T, U, V>`, etc, ...)
+
+Générifions maintenant cette classe :
+
+```java
+public class BiValue<T> {
+    
+    //Comme on ne sait pas ce qu'elle vont contenir, je préfère ne pas leur donner de nom trop explicite.
+    private T firstValue;
+    private T secondValue;
+    
+    public BiValue(T firstValue, T secondValue) {
+        this.firstValue = firstValue;
+        this.secondValue = secondValue;
+    }
+    
+    public T getFirstValue() {
+        return firstValue;
+    }
+    public T getSecondValue() {
+        return secondValue;
+    }
+    
+    public void setFirstValue(T firstValue) {
+        this.firtValue = firstValue;
+    }
+    public void setSecondValue(T secondValue) {
+        this.secondValue = secondValue;
+    }
+}
+```
+
+NI-CKEL
+Je peux maintenant réutiliser cette classe simplement dans mes 2 méthodes `getIdentity()` et `getMeasurements()`. Ça me fera un beau gain d'une classe entière. Et le pied, c'est que cette classe générique est réutilisable à l'infini !
+
+```java
+
+public void getIdentiy() {
+    //Pour spécifier la valeur du type générique, on le place entre chevrons juste après le nom de la classe, comme ceci :
+    return new BiValue<String>(name, surname);
+}
+public void getMeasurements() {
+    return new BiValue(size, weight);
+    //Vous avez sûrement remarqué que je n'ai pas précisé `Integer` *(et non `<int>` car les types primitifs, à savoir `int`, `double`, `short`, `byte`, `long`. Il faut passer par leurs types `wrapper` : `Integer`, `Double`, `Short`, etc ...)* car le compilateur est assez intelligent pour `inférer`, soit `trouver tout seul`, le type générique à passer en paramètre à `BiValue`. Il peut le déduire des paramètres que nous passons au constructeur 
+}
+```
+
+Et voilà, encore une mission remplie avec succès par **super-générique**. 
+Bref, les types génériques sont des types variable d'une instance de classe à l'autre **mais qui restent constants au sein d'une même instance**.
 
 ---
 
@@ -111,9 +260,18 @@ public Function<Integer, Integer> compose(Function<Integer, Integer> f, Function
 ---
 
 Au fait, dernier interlude généricité : 
-La classe `Function`est un super exemple de généricité aussi. Son but, c'est de pouvoir contenir une méthode qui prend quelque chose en paramètre et qui renvoie quelque chose. 
+L'interface `Function`est un super exemple de généricité aussi. Son but, c'est de pouvoir contenir une méthode qui prend quelque chose en paramètre et qui renvoie quelque chose. 
 Sauf qu'on ne connait pas ces fameux quelque chose. 
 Les types sont donc génériques et il faut le préciser.
+
+Voici le code de cette, si renommée, interface `Function` :
+```java
+public interface Function<T, R> {
+    R apply(T t);
+} 
+```
+Vous voyez qu'elle a besoin de 2 types génériques : un type quelconque (`<T>`) et un type de résultat (`<R>`).
+Afin de comprendre son fonctionnement, je vous suggère de jeter un coup à [cette fiche](https://github.com/readthedocs-fr/notions/tree/master/java/interfaces_fonctionnelles) sur les interfaces fonctionnelles dont faire parte notre chère et bien-aimée interface `Function`.
 
 Mon type de retour est ici un objet de type `Function` et cette fonction prend en paramètre un nombre et renvoie un nombre. Ç'aurait pu être n'importe quoi d'autre, une fonction qui prend un `String`en paramètre et renvoie un `Double`etc...
 
