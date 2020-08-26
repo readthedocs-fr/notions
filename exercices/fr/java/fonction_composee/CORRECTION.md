@@ -122,10 +122,6 @@ Cependant, comme vous pouvez le remarquer, ces deux méthodes sont censées renv
 public Identity {
 
     private String name;
-    private String```java
-public Identity {
-
-    private String name;
     private String surname;
     
     public Identity(String name, String surname) {
@@ -234,18 +230,18 @@ Je peux maintenant réutiliser cette classe simplement dans mes 2 méthodes `get
 
 ```java
 
-public void getIdentiy() {
+public BiValue<String> getIdentiy() {
     //Pour spécifier la valeur du type générique, on le place entre chevrons juste après le nom de la classe, comme ceci :
     return new BiValue<String>(name, surname);
 }
-public void getMeasurements() {
-    return new BiValue(size, weight);
+public BiValue<Integer> getMeasurements() {
+    return new BiValue<Integer>(size, weight);
     //Vous avez sûrement remarqué que je n'ai pas précisé `Integer` *(et non `<int>` car les types primitifs, à savoir `int`, `double`, `short`, `byte`, `long`. Il faut passer par leurs types `wrapper` : `Integer`, `Double`, `Short`, etc ...)* car le compilateur est assez intelligent pour `inférer`, soit `trouver tout seul`, le type générique à passer en paramètre à `BiValue`. Il peut le déduire des paramètres que nous passons au constructeur 
 }
 ```
 
 Et voilà, encore une mission remplie avec succès par **super-générique**. 
-Bref, les types génériques sont des types variable d'une instance de classe à l'autre **mais qui restent constants au sein d'une même instance**.
+Bref, les types génériques sont des types pouvant varier d'une instance de classe à l'autre **mais qui restent constants au sein d'une même instance**.
 
 ---
 
