@@ -129,9 +129,21 @@ public Identity {
         this.surname = surname;
     }
     
-    //Getter
+    public String getName() {
+        return this.name;
+    }
     
-    //Setter
+    public String getSurname() {
+        return this.surname;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 }
 ```
 Voilà pour les noms.
@@ -148,15 +160,39 @@ public Measurements {
         this.weight = weight;
     }
     
-    //Getter
+    public int getSize() {
+        return this.size;
+    }
     
-    //Setter
+    public int getWeighr() {
+        return this.weight;
+    }
+    
+    public void setName(int name) {
+        this.size = size;
+    }
+    
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+    
 }
 ```
-Et maintenant, simplement, les méthodes qui utilisent ces classes :
 
+Et maintenant, simplement, les méthodes qui utilisent ces classes :
 ```java
-    //Code de la classe Person
+public class Person {
+    private String name;
+    private String surname;
+    private int size;
+    private int weight;
+    
+    public Person(String name, String surname, int size, int weight) {
+        this.name = name;
+        this.surname = surname;
+        this.size = size;
+        this.weight = weight;
+    }
     
     public Identity getIdentity() {
         return new Identity(this.name, this.surname);
@@ -165,6 +201,7 @@ Et maintenant, simplement, les méthodes qui utilisent ces classes :
     public Measurements getMeasurements() {
         return new Measurements(this.size, this.weight);
     }
+}
 ```
 
 Bon.
@@ -229,15 +266,27 @@ NI-CKEL
 Je peux maintenant réutiliser cette classe simplement dans mes 2 méthodes `getIdentity()` et `getMeasurements()`. Ça me fera un beau gain d'une classe entière. Et le pied, c'est que cette classe générique est réutilisable à l'infini !
 
 ```java
+public class Person {
+    private String name;
+    private String surname;
+    private int size;
+    private int weight;
+    
+    public Person(String name, String surname, int size, int weight) {
+        this.name = name;
+        this.surname = surname;
+        this.size = size;
+        this.weight = weight;
+    }
 
-public BiValue<String> getIdentiy() {
-    //Pour spécifier la valeur du type générique, on le place entre chevrons juste après le nom de la classe, comme ceci :
-    return new BiValue<String>(name, surname);
-}
-public BiValue<Integer> getMeasurements() {
-    return new BiValue<Integer>(size, weight);
-    //Vous avez sûrement remarqué que je n'ai pas précisé `Integer` *(et non `<int>` car les types primitifs, à savoir `int`, `double`, `short`, `byte`, `long`. Il faut passer par leurs types `wrapper` : `Integer`, `Double`, `Short`, etc ...)* car le compilateur est assez intelligent pour `inférer`, soit `trouver tout seul`, le type générique à passer en paramètre à `BiValue`. Il peut le déduire des paramètres que nous passons au constructeur 
-}
+    public BiValue<String> getIdentiy() {
+        //Pour spécifier la valeur du type générique, on le place entre chevrons juste après le nom de la classe, comme ceci :
+        return new BiValue<String>(name, surname);
+    }
+    public BiValue<Integer> getMeasurements() {
+        return new BiValue<Integer>(size, weight);
+        //Vous avez sûrement remarqué que je n'ai pas précisé `Integer` *(et non `<int>` car les types primitifs, à savoir `int`, `double`, `short`, `byte`, `long`. Il faut passer par leurs types `wrapper` : `Integer`, `Double`, `Short`, etc ...)* car le compilateur est assez intelligent pour `inférer`, soit `trouver tout seul`, le type générique à passer en paramètre à `BiValue`. Il peut le déduire des paramètres que nous passons au constructeur 
+    }
 ```
 
 Et voilà, encore une mission remplie avec succès par **super-générique**. 
