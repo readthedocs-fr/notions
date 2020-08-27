@@ -22,6 +22,10 @@
 
 - `📑` [Introduction au paradigme réactif](reactive/INTRODUCTION_FR.md)
 
+## Programmation fonctionelle
+
+- `📑` [Curryfication - découverte et exemple](functional_programming/curryfication/README.md)
+
 ## Java
 
 - `📑` [Interfaces fonctionnelles - syntaxe, avantages et exemples](java/interfaces_fonctionnelles)
