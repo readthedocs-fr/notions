@@ -6,11 +6,15 @@
 	</p>
 </p>
 
-> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques.
+> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques ainsi que des **exercices** traitant de concepts particuliers.
 > Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
 >
 > **Légende** :
-> `📑` Fiche pratique · `📖` Cours
+> `📑` Fiche pratique · `📖` Cours · `🎯` Exercice
+
+## Exercices
+
+- `🎯` [Exercices - apprendre par la pratique et l'exemple](exercices/fr)
 
 ## Programmation orientée objet
 
