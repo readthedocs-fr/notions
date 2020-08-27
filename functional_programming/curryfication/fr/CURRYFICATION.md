@@ -14,7 +14,7 @@ Nous aborderons cette notion à l'aide d'exemples en JavaScript.
 
 ## Utilité
 Bien que la curryfication puisse sembler aux premiers abords superflue, elle est au contraire bien utile. Elle permet notamment :
-- d'améliorer la lisibilité en réduisant les répétitions grâce à l'application d'une [partial application](https://en.wikipedia.org/wiki/Partial_application) sur une fonction à plusieurs arguments (on lie une valeur par défaut à un argument afin de créer une base réutilisable),
+- d'améliorer la lisibilité en réduisant les répétitions grâce à l'application d'une [partial application](https://en.wikipedia.org/wiki/Partial_application) sur une fonction à plusieurs arguments (on lie une valeur par défaut à un argument afin de créer une base réutilisable, un modèle),
 - de simplifier le débogage ; les fonctions curryfiées ont pour but d'être dites "[pures](https://fr.wikipedia.org/wiki/Fonction_pure)" : elles ne provoquent donc pas d'[effet de bord](https://fr.wikipedia.org/wiki/Effet_de_bord_(informatique)) (modification de l'environnement extérieur à la fonction : mutation d'une variable non locale, d'une variable statique locale, d'un flux d'entrée ou de sortie...) et leur valeur de retour ne dépend que des arguments fournis (l'environnement extérieur n'influe donc pas sur le retour de la fonction).
 
 ### Ordre des arguments
@@ -30,35 +30,36 @@ Pour pallier ce problème, nous avons donc deux solutions :
 Après un test de notre côté, nous vous recommandons cependant Ramda, qui gère bien mieux les arguments, leur type, et donc l'autocomplétion, que lodash.
 
 ## Exemple de fonction curryfiée
-Prenons l'exemple d'une fonction qui a pour but d'annoncer le trajet entre deux villes ; appelons-la `travel`.
-```js
-const travelParisToBordeaux = travel("Paris", "Bordeaux");
-console.log(travelParisToBordeaux); // "Vous voyagez de Paris à Bordeaux"
-```
-Une fois curryfiée, cela nous donne ceci :
-```js
-const travelParisToBordeaux = travel("Paris")("Bordeaux");
-console.log(travelParisToBordeaux); // "Vous voyagez de Paris à Bordeaux"
-```
-Comme dit précédemment, nous pouvons nous servir de la curryfication pour appliquer une partial application et créer des sortes de modèles, comme par exemple :
-```js
-const travelFromParis = travel("Paris");
-
-const travelToDestination = condition
-    ? travelFromParis("Bordeaux")
-    : travelFromParis("Nantes");
-
-console.log(travelToDestination); // "Vous voyagez de Paris à Bordeaux", ou "Vous voyagez de Paris à Nantes".
-```
-Grâce à la curryfication, on peut ainsi éviter de répéter deux fois l'argument précédent, ici Paris.
-
-## Implémentation et usage
-Nous pouvons implémenter cette notion de deux façons différentes : curryfier notre fonction dès sa déclaration, ou la curryfier à l'aide d'une simple fonction qui fera le travail à notre place. Pour les deux sections ci-dessous, nous nous baserons sur la fonction `log` :
+Prenons l'exemple d'une fonction qui a pour but de logger un message, en précisant la date et la nature de celui-ci ; appelons-la `log` :
 ```js
 function log(level, date, message) {
     return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
 }
 ```
+Un usage normal serait sous cette forme :
+```js
+log("INFO", new Date(), "Ceci est un message"); // "[WARN] Wed, 19 Aug 2020 16:58:01 GMT: Ceci est un message"
+```
+Mais une fois curryfiée, cela nous donne ceci :
+```js
+log("INFO")(new Date())("Ceci est un message"); // "[WARN] Wed, 19 Aug 2020 16:58:01 GMT: Ceci est un message"
+```
+Comme dit précédemment, nous pouvons nous servir de la curryfication pour appliquer une partial application et créer des modèles, comme par exemple :
+```js
+const logLevel = condition
+	? log("WARN")
+	: log("INFO");
+
+const logMessage = _condition
+    ? logLevel(new Date(0))
+    : logLevel(new Date());
+
+logMessage("Ceci est un message"); // Quatre possibilités différentes en fonction des conditions
+```
+Grâce à la curryfication, on peut ainsi éviter de répéter les arguments mais aussi de se retrouver avec des fonctions qui partent dans tous les sens ; ici, nous avons une fonction (`logMessage`), qui ne fait qu'une seule chose (logger un message), et c'est tout.
+
+## Implémentation et usage
+Nous pouvons implémenter cette notion de deux façons différentes : curryfier notre fonction dès sa déclaration, ou la curryfier à l'aide d'une simple fonction qui fera le travail à notre place. Pour les deux sections ci-dessous, nous nous baserons sur notre fonction `log` déclarée plus haut.
 
 ### Curryfication à la déclaration
 Afin de profiter d'une fonction curryfiée, vous pouvez la curryfier dès sa déclaration (celle-ci ne sera cependant appelable que sous la forme `fn(a)(b)(c)`). L'idée est donc de déclarer une fonction à un seul argument, retournant une fonction à un seul argument, et ce autant de fois qu'il y a d'arguments nécessaires dans votre fonction.
