@@ -18,17 +18,17 @@
 
 ## Programmation orientée objet
 
-- `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
-- `📑` [Objets calisthéniques - définition et explications](poo/objets_calistheniques)
-- `📖` [Design patterns - présentation et exemples](poo/design_patterns)
+- `📑` [Abstraction - définition, utilité et exemples](prog_orientee_objet/abstraction)
+- `📑` [Objets calisthéniques - définition et explications](prog_orientee_objet/objets_calistheniques)
+- `📖` [Design patterns - présentation et exemples](prog_orientee_objet/design_patterns)
 
 ## Programmation réactive
 
-- `📑` [Introduction au paradigme réactif](reactive/INTRODUCTION_FR.md)
+- `📑` [Introduction au paradigme réactif](prog_reactive/INTRODUCTION_FR.md)
 
 ## Programmation fonctionelle
 
-- `📑` [Curryfication - découverte et exemple](functional_programming/curryfication/README.md)
+- `📑` [Curryfication - découverte et exemple](prog_fonctionnelle/curryfication/README.md)
 
 ## Java
 
