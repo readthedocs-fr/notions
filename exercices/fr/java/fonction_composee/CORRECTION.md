@@ -164,7 +164,7 @@ public Measurements {
         return this.size;
     }
     
-    public int getWeighr() {
+    public int getWeight() {
         return this.weight;
     }
     
