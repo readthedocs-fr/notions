@@ -14,7 +14,7 @@
 
 ## Exercices
 
-- `🎯` [Exercices - apprendre par la pratique et l'exemple](exercices/fr)
+- `🎯` [Exercices - apprendre par la pratique et l'exemple](exercices)
 
 ## Programmation orientée objet
 
