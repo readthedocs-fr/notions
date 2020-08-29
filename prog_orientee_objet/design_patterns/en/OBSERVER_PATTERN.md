@@ -207,9 +207,9 @@ Now, as soon as the `alert()` method from the `Alarm` class gets called, each on
 
 And as a bonus, our code follows a realistic logic, since it's not the alarm that knows its **Observers** but rather our **control center**, which defines what will happen when our alarm occurs.
 
-Moreover, we can see in this code a nice example of the `Open/Closed` principle symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
+Moreover, we can see in this code a nice example of the `Open/Closed` principle symbolized with the `O` letter in the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/) principles list. Indeed, our `Alarm` class is open for extension but closed to any modifcation. We can extend it without any limit by adding more and more **Observer** composants without having to modify it. The alarm system is ended, we don't need to change it. So we are sure we would never cause some trouble in this class when adding a new auto-activable component.
 
-While speaking about the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles, we can also notice the `D` letter principle named the `Dependency Inversion principle`. Indeed, by making use of `Observer` and `Observable` interfaces, we have build a code that directly refers to abstractions and not to implementations. Our `addObserver(Observer observer)` method takes an object of type `Observer` as parameter. We can pass it any **Observer** implementation, the class implementing the `Observable` interface will never have to deal with the implementation. It's a significant point in maintenability and readibility of our code because we will never have to care of consequences a new implementation will have on the global code, at least not of the POV of our **Observer Pattern**.
+While speaking about the [SOLID](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/) principles, we can also notice the `D` letter principle named the `Dependency Inversion principle`. Indeed, by making use of `Observer` and `Observable` interfaces, we have build a code that directly refers to abstractions and not to implementations. Our `addObserver(Observer observer)` method takes an object of type `Observer` as parameter. We can pass it any **Observer** implementation, the class implementing the `Observable` interface will never have to deal with the implementation. It's a significant point in maintenability and readibility of our code because we will never have to care of consequences a new implementation will have on the global code, at least not of the POV of our **Observer Pattern**.
 
 ## Conclusion
 
@@ -221,7 +221,7 @@ Overall, we must remember that :
 - It helps us store our code with better logic.
 - It's based on 2 important interfaces : **Observer** and **Observable**.
 - The **Observable** class notifies each one of its **Observers** when its state changes
-- It helps us easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/) principles.
+- It helps us easily enforce 2 of the [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/) principles.
 
 ---
 
