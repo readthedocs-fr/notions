@@ -10,6 +10,8 @@
 
 ## Une mise en situation pour mieux comprendre
 
+> L'entièreté du code est disponible dans le dossier [code_samples/visiteur](../code_samples/visiteur).
+
 Imaginons la situation suivante. Vous devez coder une simulation d'un Zoo qui contient **trois** types d'animaux différents: des **lions**, une **baleine** et des **canards** (c'est pauvre, mais restriction de budget oblige). Étant donné que l'on ne souhaite pas spécialement déterminer de particularités pour les animaux (pour l'instant), on va se contenter de créer nos classes vides.
 
 
