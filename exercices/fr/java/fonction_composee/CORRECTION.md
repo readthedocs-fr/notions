@@ -65,7 +65,7 @@ Je peux à présent faire ceci dans mon code :
 
 ```java
 public class MyGenericClass<S, T> {
-    T firstVariable;
+    private S firstVariable;
 
     public MyGenericClass(S value){
         this.firstVariable = value;
