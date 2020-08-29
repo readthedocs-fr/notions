@@ -25,4 +25,4 @@ Each chapter presenting a pattern will be represented by a markdown file with th
 
 ## Table of contents
 
-- [Observer pattern - definition, problem and response](en/OBSERVATER_PATTERN.md)
+- [Observer pattern - definition, problem and response](en/OBSERVER_PATTERN.md)
