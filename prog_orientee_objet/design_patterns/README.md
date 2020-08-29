@@ -6,7 +6,7 @@
 Un design pattern (`patron de conception` en français, bien que le terme soit peu courant) est une manière de programmer une partie d'un logiciel, reconnu comme bonne pratique en réponse à un problème récurrent de conception d'un logiciel.
 Ce cours présentera différents patterns, expliquant leur utilisation ainsi que le problème qu'ils cherchent à résoudre.
 
-Chaque chapitre présentant un pattern possèdera un fichier markdown contenant le contenu du cours, ainsi qu'un dossier contenant le code final (disponible dans un ou plusieurs langages) utilisé comme support. Tous les dossiers contenant le code des exemples sont placés dans le dossier [code_examples](code_samples). Le cours présente généralement le pattern en s'appuyant sur un langage en particulier.
+Chaque chapitre présentant un pattern possèdera un fichier markdown contenant le contenu du cours, ainsi qu'un dossier contenant le code final (disponible dans un ou plusieurs langages) utilisé comme support. Tous les dossiers contenant le code des exemples sont placés dans le dossier [code_samples](code_samples). Le cours présente généralement le pattern en s'appuyant sur un langage en particulier.
 
 ## Table des matières
 
@@ -21,7 +21,7 @@ Chaque chapitre présentant un pattern possèdera un fichier markdown contenant 
 
 A design pattern is a way to build a part of a software which is recognized as a good response to a recurrent software design problem.
 
-Each chapter presenting a pattern will be represented by a markdown file with the course content and a folder containing the final code which is used in support of the course. The code will be available in one or more languages. All folders containing code will be placed in the [code_examples](code_samples) folder. The course usually presents a pattern with examples in one language.
+Each chapter presenting a pattern will be represented by a markdown file with the course content and a folder containing the final code which is used in support of the course. The code will be available in one or more languages. All folders containing code will be placed in the [code_samples](code_samples) folder. The course usually presents a pattern with examples in one language.
 
 ## Table of contents
 
