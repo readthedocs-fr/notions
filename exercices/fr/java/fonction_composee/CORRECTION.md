@@ -119,7 +119,7 @@ J'aimerais qu'elle contienne 2 méthodes : `getIdentity()` et `getMeasurements()
 Cependant, comme vous pouvez le remarquer, ces deux méthodes sont censées renvoyer chacune 2 paramètres. `name` et `surname` pour la première, et `size` et `weight` pour la seconde. Il me faudrait donc créer une classe qui peut agir comme "boîte de stockage" pour renvoyer ces 2 éléments à chaque fois :
 
 ```java
-public Identity {
+public class Identity {
 
     private String name;
     private String surname;
@@ -150,7 +150,7 @@ Voilà pour les noms.
 Et rebelote ...
 
 ```java
-public Measurements {
+public class Measurements {
 
     private int size;
     private int weight;
