@@ -12,7 +12,7 @@ From AI, to the Web backend, to its usage in scientific domains... the list goes
 One example is that the language does not enforce the usage of `;` after each instruction.
 
 
-### Some Good Resources to get started
+### Some Good Resources to Get Started
 
 > On the Internet, lots of tutorials/courses to learn development exist, except that many
 > of them are bad because they teach you bad or obsolete practices. - [learndev.info](https://www.learndev.info/en)
