@@ -10,7 +10,7 @@ Dans cette fiche, nous allons voir quelles sont les étapes pour bien démarrer 
 - [Comment bien commencer avec python](fr/START_WELL.md)
 
 
-# Starting off right with Python
+# Starting Off Right with Python
 
 > Original article authored by [TNtube](https://github.com/TNtube)
 
@@ -18,7 +18,7 @@ Dans cette fiche, nous allons voir quelles sont les étapes pour bien démarrer 
 
 You are making your first steps in the programming world?
 You wish to begin with a simple and intuitive language such as Python?
-In this article, we are going to see what you should do first to be off a good start in the vast and interesting world that's the programming in Python.
+In this article, we are going to see what you should do first to be off a good start in the vast and interesting world that's Python programming.
 
-## Table of contents
-- [Starting off right with Python](en/START_WELL.md)
+## Table of Contents
+- [Starting Off Right with Python](en/START_WELL.md)

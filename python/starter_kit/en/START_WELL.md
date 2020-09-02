@@ -1,39 +1,39 @@
-# Starting off right with Python
+# Starting Off Right with Python
 
 Programming is a very interesting, lucrative and vast domain.
 Choosing Python as a first language is really often a judicious choice for many reasons.
 
 Here are some of them:
 - Python has a very simple syntax, that permits to get compact and readable codes ;
-- Python is very complete. Concretely, we can do a huge amount of things with it.
+- Python is very rich. Concretely, we can do a huge amount of things with it.
 From AI, to the Web backend, to its usage in scientific domains... the list goes on ;
 - The language has a huge community of developers with a lot of resources,
  and some of its functionalities make the learning process easier for beginners.
 One example is that the language does not enforce the usage of `;` after each instruction.
 
 
-### Some good resources to get started
+### Some Good Resources to get started
 
 > On the Internet, lots of tutorials/courses to learn development exist, except that many
-> of them are bad because they teach you bad obsolete practices. - [learndev.info](https://www.learndev.info/en)
+> of them are bad because they teach you bad or obsolete practices. - [learndev.info](https://www.learndev.info/en)
 
 
 In fact, the resources available on the Internet are not always relevant or up-to-date.
-As a solution to solve this issue [learndev.info](https://www.learndev.info/en) was created, aiming to offer adapted and relevant courses,
+As a solution to solve this issue, [learndev.info](https://www.learndev.info/en) was created, aiming to offer adapted and relevant courses,
 such as the course of **[ TODO ]**.
 
 
 
-### Mistakes not to do when you begin
+### Mistakes Not to Do When You Begin
 
 Many people begin programming with the idea that it is not necessarily complicated,
-and they can quickly start very big projects without the need to acquire the bases.
+thinking they can quickly start very big projects without the need to acquire the basics.
 Well, that is mostly a big mistake.
 
 In fact, when it comes to learning a language (whether it is Python or another), things need to be done carefully.
 You should not try to drive a car before learning to do it. And yet, unfortunately a lot of
-Python beginners get to work with libraries that are way too much complicated for them, like
-`Pygame`, `Tkinter` or such as `discord.py` and whose usage require notions such as the 
+Python beginners get to work with libraries that are way too complicated for them, like
+`Pygame`, `Tkinter` or `discord.py` and whose usage require notions such as the 
 Object Oriented Programming, error handling, decorators or even manipulation of threads/async.
 
 If you do not know what a function or an object is, or can not manipulate `for` and `while` loops,
