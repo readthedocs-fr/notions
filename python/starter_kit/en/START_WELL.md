@@ -33,7 +33,7 @@ Well, that is mostly a big mistake.
 In fact, when it comes to learning a language (whether it is Python or another), things need to be done carefully.
 You should not try to drive a car before learning to do it. And yet, unfortunately a lot of
 Python beginners get to work with libraries that are way too complicated for them, like
-`Pygame`, `Tkinter` or `discord.py` and whose usage require notions such as the 
+`Pygame`, `Tkinter` or `discord.py` and whose usage require notions such as 
 Object Oriented Programming, error handling, decorators or even manipulation of threads/async.
 
 If you do not know what a function or an object is, or can not manipulate `for` and `while` loops,
