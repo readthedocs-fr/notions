@@ -182,7 +182,7 @@ Assez magique non ? Cette syntaxe s'appelle une **expression lambda**. Voyons ce
 
 - On déclare toujours, comme avant, un objet de type `Action` et on lui donne un nom, `printAction`
 - Comme on sait que tout ce qui nous importe, c'est cette méthode `applyActionTo`, on la définit avec un raccourci.
-  - Tout d'abord, entre les parenthèses se trouvent les paramètres de la méthode, séparés par des virgules. Ici, il n'y a qu'un seul paramètre, donc pas besoin de virgule (d'ailleurs, pour un tel cas, les parenthèses peuvent être omises). Notez que le type des paramètres n'est pas explicité, puisqu'il est connu.
+  - Tout d'abord, entre les parenthèses se trouvent les paramètres de la méthode, séparés par des virgules. Ici, il n'y a qu'un seul paramètre, donc pas besoin de virgule (d'ailleurs, dans un tel cas, les parenthèses peuvent être omises). Notez que le type des paramètres n'est pas explicité, puisqu'il est connu.
   - Ensuite on indique que l'on va passer au **corps** de la méthode avec une flèche (`->`)
   - Finalement, on indique l'action à effectuer. Dans ce cas-ci, il n'y a qu'une instruction à effectuer, à savoir afficher le `String` en question. Il est possible d'avoir plusieurs instructions en les encapsulant à l'aide d'accolades (`{}`), comme ceci:
     ```java
