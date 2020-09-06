@@ -196,7 +196,7 @@ En revanche, il est plutôt conseillé dans ce cas-ci d'encapsuler les différen
 
 ## Toujours plus court, toujours plus loin
 
-Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle ne l'est déjà. Il s'agit du cas où l'on souhaite appeler une méthode comme unique instruction de notre lambda, et que la signature de cette méthode est la même que la signature de la méthode à implémenter (type de retour et paramètres équivalents) . Ce cas particulier s'appelle **method referencing**. Comme le cas au-dessus par exemple :
+Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle ne l'est déjà. Il s'agit du cas où l'on souhaite appeler une méthode comme unique instruction de notre lambda, et que la signature de cette méthode est la même que la signature de la méthode à implémenter (type de retour et paramètres équivalents). Ce cas particulier s'appelle **method referencing**. Comme le cas au-dessus par exemple :
 
 
 ```java
