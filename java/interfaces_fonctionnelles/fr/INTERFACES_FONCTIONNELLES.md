@@ -51,7 +51,7 @@ Dans ces trois exemples, seule l'interface `Test1` est une interface fonctionnel
 
 ## Utilisation
 
-La question qu'on peut se poser, c'est pourquoi dit-on qu'il s'agit d'une nouveauté de Java 8 ? Les interfaces existent depuis bien plus longtemps (depuis les tout débuts du langage en fait), et les interfaces fonctionnelles ne sont qu'un cas particulier des interfaces traditionnelles. Difficile à croire que le seul ajout soit l'annotation `@FunctionalInterface`, qui n'est qu'une vérification optionnelle, au même titre que l'annotation `@Override`. En réalité, Java 8 ajoute une syntaxe plutôt révolutionnaire concernant **l'instanciation de ces interfaces**. Alors évidemment, parler d'instanciation d'une interface, c'est un peu un abus de langage. Une interface, au même titre qu'une classe abstraire, ça ne s'instancie pas, c'est le principe. Pour pouvoir utiliser une interface, il faut l'implémenter, à l'aide d'une autre classe, anonyme ou non. Pour ce cours, `instancier une interface` sera un abus de langage pour parler de l'implémentation d'une interface à l'aide d'une classe anonyme.
+La question qu'on peut se poser, c'est pourquoi dit-on qu'il s'agit d'une nouveauté de Java 8 ? Les interfaces existent depuis bien plus longtemps (depuis les tout débuts du langage en fait), et les interfaces fonctionnelles ne sont qu'un cas particulier des interfaces traditionnelles. Difficile à croire que le seul ajout soit l'annotation `@FunctionalInterface`, qui n'est qu'une vérification optionnelle, au même titre que l'annotation `@Override`. En réalité, Java 8 ajoute une syntaxe plutôt révolutionnaire concernant **l'instanciation de ces interfaces**. Alors évidemment, parler d'instanciation d'une interface, c'est un peu un abus de langage. Une interface, au même titre qu'une classe abstraite, ça ne s'instancie pas, c'est le principe. Pour pouvoir utiliser une interface, il faut l'implémenter, à l'aide d'une autre classe, anonyme ou non. Pour ce cours, `instancier une interface` sera un abus de langage pour parler de l'implémentation d'une interface à l'aide d'une classe anonyme.
 
 Commençons par un exemple. Prenons une interface fonctionnelle `BinaryOperation`, qui ressemble à ceci :
 
@@ -182,9 +182,9 @@ Assez magique non ? Cette syntaxe s'appelle une **expression lambda**. Voyons ce
 
 - On déclare toujours, comme avant, un objet de type `Action` et on lui donne un nom, `printAction`
 - Comme on sait que tout ce qui nous importe, c'est cette méthode `applyActionTo`, on la définit avec un raccourci.
-  - Tout d'abord, entre les parenthèses se trouvent les paramètres de la méthode, séparés par des virgules. Ici, il n'y a qu'un seul paramètre, donc pas besoin de virgule (d'ailleurs, un tel cas, les parenthèses peuvent être omises). Notez que le type des paramètres n'est pas explicité, puisqu'il est connu.
+  - Tout d'abord, entre les parenthèses se trouvent les paramètres de la méthode, séparés par des virgules. Ici, il n'y a qu'un seul paramètre, donc pas besoin de virgule (d'ailleurs, pour un tel cas, les parenthèses peuvent être omises). Notez que le type des paramètres n'est pas explicité, puisqu'il est connu.
   - Ensuite on indique que l'on va passer au **corps** de la méthode avec une flèche (`->`)
-  - Finalement, on indique l'action à effectuer. Dans ce cas-ci, il n'y a qu'une instruction à effectuer, à savoir afficher le `String` en question. Il est possible d'avoir plusieurs instructions en les encapsulant à l'aide de `{}`, comme ceci:
+  - Finalement, on indique l'action à effectuer. Dans ce cas-ci, il n'y a qu'une instruction à effectuer, à savoir afficher le `String` en question. Il est possible d'avoir plusieurs instructions en les encapsulant à l'aide d'accolades (`{}`), comme ceci:
     ```java
     Action myAction = (str) -> {
       System.out.println(str);
@@ -196,7 +196,7 @@ En revanche, il est plutôt conseillé dans ce cas-ci d'encapsuler les différen
 
 ## Toujours plus court, toujours plus loin
 
-Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle ne l'est déjà. Il s'agit du cas où l'on souhaite appeler une méthode comme unique instruction de notre lambda, et que la signature de cette méthode est la même que la signature de la méthode à implémenter. Ce cas particulier s'appelle **method referencing**. Comme le cas au-dessus par exemple :
+Dans certains cas, il est possible de réduire cette syntaxe encore plus qu'elle ne l'est déjà. Il s'agit du cas où l'on souhaite appeler une méthode comme unique instruction de notre lambda, et que la signature de cette méthode est la même que la signature (type de retour et paramètres équivalents) de la méthode à implémenter. Ce cas particulier s'appelle **method referencing**. Comme le cas au-dessus par exemple :
 
 ```java
 Action printAction = (str) -> System.out.println(str);
@@ -267,4 +267,4 @@ Il serait impossible de couvrir l'entièreté des nouveaux systèmes qui utilise
 
 ## Conclusion
 
-Grâce aux raccourcis syntaxiques comme les lambdas et les références de méthodes, Java 8 favorise l'utilisation des interfaces fonctionnelles, permettant de stocker, en quelques sortes, une méthode sous forme de variable. En revanche, on est encore extrêmement loin de pouvoir dire que Java est un langage supportant le paradigme fonctionnel (et il ne le saura très probablement jamais), même si cet ajout est très pratique et utilisé.
+Grâce aux raccourcis syntaxiques comme les lambdas et les références de méthodes, Java 8 favorise l'utilisation des interfaces fonctionnelles, permettant de stocker, en quelques sortes, une méthode sous forme de variable. En revanche, on est encore extrêmement loin de pouvoir dire que Java est un langage supportant le paradigme fonctionnel (et il ne le sera très probablement jamais), même si cet ajout est très pratique et utilisé.
