@@ -268,4 +268,4 @@ Il serait impossible de couvrir l'entièreté des nouveaux systèmes qui utilise
 
 ## Conclusion
 
-Grâce aux raccourcis syntaxiques comme les lambdas et les références de méthodes, Java 8 favorise l'utilisation des interfaces fonctionnelles, permettant de stocker, en quelques sortes, une méthode sous forme de variable. En revanche, on est encore extrêmement loin de pouvoir dire que Java est un langage supportant le paradigme fonctionnel (et il ne le sera très probablement jamais), même si cet ajout est très pratique et utilisé.
+Grâce aux raccourcis syntaxiques comme les lambdas et les références de méthodes, Java 8 favorise l'utilisation des interfaces fonctionnelles, permettant de stocker, en quelque sorte, une méthode sous forme de variable. En revanche, on est encore extrêmement loin de pouvoir dire que Java est un langage supportant le paradigme fonctionnel (et il ne le sera très probablement jamais), même si cet ajout est très pratique et utilisé.
