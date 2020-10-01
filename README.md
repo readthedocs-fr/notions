@@ -6,17 +6,29 @@
 	</p>
 </p>
 
-> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques.
+> Ce dépôt contient des **cours** et des **fiches pratiques** sur des sujets techniques ainsi que des **exercices** traitant de concepts particuliers.
 > Si vous souhaitez contribuer, merci de lire les [règles de contribution](CONTRIBUTING.md) avant de commencer votre travail.
 >
 > **Légende** :
-> `📑` Fiche pratique · `📖` Cours
+> `📑` Fiche pratique · `📖` Cours · `🎯` Exercice
+
+## Exercices
+
+- `🎯` [Exercices - apprendre par la pratique et l'exemple](exercices)
 
 ## Programmation orientée objet
 
-- `📑` [Abstraction - définition, utilité et exemples](poo/abstraction)
-- `📑` [Objets calisthéniques - définition et explications](poo/objets_calistheniques)
-- `📖` [Design patterns - présentation et exemples](poo/design_patterns)
+- `📑` [Abstraction - définition, utilité et exemples](prog_orientee_objet/abstraction)
+- `📑` [Objets calisthéniques - définition et explications](prog_orientee_objet/objets_calistheniques)
+- `📖` [Design patterns - présentation et exemples](prog_orientee_objet/design_patterns)
+
+## Programmation réactive
+
+- `📑` [Introduction au paradigme réactif](prog_reactive/INTRODUCTION_FR.md)
+
+## Programmation fonctionelle
+
+- `📑` [Curryfication - découverte et exemple](prog_fonctionnelle/curryfication/README.md)
 
 ## Java
 

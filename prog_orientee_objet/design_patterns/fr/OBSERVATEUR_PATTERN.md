@@ -207,9 +207,9 @@ Impeccable !
 
 Et en prime, notre code suit une logique réaliste, ce n'est pas l'alarme qui connaît ses **Observers** mais bien le **Centre de contrôle** qui définit ce qui va se produire lors de l'alerte.
 
-Par ailleurs, nous retrouvons dans ce code un bel exemple du principe `Ouvert/Fermé` *(Open/Closed en anglais)* symbolisé par la lettre `O` dans la liste de principe dits [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/). En effet, notre classe `Alarm` est ouverte à l'extension mais fermée à la modification. Nous pouvons l'étendre à l'infini en lui ajoutant de plus en plus de composants sans pour autant devoir la modifier. Le système de l'alarme est terminé, nous n'avons plus besoin de le changer. Ainsi, nous sommes sûr de ne jamais mettre en péril le fonctionnement de cette classe lors de l'ajout d'un nouveau dispositif auto-réactif.
+Par ailleurs, nous retrouvons dans ce code un bel exemple du principe `Ouvert/Fermé` *(Open/Closed en anglais)* symbolisé par la lettre `O` dans la liste de principes dits [SOLID](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/). En effet, notre classe `Alarm` est ouverte à l'extension mais fermée à la modification. Nous pouvons l'étendre à l'infini en lui ajoutant de plus en plus de composants sans pour autant devoir la modifier. Le système de l'alarme est terminé, nous n'avons plus besoin de le changer. Ainsi, nous sommes sûr de ne jamais mettre en péril le fonctionnement de cette classe lors de l'ajout d'un nouveau dispositif auto-réactif.
 
-En parlant des principes [SOLID](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/), nous pouvons également noter la présence du principe de la lettre `D`, soit le principe d'`Inversion de Dépendance` *(Dependency Inversion principle en anglais, d'où le D)*. En effet, en mettant en place les interfaces `Observer` et `Observable`, nous avons conçu un code qui se réfère directement aux abstractions et non aux implémentations. Notre méthode `addObserver(Observer observer)` prend un objet de type `Observer` en paramètre. Nous pouvons lui passer n'importe quelle implémentation, la classe implémentant `Observable` n'aura jamais à traiter avec celle ci. C'est un point significatif dans la maintenabilité du code puisque nous n'aurons pas à nous soucier des conséquences qu'une nouvelle implémentation pourrait avoir sur le code général, du moins pas du point de vue de l'**Observer Pattern**.
+En parlant des principes [SOLID](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/), nous pouvons également noter la présence du principe de la lettre `D`, soit le principe d'`Inversion de Dépendance` *(Dependency Inversion principle en anglais, d'où le D)*. En effet, en mettant en place les interfaces `Observer` et `Observable`, nous avons conçu un code qui se réfère directement aux abstractions et non aux implémentations. Notre méthode `addObserver(Observer observer)` prend un objet de type `Observer` en paramètre. Nous pouvons lui passer n'importe quelle implémentation, la classe implémentant `Observable` n'aura jamais à traiter avec celle ci. C'est un point significatif dans la maintenabilité du code puisque nous n'aurons pas à nous soucier des conséquences qu'une nouvelle implémentation pourrait avoir sur le code général, du moins pas du point de vue de l'**Observer Pattern**.
 
 ## Conclusion
 
@@ -221,7 +221,7 @@ Globalement il faut retenir que
 - Il permet de le ranger de manière plus logique.
 - Il se fonde sur 2 interfaces importante : **Observer** et **Observable**.
 - La classe **Observable** notifie chacun de ses **Observers** lors d'un changement d'état.
-- Il permet de mettre en œuvre facilement 2 des principes dits [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/poo/principes_solid/)
+- Il permet de mettre en œuvre facilement 2 des principes dits [**SOLID**](https://github.com/readthedocs-fr/notions/tree/master/prog_orientee_objet/principes_solid/)
 
 ---
 
