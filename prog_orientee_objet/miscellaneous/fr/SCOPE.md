@@ -16,9 +16,9 @@ Il y en a 2 :
 
 Le `scope` local se réfère à un bloc de code.
 
-Tout ce qui est délimité par 2 accolades (`{}`) est considéré comme un bloc. Cela comprend donc toutes les méthodes (constructeurs y compris car rappelez vous qu'un constructeur n'est qu'une méthode un peu particulière) mais également les structures de code (boucles `for`, boucle `while`, `if` conditionels, etc...).
+Tout ce qui est délimité par 2 accolades (`{}`) est considéré comme un bloc. Cela comprend donc toutes les méthodes (constructeurs y compris car rappelez vous qu'un constructeur n'est qu'une méthode un peu particulière) mais également les structures de code (boucles `for`, boucles `while`, `if` conditionnels, etc...).
 
-Définir une variable dans un bloc, signifie qu'elle n'est accessible que dans le corps de ce bloc et uniquement dans celui ci.
+Définir une variable dans un bloc, signifie qu'elle n'est accessible que dans le corps de ce bloc et uniquement dans celui-ci.
 
 En dehors, cette variable n'existe pas.
 
@@ -123,7 +123,7 @@ Comme vous le voyez ici, c'est la variable au scope le plus restreint qui prime.
 
 Cependant, il existe un moyen de référencer la variable de classe, celle avec un `scope` global.
 
-Ce moyen dépend d'un mot clé. En Java on utilisera `this`. En PHP ce sera au moyen d'un tableau global (`$GLOBALS`) etc...
+Ce moyen dépend d'un mot-clé. En Java on utilisera `this`. En PHP ce sera au moyen d'un tableau global (`$GLOBALS`) etc...
 
 ### Java
 
@@ -148,16 +148,14 @@ Voilà qui conclut cette fiche sur le concept de `scope`.
 
 Globalement, retenez que :
 
-- Il y a 2 scopes :
+Il y a **2 scopes** :
 
 - Local :
 
-- Défini au sein d'un bloc (méthode, `if`, `for`, etc ...)
-
-- Variables temporaires, détruites une fois le bloc passé
+  - Défini au sein d'un **bloc** (méthode, `if`, `for`, etc ...)
+  - Variables **temporaires**, **détruites** une fois le **bloc passé**
 
 - Global :
 
-- Défini pour toute la classe
-
-- Accessible localement via un mot-clé, uk tableau etc...
+  - Défini pour **toute la classe**
+  - Accessible **localement** via un **mot-clé** (`this`), un tableau etc...

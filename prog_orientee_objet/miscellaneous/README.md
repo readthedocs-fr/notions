@@ -8,6 +8,6 @@ Cette catégorie comprend les notions diverses en rapport avec la programmation 
 
 # Miscellaneous 
 
-This category contains miscellaneous notions about object oriented programmation.
+This category contains miscellaneous notions about object oriented programming.
 
 ## Table of contents
