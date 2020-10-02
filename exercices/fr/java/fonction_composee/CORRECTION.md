@@ -4,7 +4,7 @@
 Si celle se trouvant ci dessous ne correspond pas à la vôtre, elle n'est pas forcément fausse. 
 Enjoy !
 
-> Écrit par [Alexandre Orékhoff](https://github.com/Hokkaydo)
+> Écrit par [Hokkaydo](https://github.com/Hokkaydo)
 
 ## Do you know da wae ?
 
@@ -462,7 +462,7 @@ Tant qu'on est dans les conditions, pensons au cas où l'utilisateur fournit une
 
 ```java
 public Function<Integer, Integer> compose(List<Function<Integer, Integer>> functions) {
-    if(funcitons.size() == 1) {
+    if(functions.size() == 1) {
         return functions.get(0);
     }
     
@@ -478,7 +478,7 @@ Il faut donc commencer par la fin puisque la première fonction de la liste est 
 
 ```java
 public Function<Integer, Integer> compose(List<Function<Integer, Integer>> functions) {
-    if(funcitons.size() == 1) {
+    if(functions.size() == 1) {
         return functions.get(0);
     }
     
@@ -541,7 +541,7 @@ Pour définir des types génériques dans une méthode, on passe, comme pour les
 
 ```java
 public <I, O> Function<Integer, Integer> compose(List<Function<Integer, Integer>> functions) {
-    if(funcitons.size() == 1) {
+    if(functions.size() == 1) {
         return functions.get(0);
     }
     
@@ -564,7 +564,7 @@ Dans chacune de nos fonctions, nous avons déclaré que les types d'entrée et d
 
 ```java
 public <I, O> Function<I, O compose(List<Function<I, O>> functions) {
-    if(funcitons.size() == 1) {
+    if(functions.size() == 1) {
         return functions.get(0);
     }
     
