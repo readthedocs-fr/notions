@@ -1,6 +1,6 @@
 # Design Patterns
 
-> Écrit par [Antoine Tran](https://github.com/Tran-Antoine), [Alexandre Orékhoff](https://github.com/Hokkaydo)
+> Écrit par [Antoine Tran](https://github.com/Tran-Antoine), [Hokkaydo](https://github.com/Hokkaydo)
 
 
 Un design pattern (`patron de conception` en français, bien que le terme soit peu courant) est une manière de programmer une partie d'un logiciel, reconnu comme bonne pratique en réponse à un problème récurrent de conception d'un logiciel.
@@ -15,7 +15,7 @@ Chaque chapitre présentant un pattern possèdera un fichier markdown contenant 
 
 # Design Patterns
 
-> French course authored by [Antoine Tran](https://github.com/Tran-Antoine), [Alexandre Orékhoff](https://github.com/Hokkaydo)
+> French course authored by [Antoine Tran](https://github.com/Tran-Antoine), [Hokkaydo](https://github.com/Hokkaydo)
 
 > README translation authored by [Luka Maret](https://github.com/LukaMrt)
 
