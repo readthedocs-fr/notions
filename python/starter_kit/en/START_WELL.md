@@ -20,7 +20,7 @@ One example is that the language does not enforce the usage of `;` after each in
 
 In fact, the resources available on the Internet are not always relevant or up-to-date.
 As a solution to solve this issue, [learndev.info](https://www.learndev.info/en) was created, aiming to offer adapted and relevant courses,
-such as the course of **[ TODO ]**.
+such as the course from [JetBrains Academy](https://hyperskill.org/onboarding/tracks/2).
 
 
 
