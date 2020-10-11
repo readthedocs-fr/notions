@@ -12,19 +12,19 @@ Concrètement un *moteur de production*, ou *build tool*,  permet d'automatiser 
 ### Plugins :
 Beaucoup de Build Tools permettent d'ajouter des plugins qui facilitent le développement en ajoutant beaucoup de tâches pratiques à l'outil.
 #### Exemples avec :
-- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#Plugins-:)
+- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#plugins-)
 ### Gestion des dépendances :
 La gestion des dépendances sur certains outils permet de construire une application en implémentant ses dépendances (e.g. librairies) grâce à une syntaxe assez simple à utiliser, par exemple en spécifiant simplement l'identifiant du groupe proposant la dépendance, le nom de la dépendance à utiliser et sa version. Cela permet d'éviter de se compliquer la tâche lorsqu'on travaille avec différentes librairies en nous évitant de devoir les télécharger manuellement, les importer lors du lancement ou la compilation, mettre à jour la version, les ajouter à l'IDE si on utilise un IDE...
 #### Exemple avec :
-- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#Gestion-des-dépendances-:)
+- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#gestion-des-dépendances-)
 ### Génération de la documentation
 La génération de la documentation a pour but de produire la documentation de l'application si c'est une librairie par exemple (*JavaDoc* pour Java, *ScalaDoc* pour Scala...).
 #### Exemple avec :
-- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#Génération-de-la-documentation-:)
+- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#génération-de-la-documentation-)
 ### Exportation des sources
 L'exportation des sources est la tâche qui crée les sources d'un projet (pour pouvoir donner les fichiers sources intacts avec leurs commentaires par exemple).
 #### Exemple avec :
-- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#Exportation-des-sources-:)
+- [Gradle](../tutoriels/fr/INTRODUCTION_GRADLE.md#exportation-des-sources-)
 ## Conclusion
 Les *moteurs de production*, ou *build tools* permettent d'automatiser le lancement et la création de son application en actionnant de multiples tâches au passage. Leur utilisation rend la programmation d'un logiciel beaucoup plus simple et rapide.
 ### Exemples de Build Tools :
