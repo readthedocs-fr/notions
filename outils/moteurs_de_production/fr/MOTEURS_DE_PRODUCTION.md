@@ -1,5 +1,5 @@
 ﻿# Les moteurs de production
-> Écrit par [Drassero](https://github.com/Drassero)
+> Écrit par [Drassero](https://github.com/Drassero) \
 > Exemples présentés avec le Build Tool Gradle donc écrits en Groovy
 
 Cette fiche a pour but de présenter les moteurs de production et leur utilité.
@@ -9,7 +9,7 @@ Cette fiche a pour but de présenter les moteurs de production et leur utilité.
 *[Wikipédia](https://fr.wikipedia.org/wiki/Moteur_de_production)*
 
 Concrètement un *moteur de production*, ou *build tool*,  permet d'automatiser le lancement et la production d'une application et ses sous étapes (compilation, implémentation des dépendances...) via un script pré-écrit. L'utilité d'un tel outil est de faciliter le rendu final d'un logiciel en évitant toutes les actions redondantes à faire à chaque exécution ou production au développeur et donc de lui simplifier le développement de son programme.
-## Examples d'automatisations pouvant être implémentées
+## Exemples d'automatisations pouvant être implémentées
 ### Plugins :
 Beaucoup de Build Tools permettent d'ajouter des plugins qui facilitent le développement en ajoutant beaucoup de tâches pratiques à l'outil.
 #### Exemple :
@@ -20,7 +20,7 @@ plugins {
 }
 ```
 ### Gestion des dépendances :
-La gestion des dépendances sur certains outils permet de construire une application en implémentant ses dépendances (e.g. librairies) grâce à une syntaxe assez simple à utiliser, par exemple en spécifiant simplement l'id du groupe proposant la dépendance, le nom de la dépendance à utiliser et sa version. Cela permet d'éviter de se compliquer la tâche lorsqu'on travaille avec différentes librairies en nous évitant de devoir les télécharger manuellement, les importer lors du lancement ou la compilation, les ajouter à l'IDE si on utilise un IDE...
+La gestion des dépendances sur certains outils permet de construire une application en implémentant ses dépendances (e.g. librairies) grâce à une syntaxe assez simple à utiliser, par exemple en spécifiant simplement l'identifiant du groupe proposant la dépendance, le nom de la dépendance à utiliser et sa version. Cela permet d'éviter de se compliquer la tâche lorsqu'on travaille avec différentes librairies en nous évitant de devoir les télécharger manuellement, les importer lors du lancement ou la compilation, mettre à jour la version, les ajouter à l'IDE si on utilise un IDE...
 #### Exemple :
 ```groovy
 dependencies {
@@ -28,7 +28,7 @@ dependencies {
 }
 ```
 ### Génération de la documentation
-La génération de la documentation a pour but de produire la documentation de l'application pour si c'est une librairie par exemple (*JavaDoc* pour Java, *ScalaDoc* pour Scala...).
+La génération de la documentation a pour but de produire la documentation de l'application si c'est une librairie par exemple (*JavaDoc* pour Java, *ScalaDoc* pour Scala...).
 #### Exemple :
 Plugin qui est requis :
 ```groovy
@@ -63,7 +63,7 @@ Voici quelques Build Tools que vous pouvez :
 Et il y en a tant d'autres...
 
 ## Tutoriel Bonus
-Voici un petit exemple d'utilisation de Gradle qui, je l'espère, vous convaincra sur l'utilité des moteurs de production si vous n'êtes pas déjà convaincu.
+Voici un petit exemple d'utilisation de Gradle qui, je l'espère, vous convaincra sur l'utilité des moteurs de production si vous ne l'êtes pas déjà.
 
 ### Initialisation
 Pour commencer le projet, on se rend dans le dossier créé pour et on ouvre la CLI par défaut dans le dossier du projet :
@@ -143,7 +143,7 @@ Voilà, nous avons fini de configurer le projet. Voici son arborescence après c
 ```
 > Récupéré sur le site web de Gradle
 
-Le fichier `build.gradle` est celui dans lequel on écrit le script Gradle et dans le dossier source (`src`), on trouve les deux modules de l'application (module principal `main` et module de test `test`), pour plus détails, faites un tour sur [la documentation de Gradle](https://docs.gradle.org/current/userguide/userguide.html). On ne s'occupera pas du test de l'application (ceci est un simple tutoriel d'introduction à Gradle). Voici le code à l'intérieur de App.java que j'ai écrit :
+Le fichier `build.gradle` est celui dans lequel on écrit le script Gradle et dans le dossier source (`src`), on trouve les deux modules de l'application (module principal `main` et module de test `test`). Pour plus détails, faites un tour sur [la documentation de Gradle](https://docs.gradle.org/current/userguide/userguide.html). On ne s'occupera pas ici du test de l'application, ceci est un simple tutoriel d'introduction à Gradle. Voici le code que j'ai placé à l'intérieur de App.java :
 ```java
 package com.drassero.tutorial;
 
@@ -167,9 +167,9 @@ plugins {
 
 // Tâche fournie par le plugin java permettant de configurer le .jar exporté
 jar {
-	// Tâche qui permet de configurer le manifest présent dans le .jar
+	// Tâche qui permet de configurer le manifeste présent dans le .jar
 	manifest {
-		// Ajoute l'attribut 'Main-Class' avec la valeur 'com.drassero.tutorial.App' dans le manifest exporté
+		// Ajoute l'attribut 'Main-Class' avec la valeur 'com.drassero.tutorial.App' dans le manifeste exporté
 		attributes 'Main-Class': 'com.drassero.tutorial.App'
 	}
 }
@@ -181,7 +181,7 @@ repositories {
 }
 
 dependencies {
-    // Dépendance utilisée par la application
+    // Dépendance utilisée par l'application
     implementation 'com.google.guava:guava:29.0-jre'
 
     // Utiliser le framework JUnit pour test
