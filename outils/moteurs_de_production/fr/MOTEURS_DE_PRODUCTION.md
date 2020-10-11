@@ -1,5 +1,5 @@
 ﻿# Les moteurs de production
-> Écrit par [Drassero](https://github.com/Drassero) \
+> Écrit par [Drassero](https://github.com/Drassero)
 
 Cette fiche a pour but de présenter les moteurs de production et leur utilité.
 ## Explication
