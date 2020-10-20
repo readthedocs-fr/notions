@@ -5,7 +5,7 @@ Gradle est un [moteur de production](../../fr/MOTEURS_DE_PRODUCTION.md) utilisan
 ### Initialisation
 Pour commencer le projet, on se rend dans le dossier créé pour et on ouvre la CLI par défaut dans le dossier du projet :
 ```shell
-cd "C:\Users\Drassero\Desktop\Tutoriel Bonus"
+cd "C:\Users\Drassero\Desktop\Tutoriel"
 ```
 Puis on initialise le programme avec :
 ```shell
@@ -46,13 +46,13 @@ Select test framework:
   4: JUnit Jupiter
 Enter selection (default: JUnit 4) [1..4]
 ```
-Le nom du projet (`Tutoriel Bonus`) :
+Le nom du projet (`Tutoriel`) :
 ```
-Project name (default: [Nom du dossier courant, ici 'Tutoriel Bonus']):
+Project name (default: [Nom du dossier courant, ici 'Tutoriel']):
 ```
 Et finalement le dossier source du projet (`src`) :
 ```
-Source package (default: Tutoriel.Bonus):
+Source package (default: Tutoriel):
 ```
 Voilà, nous avons fini de configurer le projet. Voici son arborescence après création (j'ai rajouté les packages conventionnels de Java) :
 ```
@@ -78,9 +78,9 @@ Voilà, nous avons fini de configurer le projet. Voici son arborescence après c
         │        └── AppTest.java
         └── resources
 ```
-> Récupéré sur le site web de Gradle
+> Modification d'un schéma récupéré sur le [site web de Gradle](https://docs.gradle.org/current/samples/sample_building_java_applications.html)
 
-Le fichier `build.gradle` est celui dans lequel on écrit le script Gradle et dans le dossier source (`src`), on trouve les deux modules de l'application (module principal `main` et module de test `test`). Pour plus détails, faites un tour sur [la documentation de Gradle](https://docs.gradle.org/current/userguide/userguide.html). On ne s'occupera pas ici du test de l'application, ceci est un simple tutoriel d'introduction à Gradle. Voici le code que j'ai placé à l'intérieur de App.java :
+Le fichier `build.gradle` est celui dans lequel on écrit le script Gradle et dans le dossier source (`src`), on trouve les deux modules de l'application (module principal `main` et module de test `test`). Pour plus de détails, faites un tour sur [la documentation de Gradle](https://docs.gradle.org/current/userguide/userguide.html). On ne s'occupera pas ici du test de l'application, ceci est un simple tutoriel d'introduction à Gradle. Voici le code que j'ai placé à l'intérieur de App.java :
 ```java
 package com.drassero.tutorial;
 
@@ -140,7 +140,7 @@ Les plugins permettent de rajouter des tâches exécutables et modifiables prés
 #### Gestion des dépendances :
 La gestion des dépendances permet d'implémenter ces dernières plus facilement et plus rapidement.
 #### Exportation des sources :
-L'exportation des sources avec la tâche utilisée copie les fichiers sources (.java) au même endroit que les fichiers compilés (.class). Cela permet de conserver les commentaires du développeur par exemple (pour la documentation par exemple).
+L'exportation des sources avec la tâche utilisée copie les fichiers sources (.java) au même endroit que les fichiers compilés (.class). Cela permet de conserver les commentaires du développeur par exemple (pour la documentation).
 
 Pour construire le .jar de l'application il suffit de taper la commande suivante :
 ```shell
