@@ -28,10 +28,10 @@ L'exportation des sources est la tâche qui crée les sources d'un projet (pour 
 ## Conclusion
 Les *moteurs de production*, ou *build tools* permettent d'automatiser le lancement et la création de son application en actionnant de multiples tâches au passage. Leur utilisation rend la programmation d'un logiciel beaucoup plus simple et rapide.
 ### Exemples de Build Tools :
-Voici quelques Build Tools que vous pouvez :
+Voici quelques Build Tools que vous pourriez utiliser :
 - [Gradle](https://gradle.org/) utilisant le langage Groovy
 - [Maven](http://maven.apache.org/) qui utilise des balises XML
 - [Ant](https://ant.apache.org/)
-- [Scala oriented Build Tool](https://www.scala-sbt.org/)
+- [Scala oriented Build Tool](https://www.scala-sbt.org/) fait pour les projets utilisant [Scala](https://fr.wikipedia.org/wiki/Scala_(langage))
 
 Et il y en a tant d'autres...
