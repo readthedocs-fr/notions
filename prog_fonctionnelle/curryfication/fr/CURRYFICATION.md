@@ -33,7 +33,7 @@ Après un test de notre côté, nous vous recommandons cependant Ramda, qui gèr
 Prenons l'exemple d'une fonction qui a pour but de logger un message, en précisant la date et la nature de celui-ci ; appelons-la `log` :
 ```js
 function log(level, date, message) {
-    return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
+  return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
 }
 ```
 Un usage normal serait sous cette forme :
@@ -46,13 +46,9 @@ log("INFO")(new Date())("Ceci est un message"); // "[WARN] Wed, 19 Aug 2020 16:5
 ```
 Comme dit précédemment, nous pouvons nous servir de la curryfication pour appliquer une partial application et créer des modèles, comme par exemple :
 ```js
-const logLevel = condition
-	? log("WARN")
-	: log("INFO");
+const logLevel = condition ? log("WARN") : log("INFO");
 
-const logMessage = _condition
-    ? logLevel(new Date(0))
-    : logLevel(new Date());
+const logMessage = condition ? logLevel(new Date(0)) : logLevel(new Date());
 
 logMessage("Ceci est un message"); // Quatre possibilités différentes en fonction des conditions
 ```
@@ -67,11 +63,12 @@ Afin de profiter d'une fonction curryfiée, vous pouvez la curryfier dès sa dé
 Ainsi, notre fonction `log` ci-dessus devient :
 ```js
 function log(level) {
-	return function(date) {
-		return function(message) {
-			return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
-		}
-	}
+  return function(date) {
+    return function(message) {
+      return console.log(`[${level}] ${date.toUTCString()}: ${message}`);
+    
+    }
+  }
 }
 ```
 
@@ -97,19 +94,19 @@ ramdaErrorNow("Ceci est un test avec Ramda"); // [ERROR] Wed, 19 Aug 2020 16:58:
 Bien entendu, il reste possible de l'implémenter soi-même. Nous vous proposons ainsi cette implémentation, à prendre ou à laisser :
 ```js
 function curry(fn) {
-	if (typeof fn !== "function") {
-		return () => fn;
-	}
+  if (typeof fn !== "function") {
+    return () => fn;
+  }
 
-	return function curried(...args) {
-		if (args.length >= fn.length) {
-			return fn(...args);
-		}
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn(...args);
+    }
 
-		return function (...curriedArgs) {
-			return curried(...args.concat(curriedArgs));
-		}
-	}
+    return function (...curriedArgs) {
+      return curried(...args.concat(curriedArgs));
+    }
+  }
 }
 ```
 Bien entendu, à l'instar des deux bibliothèques précédemment citées, cette implémentation fonctionne de la même manière.
